@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\AboutUs;
+use App\Models\Blog;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\ProductTag;
@@ -14,7 +15,7 @@ class IndexController extends Controller
     public function index()
     {
         $sliders = Product::where('slider', true)->get();
-        $features = Product::where('featured', true)->orderBy('created_at', 'desc')->take(3)->get();
+        $features = Product::where('featured', true)->whereNotNull('featured_text_ar')->whereNotNull('featured_text_en')->orderBy('created_at', 'desc')->take(3)->get();
         $best_sellings = Product::where('best_selling', true)->orderBy('created_at', 'desc')->take(5)->get();
         $categories = Category::where('active', true)->orderBy('rank', 'desc')->get();
         $about = AboutUs::firstOrFail();
@@ -40,7 +41,7 @@ class IndexController extends Controller
             $query->where('category_id', $categoryId);
         }
         // Retrieve paginated products with applied filters
-        $products = $query->orderBy('created_at', 'desc')->paginate(5);
+        $products = $query->orderBy('created_at', 'desc')->paginate(9);
         // If the request is AJAX, return JSON response
         if ($request->ajax()) {
             return response()->json([
@@ -50,6 +51,7 @@ class IndexController extends Controller
         }
         $countAll = Product::count();
         $tags = ProductTag::all();
+        \Log::info( $products);
         return view('products.index', compact('products', 'countAll', 'tags'));
     }
     public function show($slug)
@@ -79,5 +81,33 @@ class IndexController extends Controller
     {
         $all_media = VarexMedia::orderBy('created_at', 'desc')->get();
         return view('contact', compact('all_media'));
+    }
+
+    public function blogList(Request $request){
+       // Get the master blog
+       $masterBlog = Blog::where('master', 1)->first();
+
+       // Get paginated blogs excluding the master blog, assuming 10 blogs per page
+       $blogs = Blog::where('master', '!=', 1)->paginate(9);
+
+       // Check if the request is an AJAX request
+       if ($request->ajax()) {
+           return view('blogs.partials.blogs', compact('blogs'))->render();
+       }
+
+       return view('blogs.index', compact('masterBlog', 'blogs'));
+    }
+    public function showBlog($slug)
+    {
+        // Fetch the blog using the provided slug
+        $blog = Blog::where('slug->en', $slug)->orWhere('slug->ar', $slug)->firstOrFail();
+
+
+        return view('blogs.show', compact('blog'));
+    }
+
+    public function distribute(){
+        $about = AboutUs::first();
+        return view('distribute', compact('about'));
     }
 }

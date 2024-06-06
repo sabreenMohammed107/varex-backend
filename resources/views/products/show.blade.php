@@ -195,7 +195,7 @@
 
                         <div class="logo-catalog">
                             <div class="main-logo">
-                                <img src="img/logo.png" alt="">
+                                <img src="{{asset('webasset/img/logo.png')}}" alt="">
                             </div>
                             <ul class="cst-btn p-0">
                                 <li class="special-link shinep-0">

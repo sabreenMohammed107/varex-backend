@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AboutUsController;
+use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\CertificateController;
 use App\Http\Controllers\Admin\ContactUsController;
@@ -33,7 +34,10 @@ Route::get('/media', [IndexController::class, 'mediaList']);
 Route::get('/contact', [IndexController::class, 'contact']);
 Route::post('/contact', [ContactRequestController::class, 'store'])->name('contact.store');
 Route::get('/about-us', [ContactRequestController::class, 'index'])->name('about.us');
-
+Route::get('/varex-certificates', [ContactRequestController::class, 'certificates'])->name('varex.certificates');
+Route::get('/blogs', [IndexController::class, 'blogList']);
+Route::get('/blog/{slug}', [IndexController::class, 'showBlog'])->name('blog.show');
+Route::get('/distribute', [IndexController::class, 'distribute']);
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -46,6 +50,7 @@ Route::middleware('auth')->group(function () {
     Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('categories', CategoryController::class);
         Route::resource('tags', ProductTagController::class);
+        Route::resource('blogs', BlogController::class);
         Route::resource('certificates', CertificateController::class);
         Route::get('contact-us', [ContactUsController::class, 'edit'])->name('contact-us.edit');
         Route::post('contact-us', [ContactUsController::class, 'update'])->name('contact-us.update');

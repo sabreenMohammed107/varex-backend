@@ -7,7 +7,7 @@
             <div class="footer-widget footer-about-widget">
               <div class="footer-logo">
                 <div class="site-logo">
-                  <img src="img/logo-dark.png" alt="Logo" />
+                  <img src="{{asset('webasset/img/logo-dark.png')}}" alt="Logo" />
                 </div>
               </div>
               <div class="footer-widget footer-newsletter-widget w-100">
@@ -40,11 +40,11 @@
               <h4 class="footer-title">Varex</h4>
               <div class="footer-menu">
                 <ul>
-                  <li><a href="">About Us</a></li>
+                  <li><a href="{{ url('/about-us') }}">About Us</a></li>
                   <li><a href="{{ url('/products') }}">Products</a></li>
                   <li><a href="{{ url('/media') }}">Media</a></li>
-                  <li><a href="blogs.html">Blogs</a></li>
-                  <li><a href="Certificate.html">Certificate</a></li>
+                  <li><a href="{{ url('/blogs') }}">Blogs</a></li>
+                  <li><a href="{{ url('/varex-certificates') }}">Certificate</a></li>
                 </ul>
               </div>
             </div>
@@ -82,7 +82,7 @@
                   </div>
                   <div class="footer-address-info">
                     <p>
-                      <a href="{{ $contactUsFirstRow->email ?? ''}}" class="scnd-hovr">{{ $contactUsFirstRow->email ?? ''}}</a>
+                      <a href="{{ $contactUsFirstRow->email1 ?? ''}}" class="scnd-hovr">{{ $contactUsFirstRow->email1 ?? ''}}</a>
                     </p>
                   </div>
                 </li>

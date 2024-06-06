@@ -7,13 +7,13 @@
                     <div class="ltn__top-bar-menu add-and-phone">
                         <ul class="d-flex justify-content-lg-start justify-content-md-between">
                             <li>
-                                <a href="locations.html"><img src="img/icons/location.png" alt="" srcset="" />
+                                <a href="locations.html"><img src="{{asset('webasset/img/icons/location.png')}}" alt="" srcset="" />
                                     {{ $contactUsFirstRow->location['en'] ?? ''}}
                                 </a>
                             </li>
                             <li>
                                 <a href="mailto:mibrahem@varex.com.eg?Subject=Flower%20greetings%20to%20you"><img
-                                        src="img/icons/call-phone.png" alt="" srcset="" />
+                                        src="{{asset('webasset/img/icons/call-phone.png')}}" alt="" srcset="" />
                                     Sales & Service Support : {{ $contactUsFirstRow->sales_phone }} /
                                     {{ $contactUsFirstRow->service_support_phone }}
                                 </a>
@@ -74,7 +74,7 @@
             <div class="row justify-content-center justify-content-lg-start align-items-center">
                 <div class="col col-sm-3 col-md-2 px-0">
                     <div class="site-logo">
-                        <a href="{{ url('/') }}"><img src="img/logo.png" alt="Logo" /></a>
+                        <a href="{{ url('/') }}"><img src="{{asset('webasset/img/logo.png')}}" alt="Logo" /></a>
                     </div>
                 </div>
                 <div class="col header-contact-serarch-column d-none d-lg-block">
@@ -87,13 +87,13 @@
                                             <a href="{{ url('/') }}">Home</a>
                                         </li>
                                         <li class="not-special-link">
-                                            <a href="about.html">About Us</a>
+                                            <a href="{{ url('/about-us') }}">About Us</a>
                                         </li>
                                         <li class="not-special-link">
                                             <a href="{{ url('/products') }}">Products</a>
                                         </li>
                                         <li class="not-special-link">
-                                            <a href="blogs.html">Blogs</a>
+                                            <a href="{{ url('/blogs') }}">Blogs</a>
                                         </li>
                                         <li class="not-special-link">
                                             <a href="{{ url('/media') }}">Media</a>
@@ -106,7 +106,7 @@
                             </nav>
                             <ul class="cst-btn">
                                 <li class="special-link shine">
-                                    <a class="p-0" href="Distribute.html">Distribute With Us</a>
+                                    <a class="p-0" href="{{ url('/distribute') }}">Distribute With Us</a>
                                 </li>
                             </ul>
                         </div>
@@ -136,7 +136,7 @@
                   min-width: 100%;
                 "
                         class="nice-select w-100 my-3" tabindex="0">
-                        <span class="current"><img style="margin-right: 15px" src="img/icons/cat-menu.png"
+                        <span class="current"><img style="margin-right: 15px" src="{{asset('webasset/img/icons/cat-menu.png')}}"
                                 alt="" srcset="" />All Categories</span>
                         <ul class="list">
                             <li data-value="Default Sorting" class="option selected focus">

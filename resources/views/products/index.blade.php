@@ -93,7 +93,7 @@
 
                         <div class="logo-catalog">
                             <div class="main-logo">
-                                <img src="img/logo.png" alt="">
+                                <img src="{{asset('webasset/img/logo.png')}}" alt="">
                             </div>
                             <ul class="cst-btn p-0">
                                 <li class="special-link shinep-0">
@@ -109,69 +109,64 @@
     <!-- PRODUCT DETAILS AREA END -->
 @endsection
 @section('webScript')
-    <script>
-        $(document).ready(function($) {
-            $(document).on('click', '.pagination a', function(event) {
-                event.preventDefault();
-                var page = $(this).attr('href').split('page=')[1];
-                fetchProducts(page);
-
-            });
-            // Event handler for search button click
-            $('#searchButton').click(function(e) {
-                e.preventDefault();
-                var searchQuery = $('#search_name').val(); // Get the search query from the input field
-                var searchCategory = $('#search_category')
-            .val(); // Get the search query from the input field
-                fetchProducts();
-
-            });
-            // Event handler for pressing Enter key
-            $('#search_name').keypress(function(e) {
-                if (e.which == 13) { // 13 is the Enter key code
-                    e.preventDefault(); // Prevent default form submission behavior
-                    var searchQuery = $('#search_name').val(); // Get the search query from the input field
-                    var searchCategory = $('#search_category')
-                .val(); // Get the search query from the input field
-                    fetchProducts();
-                }
-            });
-
-            // Initial fetch
-            fetchProducts();
-
-
-
+<script>
+    $(document).ready(function($) {
+        $(document).on('click', '.pagination a', function(event) {
+            event.preventDefault();
+            var pageUrl = $(this).attr('href');
+            var page = pageUrl ? pageUrl.split('page=')[1] : 1;
+            console.log("Extracted page:", page); // Debugging log
+            fetchProducts(page);
         });
-        // Function to set the selected category ID
-        function setCategoryId(categoryId) {
-            $('#selectedCategoryId').val(categoryId);
-            fetchProducts(1); // Fetch products for the first page when category changes
-        }
 
-        function fetchProducts(pageUrl = null) {
-            var page = pageUrl ? pageUrl.split('page=')[1] : 1
-            console.log("Fetching products for page: " + page);
-            var searchQuery = $('#search_name').val(); // Get the search query from the input field
-            var categoryId = $('#selectedCategoryId').val(); // Get the selected category ID
-            var searchCategory = $('#search_category').val(); // Get the search query from the input field
-            console.log("Received categoryId:", categoryId);
-            $.ajax({
-                url: "/products?page=" + page,
-                data: {
-                    search_name: searchQuery,
-                    category_id: categoryId, // Pass the selected category ID as data
-                    searchCategory: searchCategory
-                },
-                success: function(data) {
-                    // console.log("Received data:", data);
-                    $('#product-list').html(data.products);
-                    $('#pagination-links').html(data.pagination);
-                },
-                error: function(xhr, status, error) {
-                    console.error("Error fetching products:", error);
-                }
-            });
-        }
-    </script>
+        // Event handler for search button click
+        $('#searchButton').click(function(e) {
+            e.preventDefault();
+            fetchProducts();
+        });
+
+        // Event handler for pressing Enter key
+        $('#search_name').keypress(function(e) {
+            if (e.which == 13) { // 13 is the Enter key code
+                e.preventDefault(); // Prevent default form submission behavior
+                fetchProducts();
+            }
+        });
+
+        // Initial fetch
+        fetchProducts();
+    });
+
+    // Function to set the selected category ID
+    function setCategoryId(categoryId) {
+        $('#selectedCategoryId').val(categoryId);
+        fetchProducts(); // Fetch products for the first page when category changes
+    }
+
+    function fetchProducts(page = 1) {
+        console.log("Fetching products for page: " + page);
+        var searchQuery = $('#search_name').val(); // Get the search query from the input field
+        var categoryId = $('#selectedCategoryId').val(); // Get the selected category ID
+        var searchCategory = $('#search_category').val(); // Get the search query from the input field
+        console.log("Received categoryId:", categoryId);
+
+        $.ajax({
+            url: "/products?page=" + page,
+            data: {
+                search_name: searchQuery,
+                category_id: categoryId, // Pass the selected category ID as data
+                searchCategory: searchCategory
+            },
+            success: function(data) {
+                // console.log("Received data:", data);
+                $('#product-list').html(data.products);
+                $('#pagination-links').html(data.pagination);
+            },
+            error: function(xhr, status, error) {
+                console.error("Error fetching products:", error);
+            }
+        });
+    }
+</script>
+
 @endsection

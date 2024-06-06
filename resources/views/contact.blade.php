@@ -109,7 +109,7 @@
                                 <div class="row contact-info-details">
                                     <div class="col-12 col-lg-6 d-flex pt-3">
                                         <div class="contact-icon">
-                                            <img src="img/icons/form-contact/whats.png" alt="">
+                                            <img src="{{asset('webasset/img/icons/form-contact/whats.png')}}" alt="">
                                         </div>
                                         <div class="contact-data">
                                             <h5>WhatsApp</h5>
@@ -119,7 +119,7 @@
 
                                     <div class="col-12 col-lg-6 d-flex pt-3">
                                         <div class="contact-icon">
-                                            <img src="img/icons/form-contact/location.png" alt="">
+                                            <img src="{{asset('webasset/img/icons/form-contact/location.png')}}" alt="">
                                         </div>
                                         <div class="contact-data">
                                             <h5>Location</h5>
@@ -128,7 +128,7 @@
                                     </div>
                                     <div class="col-12 col-lg-6 d-flex pt-3">
                                         <div class="contact-icon">
-                                            <img src="img/icons/form-contact/phone.png" alt="">
+                                            <img src="{{asset('webasset/img/icons/form-contact/phone.png')}}" alt="">
                                         </div>
                                         <div class="contact-data">
                                             <h5>Phone Number</h5>
@@ -138,7 +138,7 @@
                                     </div>
                                     <div class="col-12 col-lg-6 d-flex pt-3">
                                         <div class="contact-icon">
-                                            <img src="img/icons/form-contact/mail.png" alt="">
+                                            <img src="{{asset('webasset/img/icons/form-contact/mail.png')}}" alt="">
                                         </div>
                                         <div class="contact-data">
                                             <h5>E-MAIL</h5>
