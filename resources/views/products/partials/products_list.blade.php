@@ -10,8 +10,8 @@
                 <div class="col-xl-4 col-sm-6 col-12">
                     <div class="ltn__product-item ltn__product-item-3 text-center">
                         <div class="product-img">
-                            {{-- {{ route('products.show', $product->id) }} --}}
-                            <a href="#" class="home-img">
+
+                            <a href="{{ url('product/'.$product->slug['en']) }}" class="home-img">
                                 <img src="{{ asset("$product->main_image") }}" alt="#">
                             </a>
                             <div class="product-badge">
@@ -22,7 +22,7 @@
                         </div>
                         <div class="product-info">
                             <h2 class="product-title">
-                                <a href="#" class="f-s-18 text-in-dark">
+                                <a href="{{ url('product/'.$product->slug['en']) }}" class="f-s-18 text-in-dark">
                                     {!! $product->home_title['en'] !!}
                                 </a>
                             </h2>

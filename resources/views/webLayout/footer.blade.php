@@ -42,7 +42,7 @@
                 <ul>
                   <li><a href="">About Us</a></li>
                   <li><a href="{{ url('/products') }}">Products</a></li>
-                  <li><a href="media.html">Media</a></li>
+                  <li><a href="{{ url('/media') }}">Media</a></li>
                   <li><a href="blogs.html">Blogs</a></li>
                   <li><a href="Certificate.html">Certificate</a></li>
                 </ul>
@@ -72,7 +72,7 @@
                   <div class="footer-address-info">
                     <p>
                       <a href="tel: 32 Omar Ibn Abd El Azeez, Helwan" class="scnd-hovr">
-                        32 Omar Ibn Abd El Azeez, Helwan</a>
+                        {{ $contactUsFirstRow->location['en'] ?? ''}}</a>
                     </p>
                   </div>
                 </li>
@@ -82,7 +82,7 @@
                   </div>
                   <div class="footer-address-info">
                     <p>
-                      <a href="mailto:mibrahem@varex.com.eg" class="scnd-hovr">mibrahem@varex.com.eg</a>
+                      <a href="{{ $contactUsFirstRow->email ?? ''}}" class="scnd-hovr">{{ $contactUsFirstRow->email ?? ''}}</a>
                     </p>
                   </div>
                 </li>

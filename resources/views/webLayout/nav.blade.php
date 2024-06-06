@@ -3,7 +3,7 @@
     <div class="ltn__utilize-menu-inner ltn__scrollbar">
         <div class="ltn__utilize-menu-head">
             <div class="site-logo">
-                <a href="index.html"><img src="img/logo.png" alt="Logo" /></a>
+                <a href="{{ url('/') }}"><img src="img/logo.png" alt="Logo" /></a>
             </div>
             <button class="ltn__utilize-close">×</button>
         </div>
@@ -39,7 +39,7 @@
         <div class="ltn__utilize-menu">
             <ul>
                 <li class="not-special-link-sm-menu">
-                    <a href="index.html">Home</a>
+                    <a href="{{ url('/') }}">Home</a>
                 </li>
                 <li class="not-special-link-sm-menu">
                     <a href="about.html">About Us</a>
@@ -51,10 +51,10 @@
                     <a href="blogs.html">Blogs</a>
                 </li>
                 <li class="not-special-link-sm-menu">
-                    <a href="media.html">Media</a>
+                    <a href="{{ url('/media') }}">Media</a>
                 </li>
                 <li class="not-special-link-sm-menu">
-                    <a href="contact.html">Contact Us</a>
+                    <a href="{{ url('/contact') }}">Contact Us</a>
                 </li>
 
                 <li class="special-link shine">

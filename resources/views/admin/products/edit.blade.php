@@ -140,8 +140,8 @@
                                 <label class="required form-label">Vedio link</label>
                                 <!--end::Label-->
                                 <!--begin::Input-->
-                                <input type="text" name="vedio_link" class="form-control mb-2" placeholder="Vedio link"
-                                    value="{{ $product->vedio_link }}" required />
+                                <input type="text" name="video_link" class="form-control mb-2" placeholder="Vedio link"
+                                    value="{{ $product->video_link }}"  />
                                 <!--end::Input-->
                             </div>
                             <!--end::Input group-->
@@ -152,6 +152,14 @@
                             <div class="mb-10 fv-row">
                                 <label class="form-label">Featured Text En</label>
                                 <textarea name="featured_text_en" class="form-control mb-2 ckeditor" placeholder="Featured text for the product">{{$product->featured_text_en}}</textarea>
+                            </div>
+                            <div class="mb-10 fv-row">
+                                <label class="required form-label">Tag</label>
+                                <select name="tag_id" class="form-control mb-2" required>
+                                    @foreach($tags as $tag)
+                                        <option value="{{ $tag->id }}" {{ $product->tag_id == $tag->id ? 'selected' : '' }}>{{ $tag->title['en'] }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                                 <div class="mb-10 fv-row">
                                     <label class="required form-label">Rank</label>

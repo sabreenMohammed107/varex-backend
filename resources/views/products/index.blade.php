@@ -11,7 +11,7 @@
                     <div class="ltn__breadcrumb-inner ltn__breadcrumb-inner-2">
                         <div class="ltn__breadcrumb-list ">
                             <ul>
-                                <li><a href="index.html">Home</a></li>
+                                <li><a href="{{ url('/') }}">Home</a></li>
                                 <li>Products</li>
                             </ul>
                         </div>
@@ -81,17 +81,11 @@
                             <div class="price_filter">
                                 <div class="price_slider_amount">
                                     <span class="tag-bg f-s-13">All Tags</span>
-                                    <span class="tag-bg f-s-13">Egyptian Natural Loofah for Bath</span>
-                                    <span class="tag-bg f-s-13">Dish Washing</span>
-                                    <span class="tag-bg f-s-13">Scrubber Sponge</span>
-                                    <span class="tag-bg f-s-13">Towel</span>
-                                    <span class="tag-bg f-s-13">Non-Woven Mop</span>
-                                    <span class="tag-bg f-s-13">Broom</span>
-                                    <span class="tag-bg f-s-13">Cotton Mop</span>
-                                    <span class="tag-bg f-s-13">Shower Loofah</span>
-                                    <span class="tag-bg f-s-13">Roll Non-Woven Towels</span>
-                                    <span class="tag-bg f-s-13">Dishcloyh Sponge</span>
-                                    <span class="tag-bg f-s-13">Non-Woven Towel</span>
+                                    @foreach ($tags as $tag )
+                                    <span class="tag-bg f-s-13">{{ $tag->title['en'] ?? '' }}</span>
+                                    @endforeach
+
+
                                 </div>
                             </div>
                         </div>

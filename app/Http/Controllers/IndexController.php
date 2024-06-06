@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AboutUs;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\ProductTag;
+use App\Models\VarexMedia;
 use Illuminate\Http\Request;
 
 class IndexController extends Controller
@@ -14,6 +17,7 @@ class IndexController extends Controller
         $features = Product::where('featured', true)->orderBy('created_at', 'desc')->take(3)->get();
         $best_sellings = Product::where('best_selling', true)->orderBy('created_at', 'desc')->take(5)->get();
         $categories = Category::where('active', true)->orderBy('rank', 'desc')->get();
+        $about = AboutUs::firstOrFail();
         return view('index', get_defined_vars());
     } // ProductController.php
 
@@ -25,9 +29,9 @@ class IndexController extends Controller
 
         if ($request->filled('search_name')) {
             $searchTerm = $request->search_name;
-            $query->where(function($q) use ($searchTerm) {
+            $query->where(function ($q) use ($searchTerm) {
                 $q->where('home_title->en', 'like', '%' . $searchTerm . '%')
-                  ->orWhere('home_title->ar', 'like', '%' . $searchTerm . '%');
+                    ->orWhere('home_title->ar', 'like', '%' . $searchTerm . '%');
             });
         }
 
@@ -45,14 +49,35 @@ class IndexController extends Controller
             ]);
         }
         $countAll = Product::count();
-        return view('products.index', compact('products','countAll'));
+        $tags = ProductTag::all();
+        return view('products.index', compact('products', 'countAll', 'tags'));
     }
     public function show($slug)
     {
-        // Find the product by slug (either 'slug_en' or 'slug_ar')
-        $product = Product::where('slug_en', $slug)->orWhere('slug_ar', $slug)->firstOrFail();
+        // Fetch the product using the provided slug
+        $product = Product::where('slug->en', $slug)->orWhere('slug->ar', $slug)->firstOrFail();
 
-        // Return the view with the product data
-        return view('products.show', compact('product'));
+        // Fetch related products from the same category, excluding the current product
+        $relatedProducts = Product::where('category_id', $product->category_id)
+            ->where('id', '!=', $product->id)
+            ->take(4) // Limit to 4 related products, adjust as needed
+            ->get();
+
+        // Return the view with the product and related products data
+        $countAll = Product::count();
+        $tags = ProductTag::all();
+        return view('products.show', compact('product', 'relatedProducts', 'countAll', 'tags'));
+    }
+
+    public function mediaList()
+    {
+        $all_media = VarexMedia::orderBy('created_at', 'desc')->get();
+        return view('media', compact('all_media'));
+    }
+
+    public function contact()
+    {
+        $all_media = VarexMedia::orderBy('created_at', 'desc')->get();
+        return view('contact', compact('all_media'));
     }
 }

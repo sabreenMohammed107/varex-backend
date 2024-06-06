@@ -47,6 +47,7 @@ class VarexMediaController extends Controller
             $media->image = 'uploads/media/' . $fileNameToStore;
         }
         $media->vedio_link = $request->vedio_link;
+        $media->description = ['ar' => $request->description_ar, 'en' => $request->description_en];
         $media->save();
 
         return redirect()->route('admin.varex-media.index')->with('success', 'Media created successfully.');
@@ -57,8 +58,9 @@ class VarexMediaController extends Controller
         return view('admin.varexMedia.show', compact('media'));
     }
 
-    public function edit(VarexMedia $media)
+    public function edit($id)
     {
+        $media = VarexMedia::findOrFail($id);
         return view('admin.varexMedia.edit', compact('media'));
     }
 
@@ -88,6 +90,7 @@ class VarexMediaController extends Controller
             // Save file name to database
             $media->image = 'uploads/media/' . $fileNameToStore;
         }
+        $media->description = ['ar' => $request->description_ar, 'en' => $request->description_en];
         $media->vedio_link = $request->vedio_link;
         $media->save();
 

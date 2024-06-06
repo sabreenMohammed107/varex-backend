@@ -3,8 +3,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
-use App\Models\ImageGallery;
 use App\Models\Product;
+use App\Models\ProductTag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
@@ -15,11 +15,18 @@ class ProductController extends Controller
         $rows = Product::with('category')->get();
         return view('admin.products.index', compact('rows'));
     }
-
+    // Function to generate a slug from a string
+    public function generateSlug($str)
+    {
+        $slug = strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', $str)));
+        $slug = preg_replace('/-+/', '-', $slug);
+        return $slug;
+    }
     public function create()
     {
         $categories = Category::all();
-        return view('admin.products.create', compact('categories'));
+        $tags = ProductTag::all();
+        return view('admin.products.create', compact('categories','tags'));
     }
 
     public function store(Request $request)
@@ -75,10 +82,28 @@ class ProductController extends Controller
             $mainImage->move(public_path('uploads/product'), $mainImageName);
             $product->qr_image = 'uploads/product/' . $mainImageName;
         }
+        $slugs = [];
+        foreach ($product->title as $lang => $title) {
+            $slugs[$lang] = $this->generateSlug($title);
+        }
+        // Check if the slugs already exist and make them unique if necessary
+        $uniqueSlugs = [];
+        foreach ($slugs as $lang => $slug) {
+            $uniqueSlug = $slug;
+            $counter = 1;
+            while (Product::where('slug->' . $lang, $uniqueSlug)->exists()) {
+                $uniqueSlug = $slug . '-' . $counter;
+                $counter++;
+            }
+            $uniqueSlugs[$lang] = $uniqueSlug;
+        }
 
+        // Now $uniqueSlugs contains unique slugs for each language
+        // You can store $uniqueSlugs along with the title in your database
+
+        // Set the slug property
+        $product->slug = $uniqueSlugs;
         $product->save();
-
-
 
         return redirect()->route('admin.products.index')->with('success', 'Product created successfully');
     }
@@ -93,7 +118,8 @@ class ProductController extends Controller
     {
         $product = Product::with('imageGalleries')->findOrFail($id);
         $categories = Category::all();
-        return view('admin.products.edit', compact('product', 'categories'));
+        $tags = ProductTag::all();
+        return view('admin.products.edit', compact('product', 'categories','tags'));
     }
 
     public function update(Request $request, $id)
@@ -123,31 +149,51 @@ class ProductController extends Controller
         $product->best_selling = $request->has('best_selling');
         $product->tags = $request->tags;
 
- //Upload main image
- if ($request->hasFile('main_image')) {
-    $mainImage = $request->file('main_image');
-    $mainImageName = time() . '_' . $mainImage->getClientOriginalName();
-    $mainImage->move(public_path('uploads/product'), $mainImageName);
-    $product->main_image = 'uploads/product/' . $mainImageName;
-}
+        //Upload main image
+        if ($request->hasFile('main_image')) {
+            $mainImage = $request->file('main_image');
+            $mainImageName = time() . '_' . $mainImage->getClientOriginalName();
+            $mainImage->move(public_path('uploads/product'), $mainImageName);
+            $product->main_image = 'uploads/product/' . $mainImageName;
+        }
 // Upload fully_qr_image
-if ($request->hasFile('fully_qr_image')) {
-    $mainImage = $request->file('fully_qr_image');
-    $mainImageName = time() . '_' . $mainImage->getClientOriginalName();
-    $mainImage->move(public_path('uploads/product'), $mainImageName);
-    $product->fully_qr_image = 'uploads/product/' . $mainImageName;
-}
+        if ($request->hasFile('fully_qr_image')) {
+            $mainImage = $request->file('fully_qr_image');
+            $mainImageName = time() . '_' . $mainImage->getClientOriginalName();
+            $mainImage->move(public_path('uploads/product'), $mainImageName);
+            $product->fully_qr_image = 'uploads/product/' . $mainImageName;
+        }
 // Upload qr_image
-if ($request->hasFile('qr_image')) {
-    $mainImage = $request->file('qr_image');
-    $mainImageName = time() . '_' . $mainImage->getClientOriginalName();
-    $mainImage->move(public_path('uploads/product'), $mainImageName);
-    $product->qr_image = 'uploads/product/' . $mainImageName;
-}
+        if ($request->hasFile('qr_image')) {
+            $mainImage = $request->file('qr_image');
+            $mainImageName = time() . '_' . $mainImage->getClientOriginalName();
+            $mainImage->move(public_path('uploads/product'), $mainImageName);
+            $product->qr_image = 'uploads/product/' . $mainImageName;
+        }
+// Generate slugs for each language
+        $slugs = [];
+        foreach ($product->title as $lang => $title) {
+            $slugs[$lang] = $this->generateSlug($title);
+        }
 
+// Check if the slugs already exist and make them unique if necessary
+        $uniqueSlugs = [];
+        foreach ($slugs as $lang => $slug) {
+            $uniqueSlug = $slug;
+            $counter = 1;
+            while (Product::where('slug->' . $lang, $uniqueSlug)->where('id', '!=', $product->id)->exists()) {
+                $uniqueSlug = $slug . '-' . $counter;
+                $counter++;
+            }
+            $uniqueSlugs[$lang] = $uniqueSlug;
+        }
+
+// Now $uniqueSlugs contains unique slugs for each language
+// You can store $uniqueSlugs along with the title in your database
+
+// Update the slug property
+        $product->slug = $uniqueSlugs;
         $product->save();
-
-
 
         return redirect()->route('admin.products.index')->with('success', 'Product updated successfully');
     }

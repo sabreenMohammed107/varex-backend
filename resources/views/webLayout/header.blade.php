@@ -74,7 +74,7 @@
             <div class="row justify-content-center justify-content-lg-start align-items-center">
                 <div class="col col-sm-3 col-md-2 px-0">
                     <div class="site-logo">
-                        <a href="index.html"><img src="img/logo.png" alt="Logo" /></a>
+                        <a href="{{ url('/') }}"><img src="img/logo.png" alt="Logo" /></a>
                     </div>
                 </div>
                 <div class="col header-contact-serarch-column d-none d-lg-block">
@@ -84,7 +84,7 @@
                                 <div class="ltn__main-menu col">
                                     <ul class="d-flex justify-content-evenly">
                                         <li class="not-special-link">
-                                            <a href="index.html">Home</a>
+                                            <a href="{{ url('/') }}">Home</a>
                                         </li>
                                         <li class="not-special-link">
                                             <a href="about.html">About Us</a>
@@ -96,10 +96,10 @@
                                             <a href="blogs.html">Blogs</a>
                                         </li>
                                         <li class="not-special-link">
-                                            <a href="media.html">Media</a>
+                                            <a href="{{ url('/media') }}">Media</a>
                                         </li>
                                         <li class="not-special-link">
-                                            <a href="contact.html">Contact Us</a>
+                                            <a href="{{ url('/contact') }}">Contact Us</a>
                                         </li>
                                     </ul>
                                 </div>
