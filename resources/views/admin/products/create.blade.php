@@ -63,11 +63,13 @@
                             <div class="card-body pt-0">
                                 <div class="mb-10 fv-row">
                                     <label class="required form-label">Home Title En</label>
-                                    <input type="text" name="home_title_en" class="form-control mb-2" placeholder="Product home title en" value="{{ old('home_title_en') }}" required />
+                                    <textarea name="home_title_en" class="form-control mb-2 ckeditor" placeholder="Product home title en" required>{{old('home_title_en')}}</textarea>
+
                                 </div>
                                 <div class="mb-10 fv-row">
                                     <label class="required form-label">Home Title Ar</label>
-                                    <input type="text" name="home_title_ar" class="form-control mb-2" placeholder="Product home title ar" value="{{ old('home_title_ar') }}" required />
+                                    <textarea name="home_title_ar" class="form-control mb-2 ckeditor" placeholder="Product home title ar" required>{{old('home_title_ar')}}</textarea>
+
                                 </div>
                                 <div class="mb-10 fv-row">
                                     <label class="required form-label">Title En</label>
