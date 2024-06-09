@@ -55,11 +55,11 @@
                                 <div class="mb-10 fv-row">
                                     <label class="required form-label" for="about_description">About Description
                                         (Arabic)</label>
-                                    <textarea class="form-control mb-2" id="about_description_ar" name="about_description_ar"
+                                    <textarea class="form-control mb-2ckeditor" id="about_description_ar" name="about_description_ar"
                                         placeholder="About Description (Arabic)" required>{{ $aboutUs->about_description['ar'] ?? '' }}</textarea>
                                     <label class="required form-label" for="about_description">About Description
                                         (English)</label>
-                                    <textarea class="form-control mb-2" id="about_description_en" name="about_description_en"
+                                    <textarea class="form-control mb-2ckeditor" id="about_description_en" name="about_description_en"
                                         placeholder="About Description (English)" required>{{ $aboutUs->about_description['en'] }}</textarea>
                                 </div>
                                 <!-- Manager Name -->
@@ -143,11 +143,11 @@
                                 <div class="mb-10 fv-row">
                                     <label class="required form-label" for="mission_description">Mission Description
                                         (Arabic)</label>
-                                    <textarea class="form-control mb-2" id="mission_description_ar" name="mission_description_ar"
+                                    <textarea class="form-control mb-2 ckeditor" id="mission_description_ar" name="mission_description_ar"
                                         placeholder="Mission Description (Arabic)" required>{{ $aboutUs->mission_description['ar'] ?? '' }}</textarea>
                                     <label class="required form-label" for="mission_description">Mission Description
                                         (English)</label>
-                                    <textarea class="form-control mb-2" id="mission_description_en" name="mission_description_en"
+                                    <textarea class="form-control mb-2 ckeditor" id="mission_description_en" name="mission_description_en"
                                         placeholder="Mission Description (English)" required>{{ $aboutUs->mission_description['en'] }}</textarea>
                                 </div>
 
@@ -167,11 +167,11 @@
                                 <div class="mb-10 fv-row">
                                     <label class="required form-label" for="quality_description">Quality Description
                                         (Arabic)</label>
-                                    <textarea class="form-control mb-2" id="quality_description" name="quality_description_ar"
+                                    <textarea class="form-control mb-2 ckeditor" id="quality_description" name="quality_description_ar"
                                         placeholder="Quality Description (Arabic)" required>{{ $aboutUs->quality_description['ar'] ?? '' }}</textarea>
                                     <label class="required form-label" for="quality_description">Quality Description
                                         (English)</label>
-                                    <textarea class="form-control mb-2" id="quality_description_en" name="quality_description_en"
+                                    <textarea class="form-control mb-2 ckeditor" id="quality_description_en" name="quality_description_en"
                                         placeholder="Quality Description (English)" required>{{ $aboutUs->quality_description['en'] }}</textarea>
                                 </div>
 
@@ -192,22 +192,22 @@
                                 <div class="mb-10 fv-row">
                                     <label class="required form-label" for="vision_description">Vision Description
                                         (Arabic)</label>
-                                    <textarea class="form-control mb-2" id="vision_description_ar" name="vision_description_ar"
+                                    <textarea class="form-control mb-2 ckeditor" id="vision_description_ar" name="vision_description_ar"
                                         placeholder="Vision Description (Arabic)" required>{{ $aboutUs->vision_description['ar'] ?? '' }}</textarea>
                                     <label class="required form-label" for="vision_description">Vision Description
                                         (English)</label>
-                                    <textarea class="form-control mb-2" id="vision_description_en" name="vision_description_en"
+                                    <textarea class="form-control mb-2 ckeditor" id="vision_description_en" name="vision_description_en"
                                         placeholder="Vision Description (English)" required>{{ $aboutUs->vision_description['en'] }}</textarea>
                                 </div>
                                  <!-- Seo Description -->
                                  <div class="mb-10 fv-row">
                                     <label class="required form-label" for="seo_description">Seo Description
                                         (Arabic)</label>
-                                    <textarea class="form-control mb-2" id="seo_description_ar" name="seo_description_ar"
+                                    <textarea class="form-control mb-2 ckeditor" id="seo_description_ar" name="seo_description_ar"
                                         placeholder="Seo Description (Arabic)" required>{{ $aboutUs->seo_description['ar'] ?? '' }}</textarea>
                                     <label class="required form-label" for="seo_description">Seo Description
                                         (English)</label>
-                                    <textarea class="form-control mb-2" id="seo_description_en" name="seo_description_en"
+                                    <textarea class="form-control mb-2 ckeditor" id="seo_description_en" name="seo_description_en"
                                         placeholder="Seo Description (English)" required>{{ $aboutUs->seo_description['en'] }}</textarea>
                                 </div>
 
@@ -234,4 +234,21 @@
         <!--end::Container-->
     </div>
     <!--end::Post-->
+@endsection
+
+@section('scripts')
+<script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
+
+<script>
+   ClassicEditor
+        .create(document.querySelectorAll('.ckeditor'))
+        .catch(error => {
+            console.error(error);
+        });
+    document.getElementById('addImage').addEventListener('click', function () {
+        let div = document.createElement('div');
+        div.innerHTML = `<input type="file" name="image_galleries[]" class="form-control mb-2" accept=".png, .jpg, .jpeg">`;
+        document.getElementById('galleryImages').appendChild(div);
+    });
+</script>
 @endsection
