@@ -1,6 +1,7 @@
 @extends('webLayout.main')
 
-
+@section('style')
+@endsection
 
 @section('content')
     <!-- BREADCRUMB AREA START -->
@@ -12,7 +13,7 @@
                         <div class="ltn__breadcrumb-list ">
                             <ul>
                                 <li><a href="{{ url('/') }}">Home</a></li>
-                                <li>Products</li>
+                                <li>Varex Products</li>
                             </ul>
                         </div>
                     </div>
@@ -30,7 +31,7 @@
                         <ul>
                             <li>
                                 <div class="showing-product-number text-right text-end">
-                                    <span>Products</span>
+                                    <span>Varex Products</span>
                                 </div>
                             </li>
                             <li>
@@ -65,12 +66,13 @@
                             <ul>
                                 <li><a href="#" onclick="setCategoryId(null); return false;">All Category
                                         ({{ $countAll }})</a></li>
-                                @foreach ($categoriesOrderedByRank as $category)
-                                    <li><a href="#"
-                                            onclick="setCategoryId({{ $category->id }}); return false;">{{ $category->name['en'] }}
-                                            ({{ $category->products_count }})
-                                        </a></li>
-                                @endforeach
+                                        @foreach ($categoriesOrderedByRank as $category)
+                                        <li><a href="#" class="proCategory" data-categoryid="{{ $category->id }}"
+                                                onclick="setCategoryId({{ $category->id }}); return false;">
+                                                {{ $category->name['en'] }} ({{ $category->products_count }})
+                                            </a></li>
+                                    @endforeach
+
                             </ul>
                             <input type="hidden" id="selectedCategoryId" value="">
                         </div>
@@ -81,8 +83,8 @@
                             <div class="price_filter">
                                 <div class="price_slider_amount">
                                     <span class="tag-bg f-s-13">All Tags</span>
-                                    @foreach ($tags as $tag )
-                                    <span class="tag-bg f-s-13">{{ $tag->title['en'] ?? '' }}</span>
+                                    @foreach ($tags as $tag)
+                                        <span class="tag-bg f-s-13">{{ $tag->title['en'] ?? '' }}</span>
                                     @endforeach
 
 
@@ -93,7 +95,7 @@
 
                         <div class="logo-catalog">
                             <div class="main-logo">
-                                <img src="{{asset('webasset/img/logo.png')}}" alt="">
+                                <img src="{{ asset('webasset/img/logo.png') }}" alt="">
                             </div>
                             <ul class="cst-btn p-0">
                                 <li class="special-link shinep-0">
@@ -109,64 +111,78 @@
     <!-- PRODUCT DETAILS AREA END -->
 @endsection
 @section('webScript')
-<script>
-    $(document).ready(function($) {
-        $(document).on('click', '.pagination a', function(event) {
-            event.preventDefault();
-            var pageUrl = $(this).attr('href');
-            var page = pageUrl ? pageUrl.split('page=')[1] : 1;
-            console.log("Extracted page:", page); // Debugging log
-            fetchProducts(page);
-        });
+    <script>
+        $(document).ready(function($) {
+            $(document).on('click', '.pagination a', function(event) {
+                event.preventDefault();
+                var pageUrl = $(this).attr('href');
+                var page = pageUrl ? pageUrl.split('page=')[1] : 1;
+                console.log("Extracted page:", page); // Debugging log
+                fetchProducts(page);
+            });
 
-        // Event handler for search button click
-        $('#searchButton').click(function(e) {
-            e.preventDefault();
+            // Event handler for search button click
+            $('#searchButton').click(function(e) {
+                e.preventDefault();
+                fetchProducts();
+            });
+
+            // Event handler for pressing Enter key
+            $('#search_name').keypress(function(e) {
+                if (e.which == 13) { // 13 is the Enter key code
+                    e.preventDefault(); // Prevent default form submission behavior
+                    fetchProducts();
+                }
+            });
+
+            // Initial fetch
             fetchProducts();
         });
 
-        // Event handler for pressing Enter key
-        $('#search_name').keypress(function(e) {
-            if (e.which == 13) { // 13 is the Enter key code
-                e.preventDefault(); // Prevent default form submission behavior
-                fetchProducts();
-            }
-        });
+        // Function to set the selected category ID
 
-        // Initial fetch
-        fetchProducts();
+        function setCategoryId(categoryId) {
+    // Set the value of the element
+    $('#selectedCategoryId').val(categoryId);
+    fetchProducts(); // Fetch products for the first page when category changes
+
+    // Remove the blue color and bold font weight from all categories
+    $('.proCategory').css({
+        'color': '',
+        'font-weight': ''
     });
 
-    // Function to set the selected category ID
-    function setCategoryId(categoryId) {
-        $('#selectedCategoryId').val(categoryId);
-        fetchProducts(); // Fetch products for the first page when category changes
-    }
+    // Set the color and bold font weight of the selected category
+    $(`.proCategory[data-categoryid="${categoryId}"]`).css({
+        'color': '#ae123c',
+        'font-weight': 'bold'
+    });
+}
 
-    function fetchProducts(page = 1) {
-        console.log("Fetching products for page: " + page);
-        var searchQuery = $('#search_name').val(); // Get the search query from the input field
-        var categoryId = $('#selectedCategoryId').val(); // Get the selected category ID
-        var searchCategory = $('#search_category').val(); // Get the search query from the input field
-        console.log("Received categoryId:", categoryId);
 
-        $.ajax({
-            url: "/products?page=" + page,
-            data: {
-                search_name: searchQuery,
-                category_id: categoryId, // Pass the selected category ID as data
-                searchCategory: searchCategory
-            },
-            success: function(data) {
-                // console.log("Received data:", data);
-                $('#product-list').html(data.products);
-                $('#pagination-links').html(data.pagination);
-            },
-            error: function(xhr, status, error) {
-                console.error("Error fetching products:", error);
-            }
-        });
-    }
-</script>
+        function fetchProducts(page = 1) {
+            console.log("Fetching products for page: " + page);
+            var searchQuery = $('#search_name').val(); // Get the search query from the input field
+            var categoryId = $('#selectedCategoryId').val(); // Get the selected category ID
+            var searchCategory = $('#search_category').val(); // Get the search query from the input field
+            console.log("Received categoryId:", categoryId);
 
+            $.ajax({
+                url: "/products?page=" + page,
+                data: {
+                    search_name: searchQuery,
+                    category_id: categoryId, // Pass the selected category ID as data
+                    searchCategory: searchCategory
+                },
+                success: function(data) {
+                    // console.log("Received data:", data);
+                    $('#product-list').html(data.products);
+                    $('#pagination-links').html(data.pagination);
+                },
+                error: function(xhr, status, error) {
+                    console.error("Error fetching products:", error);
+                }
+            });
+        }
+    </script>
 @endsection

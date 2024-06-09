@@ -21,7 +21,7 @@
                             </div>
                         </div>
                         <div class="product-info">
-                            <h2 class="product-title">
+                            <h2 class="product-title mx-2">
                                 <a href="{{ url('product/'.$product->slug['en']) }}" class="f-s-18 text-in-dark">
                                     {!! $product->home_title['en'] !!}
                                 </a>

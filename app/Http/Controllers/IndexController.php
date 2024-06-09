@@ -41,7 +41,7 @@ class IndexController extends Controller
             $query->where('category_id', $categoryId);
         }
         // Retrieve paginated products with applied filters
-        $products = $query->orderBy('created_at', 'desc')->paginate(9);
+        $products = $query->orderBy('created_at', 'desc')->paginate(30);
         // If the request is AJAX, return JSON response
         if ($request->ajax()) {
             return response()->json([
@@ -88,7 +88,7 @@ class IndexController extends Controller
        $masterBlog = Blog::where('master', 1)->first();
 
        // Get paginated blogs excluding the master blog, assuming 10 blogs per page
-       $blogs = Blog::where('master', '!=', 1)->paginate(9);
+       $blogs = Blog::where('master', '!=', 1)->paginate(30);
 
        // Check if the request is an AJAX request
        if ($request->ajax()) {
