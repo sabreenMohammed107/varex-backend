@@ -34,8 +34,28 @@
                                                     <span class="active-currency">En<i
                                                             class="fas fa-angle-down"></i></span></a>
                                                 <ul>
-                                                    <li><a href="#">Arabic</a></li>
-                                                    <li><a href="#">English</a></li>
+                                                    @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                                                    @if (LaravelLocalization::getCurrentLocale() != 'ar' && $localeCode == 'ar')
+                                                    {{-- <li><a class="nav-link" rel="alternate" hreflang="{{ $localeCode }}"
+                                                            href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+
+
+                                                            {{ __('links.ar') }}
+                                                        </a></li> --}}
+
+                                                        <li><a href="#">Arabic</a></li>
+                                                    @endif
+                                                    @if (LaravelLocalization::getCurrentLocale() != 'en' && $localeCode == 'en')
+                                                    <li> <a class="nav-link" rel="alternate" hreflang="{{ $localeCode }}"
+                                                            href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+
+                                                            {{ __('links.en') }}
+                                                        </a></li>
+                                                    @endif
+                                                    <!--|-->
+                                                @endforeach
+                                                    {{-- <li><a href="#">Arabic</a></li>
+                                                    <li><a href="#">English</a></li> --}}
                                                 </ul>
                                             </li>
                                         </ul>
@@ -84,10 +104,10 @@
                                 <div class="ltn__main-menu col">
                                     <ul class="d-flex justify-content-evenly">
                                         <li class="not-special-link">
-                                            <a href="{{ url('/') }}">Home</a>
+                                            <a href="{{ LaravelLocalization::localizeUrl('/') }}">Home</a>
                                         </li>
                                         <li class="not-special-link">
-                                            <a href="{{ url('/about-us') }}">About Us</a>
+                                            <a href="{{ LaravelLocalization::localizeUrl('/about-us') }}">{{ __('links.about_us') }}</a>
                                         </li>
                                         <li class="not-special-link">
                                             <a href="{{ url('/products') }}">Products</a>

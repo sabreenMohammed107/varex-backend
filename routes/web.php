@@ -14,7 +14,7 @@ use App\Http\Controllers\ContactRequestController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,17 +27,45 @@ use Illuminate\Support\Facades\Route;
  */
 
 //website
-Route::get('/', [IndexController::class, 'index']);
-Route::get('/products', [IndexController::class, 'productList']);
-Route::get('/product/{slug}', [IndexController::class, 'show'])->name('product.show');
-Route::get('/media', [IndexController::class, 'mediaList']);
-Route::get('/contact', [IndexController::class, 'contact']);
-Route::post('/contact', [ContactRequestController::class, 'store'])->name('contact.store');
-Route::get('/about-us', [ContactRequestController::class, 'index'])->name('about.us');
-Route::get('/varex-certificates', [ContactRequestController::class, 'certificates'])->name('varex.certificates');
-Route::get('/blogs', [IndexController::class, 'blogList']);
-Route::get('/blog/{slug}', [IndexController::class, 'showBlog'])->name('blog.show');
-Route::get('/distribute', [IndexController::class, 'distribute']);
+Route::group([
+    'prefix' => LaravelLocalization::setLocale(),
+    'middleware'=>['localizationRedirect', 'localeSessionRedirect']
+],function() {
+    Route::get('/', [IndexController::class, 'index']);
+        Route::get('/products', [IndexController::class, 'productList']);
+        Route::get('/product/{slug}', [IndexController::class, 'show'])->name('product.show');
+        Route::get('/media', [IndexController::class, 'mediaList']);
+        Route::get('/contact', [IndexController::class, 'contact']);
+        Route::post('/contact', [ContactRequestController::class, 'store'])->name('contact.store');
+        Route::get('/about-us', [ContactRequestController::class, 'index'])->name('about.us');
+        Route::get('/varex-certificates', [ContactRequestController::class, 'certificates'])->name('varex.certificates');
+        Route::get('/blogs', [IndexController::class, 'blogList']);
+        Route::get('/blog/{slug}', [IndexController::class, 'showBlog'])->name('blog.show');
+        Route::get('/distribute', [IndexController::class, 'distribute']);
+});
+// Route::group(
+//     [
+//         'prefix' => LaravelLocalization::setLocale(),
+//         'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath'],
+//     ],
+//     function () { //...
+
+//         Route::get('/', [IndexController::class, 'index']);
+//         Route::get('/products', [IndexController::class, 'productList']);
+//         Route::get('/product/{slug}', [IndexController::class, 'show'])->name('product.show');
+//         Route::get('/media', [IndexController::class, 'mediaList']);
+//         Route::get('/contact', [IndexController::class, 'contact']);
+//         Route::post('/contact', [ContactRequestController::class, 'store'])->name('contact.store');
+//         Route::get('/about-us', [ContactRequestController::class, 'index'])->name('about.us');
+//         Route::get('/varex-certificates', [ContactRequestController::class, 'certificates'])->name('varex.certificates');
+//         Route::get('/blogs', [IndexController::class, 'blogList']);
+//         Route::get('/blog/{slug}', [IndexController::class, 'showBlog'])->name('blog.show');
+//         Route::get('/distribute', [IndexController::class, 'distribute']);
+
+//         // Add more routes here
+//     }
+// );
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
