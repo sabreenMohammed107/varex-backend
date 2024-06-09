@@ -43,6 +43,7 @@ Route::group([
         Route::get('/blogs', [IndexController::class, 'blogList']);
         Route::get('/blog/{slug}', [IndexController::class, 'showBlog'])->name('blog.show');
         Route::get('/distribute', [IndexController::class, 'distribute']);
+        Route::get('/terms-condations', [IndexController::class, 'terms']);
 });
 // Route::group(
 //     [

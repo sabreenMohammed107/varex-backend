@@ -110,4 +110,8 @@ class IndexController extends Controller
         $about = AboutUs::first();
         return view('distribute', compact('about'));
     }
+
+    public function terms(){
+        return view('terms');
+    }
 }

@@ -55,7 +55,7 @@
               <div class="footer-menu mt-5">
                 <ul>
                   <li><a href="#">Privacy & Policy </a></li>
-                  <li><a href="#">Terms & Conditions</a></li>
+                  <li><a href="{{ url('/terms-condations') }}">Terms & Conditions</a></li>
                   <li><a href="#">Promotional Offers</a></li>
                 </ul>
               </div>
