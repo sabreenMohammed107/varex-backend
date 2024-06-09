@@ -178,7 +178,7 @@
                   <div class="col-12 col-md-4 d-flex align-items-center">
                     <div class="logo-catalog">
                       <div class="main-logo">
-                        <img src="img/logo.png" alt="">
+                        <img src="{{asset('webasset/img/logo.png')}}" alt="">
                       </div>
                       <div class="btn-content">
                         <ul class="cst-btn p-0">
