@@ -144,18 +144,18 @@
                 <div class="col px-lg-0 m-auto text-center text-md-start">
                     <div class="ltn__product-item ltn__product-item-3 text-left px-2 mx-5 mx-sm-0">
                         <div class="product-img">
-                            <a href="single_product.html"><img src="{{ asset("$best_selling->main_image") }}" alt="#" /></a>
+                            <a href="{{ url('product/'.$best_selling->slug['en']) }}"><img src="{{ asset("$best_selling->main_image") }}" alt="#" /></a>
                         </div>
                         <div class="product-info">
                             <h2 class="product-title">
-                                <a href="single_product.html" class="f-s-13 text-in-blue f-w-r">{{ $best_selling->category->name['en'] ?? ''}}
+                                <a href="{{ url('product/'.$best_selling->slug['en']) }}" class="f-s-13 text-in-blue f-w-r">{{ $best_selling->category->name['en'] ?? ''}}
                                 </a>
                             </h2>
                             <div class="product-price">
                                 <span class="f-s-16 text-in-dark"> {{ strip_tags( \Illuminate\Support\Str::words($best_selling->home_title['en'], 5,'')) }}</span>
                             </div>
                         </div>
-                        <a href="single_product.html"
+                        <a href="{{ url('product/'.$best_selling->slug['en']) }}"
                             class="product-details-btn w-100 d-inline-block text-center text-in-dark fw-bold f-s-14">More
                             Details</a>
                     </div>
@@ -202,13 +202,13 @@
                 <div class="col-12">
                     <div class="ltn__category-item ltn__category-item-3 text-center">
                         <div class="ltn__category-item-img">
-                            <a href="shop.html">
+                            <a href="{{ url('/products') }}">
                                 <img src="{{asset($category->icon)}}" alt="Image" />
                             </a>
                         </div>
                         <div class="ltn__category-item-name">
                             <h5>
-                                <a href="shop.html" class="f-s-15 text-in-dark">{{ $category->name['en'] }}</a>
+                                <a href="{{ url('/products') }}" class="f-s-15 text-in-dark">{{ $category->name['en'] }}</a>
                             </h5>
                             <h6 class="f-s-13 text-in-dark">[ {{ $category->products_count }} item{{ $category->products_count > 1 ? 's' : '' }} ]</h6>
                         </div>

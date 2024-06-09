@@ -16464,6 +16464,7 @@ footer .section-bg-2 {
   -moz-transition: all 0.8s ease-in-out;
   -ms-transition: all 0.8s ease-in-out;
   -o-transition: all 0.8s ease-in-out; */
+  text-decoration: underline;
 }
 .ltn__main-menu ul li a{
     font-size: 1.1em !important;
