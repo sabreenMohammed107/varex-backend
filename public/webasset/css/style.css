@@ -19,7 +19,7 @@
 >>> TABLE OF CONTENTS:
 ===============================================================
 # Google fonts
-# Gutter Code 
+# Gutter Code
 # Normalize
 # Typography
 # Custom Class
@@ -38,7 +38,7 @@
 # Galleries
 # Unit test
 # ScrollUp
-# Owl Carousel 
+# Owl Carousel
 # Slick Slider
 # Background Overlay
 # Scrollbar
@@ -75,7 +75,7 @@ font-family: 'Nunito Sans', sans-serif;
 font-family: 'Roboto', sans-serif;
 */
 /* ====================================================
-    Gutter Code 
+    Gutter Code
 ==================================================== */
 .container,
 .container-fluid {
@@ -212,7 +212,7 @@ font-family: 'Roboto', sans-serif;
 }
 
 /* ----------------------------------------------------
-    Normalize  
+    Normalize
 ---------------------------------------------------- */
 :root {
   --ltn__primary-color: #fad731;
@@ -998,7 +998,7 @@ button:focus {
 /* .input-item-name.ltn__custom-icon::before {
   content: "\f007";
 } */
-/* 
+/*
 .input-item-email.ltn__custom-icon::before {
   content: "\f0e0";
 }
@@ -1403,7 +1403,7 @@ ul {
 }
 
 /* ----------------------------------------------------
-    Owl Carousel 
+    Owl Carousel
 ---------------------------------------------------- */
 .owl-dots {
   display: block;
@@ -1910,7 +1910,7 @@ ul {
 }
 
 /* ----------------------------------------------
-  Scrollbar 
+  Scrollbar
 ---------------------------------------------- */
 .ltn__scrollbar {
   overflow-y: auto;
@@ -7666,6 +7666,10 @@ ul.wp-block-latest-posts.is-grid.alignwide {
   bottom: 100px;
   height: 70%;
 }
+.object-fit-cover {
+  -o-object-fit: cover;
+  object-fit: cover;
+}
 .ltn__slide-item-3 .slide-item-img img {
   text-align: right;
   margin-left: auto;
@@ -9313,7 +9317,7 @@ ul.wp-block-latest-posts.is-grid.alignwide {
 # Common CSS
 # Section title
 # Category Area
-# Feature Area 
+# Feature Area
 # Countdown Area
 # Blog Area
 # Blog Details
@@ -9342,12 +9346,12 @@ ul.wp-block-latest-posts.is-grid.alignwide {
 # Service Area
 # Call To Action
 # Elements Area
-# Service Form 
+# Service Form
 # Get A Quote Form
 # Car Dealer Form
 # Video Area
 # Brand Logo
-# Progress Bar 
+# Progress Bar
 # Our Journey Area
 # Google Map Locations Area
 # Team Details
@@ -9813,7 +9817,7 @@ ul.wp-block-latest-posts.is-grid.alignwide {
 }
 
 /* ----------------------------------------------------
-    Feature Area 
+    Feature Area
 ---------------------------------------------------- */
 .ltn__feature-item {
   padding: 40px 25px 10px;
@@ -13704,7 +13708,7 @@ input.cart-plus-minus-box {
 }
 
 /* ----------------------------------------------------
-    Service Form 
+    Service Form
 ---------------------------------------------------- */
 .ltn__service-form-box {
   margin: 0;
@@ -14130,7 +14134,7 @@ input.cart-plus-minus-box {
 }
 
 /* ----------------------------------------------------
-    Progress Bar 
+    Progress Bar
 ---------------------------------------------------- */
 .ltn__progress-bar-wrap {
   margin-bottom: 50px;
@@ -16449,9 +16453,9 @@ footer .section-bg-2 {
 }
 
 .not-special-link a:hover {
-  transform: scale(1.2);
+  /* transform: scale(1.2); */
   color: var(--ltn__secondary-color-2) !important;
-  -webkit-transform: scale(1.2);
+  /* -webkit-transform: scale(1.2);
   -moz-transform: scale(1.2);
   -ms-transform: scale(1.2);
   -o-transform: scale(1.2);
@@ -16459,9 +16463,12 @@ footer .section-bg-2 {
   -webkit-transition: all 0.8s ease-in-out;
   -moz-transition: all 0.8s ease-in-out;
   -ms-transition: all 0.8s ease-in-out;
-  -o-transition: all 0.8s ease-in-out;
+  -o-transition: all 0.8s ease-in-out; */
+  text-decoration: underline;
 }
-
+.ltn__main-menu ul li a{
+    font-size: 1.1em !important;
+}
 .not-special-link-sm-menu a:hover {
   color: var(--ltn__secondary-color-2) !important;
   transition: all 0.8s ease-in-out;
@@ -18335,9 +18342,92 @@ span.video-title {
   }
 }
 @media (min-width: 320px) and (max-width: 608px) {
-
   #about_us_page .section-our-mission .our-mission-p1 h3,
   #about_us_page .section-our-mission .our-mission-p2 h3 {
     font-size: 25px !important;
   }
+}
+#about_us_page
+  .section-our-mission
+  .our-vision-section-content
+  .vision-content {
+  -webkit-box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.25);
+  box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.25);
+  background-color: white;
+}
+
+#about_us_page .section-our-mission .our-vision-section-content {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  grid-template-rows: repeat(9, 1fr);
+}
+
+#about_us_page
+  .section-our-mission
+  .our-vision-section-content
+  .vision-content {
+  grid-area: 3 / 2 / 9 /6;
+  z-index: 5;
+}
+
+#about_us_page .section-our-mission .our-vision-section-content .vision-img {
+  grid-area: 2 / 5 / 8 / 9;
+}
+
+@media (min-width: 992px) and (max-width: 1200px) {
+  #about_us_page .section-our-mission .our-vision-section-content .vision-img {
+    grid-area: 2 / 2 / 8 / 9;
+  }
+
+  #about_us_page
+    .section-our-mission
+    .our-vision-section-content
+    .vision-content {
+    grid-area: 4 / 3 / 10 / 8;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+  #about_us_page .section-our-mission .our-vision-section-content .vision-img {
+    grid-area: 2 / 2 / 8 / 9;
+  }
+
+  #about_us_page
+    .section-our-mission
+    .our-vision-section-content
+    .vision-content {
+    grid-area: 4 / 3 / 9 / 8;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 768px) {
+  #about_us_page .section-our-mission .our-vision-section-content .vision-img {
+    grid-area: 2 / 2 / 8 / 9;
+  }
+
+  #about_us_page
+    .section-our-mission
+    .our-vision-section-content
+    .vision-content {
+    grid-area: 5 / 2 / 10 / 9;
+  }
+}
+
+@media (max-width: 576px) {
+  #about_us_page .section-our-mission .our-vision-section-content .vision-img {
+    display: none;
+  }
+
+  #about_us_page
+    .section-our-mission
+    .our-vision-section-content
+    .vision-content {
+    grid-area: 1 / 1 / 10 / 10;
+  }
+}
+
+#about_us_page .ltn__faq-inner-2 .card .ltn__card-title::before {
+  background-color: #18426399;
+  color: white;
 }

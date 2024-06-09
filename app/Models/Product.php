@@ -1,13 +1,11 @@
 <?php
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
+
 class Product extends Model
 {
-    use HasFactory;
-
     protected $fillable = [
         'home_title',
         'title',
@@ -25,6 +23,8 @@ class Product extends Model
         'featured_text_ar',
         'featured_text_en',
         'video_link',
+        'slug',
+        'tag_id',
     ];
 
     protected $casts = [
@@ -36,45 +36,20 @@ class Product extends Model
         'slider' => 'boolean',
         'featured' => 'boolean',
         'best_selling' => 'boolean',
+        'slug' => 'array',
     ];
 
-    public function category()
-    {
+    public function category(){
         return $this->belongsTo(Category::class);
     }
-
-    public function imageGalleries()
-    {
+    public function imageGalleries(){
         return $this->hasMany(ImageGallery::class);
     }
-    protected static function boot()
-    {
-        parent::boot();
 
-        static::creating(function ($product) {
-            $product->slug_en = self::generateUniqueSlug($product, 'en');
-            $product->slug_ar = self::generateUniqueSlug($product, 'ar');
-        });
-
-        static::updating(function ($product) {
-            if ($product->isDirty('title')) {
-                $product->slug_en = self::generateUniqueSlug($product, 'en');
-                $product->slug_ar = self::generateUniqueSlug($product, 'ar');
-            }
-        });
+    public function tag(){
+        return $this->belongsTo(Tag::class);
     }
 
-    protected static function generateUniqueSlug($product, $locale)
-    {
-        $baseSlug = Str::slug($product->title[$locale]);
-        $slug = $baseSlug;
-        $count = 1;
 
-        while (self::where('slug_' . $locale, $slug)->exists()) {
-            $slug = $baseSlug . '-' . $count;
-            $count++;
-        }
-
-        return $slug;
-    }
+    // Add other model methods...
 }

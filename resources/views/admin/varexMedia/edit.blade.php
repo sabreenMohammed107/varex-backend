@@ -31,7 +31,7 @@
         <!--begin::Container-->
         <div class="container-xxl">
             <form id="kt_ecommerce_add_category_form" class="form d-flex flex-column flex-lg-row"
-                action="{{ route('admin.varex-media.update', $media->id) }}" method="post" enctype="multipart/form-data">
+            action="{{ route('admin.varex-media.update', $media->id) }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <!--begin::Aside column-->
@@ -98,7 +98,7 @@
                                 <!--end::Label-->
                                 <!--begin::Input-->
                                 <input type="text" name="title_ar" class="form-control mb-2"
-                                    placeholder="Title in Arabic" value="{{ $media->title['ar'] }}" required />
+                                    placeholder="Title in Arabic" value="{{ $media->title['ar'] ?? ''}}" required />
                                 <!--end::Input-->
                             </div>
                             <!--end::Input group-->
@@ -110,7 +110,7 @@
                                 <!--end::Label-->
                                 <!--begin::Input-->
                                 <input type="text" name="title_en" class="form-control mb-2"
-                                    placeholder="Title in English" value="{{ $media->title['en'] }}" required />
+                                    placeholder="Title in English" value="{{ $media->title['en']  ?? ''}}" required />
                                 <!--end::Input-->
                             </div>
                             <!--end::Input group-->
@@ -132,7 +132,7 @@
                                 <label class="required form-label"> Description Ar</label>
                                 <!--end::Label-->
                                 <!--begin::Textarea-->
-                                <textarea name="description_ar" class="form-control mb-2" placeholder="Description in Arabic" required>{{ $media->description['ar'] }}</textarea>
+                                <textarea name="description_ar" class="form-control mb-2" placeholder="Description in Arabic" required>{{ $media->description['ar'] ?? ''}}</textarea>
                                 <!--end::Textarea-->
                             </div>
                             <!--end::Input group-->
@@ -143,7 +143,7 @@
                                 <label class="required form-label"> Description En</label>
                                 <!--end::Label-->
                                 <!--begin::Textarea-->
-                                <textarea name="description_en" class="form-control mb-2" placeholder="Description in English" required>{{ $media->description['en'] }}</textarea>
+                                <textarea name="description_en" class="form-control mb-2" placeholder="Description in English" required>{{ $media->description['en'] ?? ''}}</textarea>
                                 <!--end::Textarea-->
                             </div>
                             <!--end::Input group-->

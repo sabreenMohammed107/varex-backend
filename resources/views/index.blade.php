@@ -1,6 +1,9 @@
 @extends('webLayout.main')
 
+@section('style')
 
+    </style>
+@endsection
 
 @section('content')
     <!-- SLIDER AREA START (slider-3) -->
@@ -113,19 +116,19 @@
                        <!-- ltn__product-item -->
                 <div class="col px-lg-0 m-auto text-center text-md-start">
                     <div class="ltn__product-item ltn__product-item-3 text-left px-2 mx-5 mx-sm-0">
-                        <div class="product-img">
-                            <a href="single_product.html"><img src="{{ asset("$best_selling->main_image") }}" alt="#" /></a>
+                        <div class="product-img" style="height: 240px !important">
+                            <a href="{{ url('product/'.$best_selling->slug['en']) }}"><img  style="height: 100%" src="{{ asset("$best_selling->main_image") }}" alt="#" /></a>
                         </div>
                         <div class="product-info">
                             <h2 class="product-title">
-                                <a href="single_product.html" class="f-s-13 text-in-blue f-w-r">{{ $best_selling->category->name['en'] ?? ''}}
+                                <a href="{{ url('product/'.$best_selling->slug['en']) }}" class="f-s-13 text-in-blue f-w-r">{{ $best_selling->category->name['en'] ?? ''}}
                                 </a>
                             </h2>
                             <div class="product-price">
-                                <span class="f-s-16 text-in-dark"> {!! strip_tags( \Illuminate\Support\Str::words($best_selling->home_title['en'], 5,'')) !!}</span>
+                                <span class="f-s-16 text-in-dark">{{ strip_tags( \Illuminate\Support\Str::words($best_selling->home_title['en'], 5,'')) }}</span>
                             </div>
                         </div>
-                        <a href="single_product.html"
+                        <a href="{{ url('product/'.$best_selling->slug['en']) }}"
                             class="product-details-btn w-100 d-inline-block text-center text-in-dark fw-bold f-s-14">More
                             Details</a>
                     </div>
@@ -172,13 +175,13 @@
                 <div class="col-12">
                     <div class="ltn__category-item ltn__category-item-3 text-center">
                         <div class="ltn__category-item-img">
-                            <a href="shop.html">
+                            <a href="{{ url('/products') }}">
                                 <img src="{{asset($category->icon)}}" alt="Image" />
                             </a>
                         </div>
                         <div class="ltn__category-item-name">
                             <h5>
-                                <a href="shop.html" class="f-s-15 text-in-dark">{{ $category->name['en'] }}</a>
+                                <a href="{{ url('/products') }}" class="f-s-15 text-in-dark">{{ $category->name['en'] }}</a>
                             </h5>
                             <h6 class="f-s-13 text-in-dark">[ {{ $category->products_count }} item{{ $category->products_count > 1 ? 's' : '' }} ]</h6>
                         </div>
@@ -186,83 +189,9 @@
                 </div>
             @endforeach
 
-                <div class="col-12">
-                    <div class="ltn__category-item ltn__category-item-3 text-center">
-                        <div class="ltn__category-item-img">
-                            <a href="shop.html">
-                                <img src="{{asset('webasset/img/img-slide/Group(1).png')}}" alt="Image" />
-                            </a>
-                        </div>
-                        <div class="ltn__category-item-name">
-                            <h5>
-                                <a href="shop.html" class="f-s-15 text-in-dark">Power Of Steel</a>
-                            </h5>
-                            <h6 class="f-s-13 text-in-dark">[ 7 item ]</h6>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12">
-                    <div class="ltn__category-item ltn__category-item-3 text-center">
-                        <div class="ltn__category-item-img">
-                            <a href="shop.html">
-                                <img src="{{asset('webasset/img/img-slide/Group(2).png')}}" alt="Image" />
-                            </a>
-                        </div>
-                        <div class="ltn__category-item-name">
-                            <h5>
-                                <a href="shop.html" class="f-s-15 text-in-dark">House Tools</a>
-                            </h5>
-                            <h6 class="f-s-13 text-in-dark">[ 7 item ]</h6>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12">
-                    <div class="ltn__category-item ltn__category-item-3 text-center">
-                        <div class="ltn__category-item-img">
-                            <a href="shop.html">
-                                <img src="{{asset('webasset/img/img-slide/Group.png')}}" alt="Image" />
-                            </a>
-                        </div>
-                        <div class="ltn__category-item-name">
-                            <h5>
-                                <a href="shop.html" class="f-s-15 text-in-dark">Scrubber Sponge</a>
-                            </h5>
-                            <h6 class="f-s-13 text-in-dark">[ 30 item ]</h6>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12">
-                    <div class="ltn__category-item ltn__category-item-3 text-center">
-                        <div class="ltn__category-item-img">
-                            <a href="shop.html">
-                                <img src="{{asset('webasset/img/img-slide/towel-svgrepo-com 1.png')}}" alt="Image" />
-                            </a>
-                        </div>
-                        <div class="ltn__category-item-name">
-                            <h5>
-                                <a href="shop.html" class="f-s-15 text-in-dark">Towel</a>
-                            </h5>
-                            <h6 class="f-s-13 text-in-dark">[ 10 item ]</h6>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12">
-                    <div class="ltn__category-item ltn__category-item-3 text-center">
-                        <div class="ltn__category-item-img">
-                            <a href="shop.html">
-                                <img src="{{asset('webasset/img/img-slide/beauty-svgrepo-com 1.png')}}" alt="Image" />
-                            </a>
-                        </div>
-                        <div class="ltn__category-item-name">
-                            <h5>
-                                <a href="shop.html" class="f-s-15 text-in-dark">Beauty</a>
-                            </h5>
-                            <h6 class="f-s-13 text-in-dark">[ 11 item ]</h6>
-                        </div>
-                    </div>
-                </div>
+
             </div>
-            <a class="f-s-17 text-in-dark all-prod">All Products</a>
+            <a href="{{ url('products') }}" class="f-s-17 text-in-dark all-prod">All Products</a>
         </div>
     </div>
     <!-- BANNER AREA START -->
@@ -281,33 +210,26 @@
                                 Know More About Us
                             </h6>
                             <h1 class="section-title f-s-50 text-in-d-blue">
-                                Trusted Products <br class="d-none d-md-block" />
-                                Clean Store
+                                {!! $about->about_title['en'] !!}
                             </h1>
                             <div class="d-flex align-items-baseline">
                                 <img src="{{asset('webasset/img/icons/line.png')}}" alt="" srcset="" style="margin-right: 10px;">
                                 <p class="f-s-18 " style="flex-basis: 67%;">
-                                    We are your expert partner
-                                    for perfect homecare to make
-                                    your
-                                    housework easier.
+                                    {!! $about->about_sub_title['en'] !!}
                                 </p>
                             </div>
                         </div>
                         <p class="f-s-18 clr-gry">
-                            We supply durable mechanical cleaning products such as mops,
-                            brooms, gloves, cloths, ironing boards, and scourers, for your
-                            home iClean is an Egyptian Company Specialized in
-                            Manufacturing of .
+                            {!! $about->about_description['en'] !!}
                         </p>
                     </div>
                     <div class="about-author-info d-flex flex-wrap justify-content-between  p-xs-5 p-sm-5 p-md-5 p-lg-1">
                         <div class="author-name-designation align-self-center mr-30 ">
-                            <h4 class="mb-0 f-s-18 text-in-dark">Mohamed Ibrahim</h4>
-                            <small class="f-s-16 clr-gry">/ Shop Director</small>
+                            <h4 class="mb-0 f-s-18 text-in-dark"> {!! $about->manager_name['en'] !!}</h4>
+                            <small class="f-s-16 clr-gry">/  {!! $about->manager_position['en'] !!}</small>
                         </div>
                         <div class="author-sign align-self-center mt-3">
-                            <a class="special-link-products shine">Download Katalog</a>
+                            <a href="{{ $about->company_katalog }}" download="" class="special-link-products shine">Download Katalog</a>
                         </div>
                     </div>
                 </div>

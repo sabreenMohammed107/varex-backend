@@ -14,4 +14,9 @@ class WhyUs extends Model
         'icon',
         'description'
     ];
+    protected $casts = [
+        'title' => 'array', // Cast the title attribute to an array
+        'description' => 'array', // Cast the description attribute to an array
+
+    ];
 }

@@ -3,7 +3,7 @@
     <div class="ltn__utilize-menu-inner ltn__scrollbar">
         <div class="ltn__utilize-menu-head">
             <div class="site-logo">
-                <a href="index.html"><img src="img/logo.png" alt="Logo" /></a>
+                <a href="{{ url('/') }}"><img src="{{asset('webasset/img/logo.png')}}" alt="Logo" /></a>
             </div>
             <button class="ltn__utilize-close">×</button>
         </div>
@@ -17,7 +17,7 @@
 
             </select>
             <div class="nice-select w-100 my-3" tabindex="0">
-                <span class="current"><img style="margin-right: 5px" src="img/icons/cat-menu.png" alt=""
+                <span class="current"><img style="margin-right: 5px" src="{{asset('webasset/img/icons/cat-menu.png')}}" alt=""
                         srcset="" />All
                     Categories</span>
                 <ul class="list">
@@ -39,26 +39,26 @@
         <div class="ltn__utilize-menu">
             <ul>
                 <li class="not-special-link-sm-menu">
-                    <a href="index.html">Home</a>
+                    <a href="{{ url('/') }}">Home</a>
                 </li>
                 <li class="not-special-link-sm-menu">
-                    <a href="about.html">About Us</a>
+                    <a href="{{ url('/about-us') }}">About Us</a>
                 </li>
                 <li class="not-special-link-sm-menu">
                     <a href="{{ url('/products') }}">Products</a>
                 </li>
                 <li class="not-special-link-sm-menu">
-                    <a href="blogs.html">Blogs</a>
+                    <a href="{{ url('/blogs') }}">Blogs</a>
                 </li>
                 <li class="not-special-link-sm-menu">
-                    <a href="media.html">Media</a>
+                    <a href="{{ url('/media') }}">Media</a>
                 </li>
                 <li class="not-special-link-sm-menu">
-                    <a href="contact.html">Contact Us</a>
+                    <a href="{{ url('/contact') }}">Contact Us</a>
                 </li>
 
                 <li class="special-link shine">
-                    <a class="p-0" href="Distribute.html">Distribute With Us</a>
+                    <a class="p-0" href="{{ url('/distribute') }}">Distribute With Us</a>
                 </li>
             </ul>
         </div>

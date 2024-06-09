@@ -7,7 +7,7 @@
             <div class="footer-widget footer-about-widget">
               <div class="footer-logo">
                 <div class="site-logo">
-                  <img src="img/logo-dark.png" alt="Logo" />
+                  <img src="{{asset('webasset/img/logo-dark.png')}}" alt="Logo" />
                 </div>
               </div>
               <div class="footer-widget footer-newsletter-widget w-100">
@@ -40,11 +40,11 @@
               <h4 class="footer-title">Varex</h4>
               <div class="footer-menu">
                 <ul>
-                  <li><a href="">About Us</a></li>
+                  <li><a href="{{ url('/about-us') }}">About Us</a></li>
                   <li><a href="{{ url('/products') }}">Products</a></li>
-                  <li><a href="media.html">Media</a></li>
-                  <li><a href="blogs.html">Blogs</a></li>
-                  <li><a href="Certificate.html">Certificate</a></li>
+                  <li><a href="{{ url('/media') }}">Media</a></li>
+                  <li><a href="{{ url('/blogs') }}">Blogs</a></li>
+                  <li><a href="{{ url('/varex-certificates') }}">Certificate</a></li>
                 </ul>
               </div>
             </div>
@@ -55,7 +55,7 @@
               <div class="footer-menu mt-5">
                 <ul>
                   <li><a href="#">Privacy & Policy </a></li>
-                  <li><a href="#">Terms & Conditions</a></li>
+                  <li><a href="{{ url('/terms-condations') }}">Terms & Conditions</a></li>
                   <li><a href="#">Promotional Offers</a></li>
                 </ul>
               </div>
@@ -72,7 +72,7 @@
                   <div class="footer-address-info">
                     <p>
                       <a href="tel: 32 Omar Ibn Abd El Azeez, Helwan" class="scnd-hovr">
-                        32 Omar Ibn Abd El Azeez, Helwan</a>
+                        {{ $contactUsFirstRow->location['en'] ?? ''}}</a>
                     </p>
                   </div>
                 </li>
@@ -82,7 +82,7 @@
                   </div>
                   <div class="footer-address-info">
                     <p>
-                      <a href="mailto:mibrahem@varex.com.eg" class="scnd-hovr">mibrahem@varex.com.eg</a>
+                      <a href="{{ $contactUsFirstRow->email1 ?? ''}}" class="scnd-hovr">{{ $contactUsFirstRow->email1 ?? ''}}</a>
                     </p>
                   </div>
                 </li>
