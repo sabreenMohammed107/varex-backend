@@ -1,6 +1,36 @@
 @extends('webLayout.main')
 
+@section('style')
+<style>
+    /* .d-flex {
+    display: flex;
+    flex-wrap: wrap;
+}
 
+.product-container {
+    flex: 1 1 100%; /* Allows items to grow and shrink, but each item will take full width on small screens */
+    display: flex;
+    justify-content: center; /* Centers the content horizontally */
+}
+
+.ltn__product-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%; /* Ensure the product item takes full height of its container */
+    box-sizing: border-box; /* Ensure padding and borders are included in the element's total width and height */
+}
+
+/* Media query for larger screens */
+@media (min-width: 768px) {
+    .product-container {
+        flex: 1 1 30%; /* Allows items to take up approximately 30% of the container on medium and larger screens */
+        max-width: 30%;
+    }
+} */
+
+    </style>
+@endsection
 
 @section('content')
     <!-- SLIDER AREA START (slider-3) -->
@@ -122,7 +152,7 @@
                                 </a>
                             </h2>
                             <div class="product-price">
-                                <span class="f-s-16 text-in-dark"> {!! strip_tags( \Illuminate\Support\Str::words($best_selling->home_title['en'], 5,'')) !!}</span>
+                                <span class="f-s-16 text-in-dark"> {{ strip_tags( \Illuminate\Support\Str::words($best_selling->home_title['en'], 5,'')) }}</span>
                             </div>
                         </div>
                         <a href="single_product.html"

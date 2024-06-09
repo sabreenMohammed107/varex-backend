@@ -151,6 +151,31 @@
                                         placeholder="Mission Description (English)" required>{{ $aboutUs->mission_description['en'] }}</textarea>
                                 </div>
 
+                                   <!-- Quality Title -->
+                                   <div class="mb-10 fv-row">
+                                    <label class="required form-label" for="quality_title">Quality Title (Arabic)</label>
+                                    <input type="text" class="form-control mb-2" id="quality_title_ar"
+                                        name="quality_title_ar" placeholder="Quality Title (Arabic)"
+                                        value="{{ $aboutUs->quality_title['ar'] ?? '' }}" required>
+                                    <label class="required form-label" for="quality_title">Quality Title (English)</label>
+                                    <input type="text" class="form-control mb-2" id="quality_title_en"
+                                        name="quality_title_en" placeholder="Quality Title (English)"
+                                        value="{{ $aboutUs->quality_title['en'] }}" required>
+                                </div>
+
+                                <!-- Quality Description -->
+                                <div class="mb-10 fv-row">
+                                    <label class="required form-label" for="quality_description">Quality Description
+                                        (Arabic)</label>
+                                    <textarea class="form-control mb-2" id="quality_description" name="quality_description_ar"
+                                        placeholder="Quality Description (Arabic)" required>{{ $aboutUs->quality_description['ar'] ?? '' }}</textarea>
+                                    <label class="required form-label" for="quality_description">Quality Description
+                                        (English)</label>
+                                    <textarea class="form-control mb-2" id="quality_description_en" name="quality_description_en"
+                                        placeholder="Quality Description (English)" required>{{ $aboutUs->quality_description['en'] }}</textarea>
+                                </div>
+
+
                                 <!-- Vision Title -->
                                 <div class="mb-10 fv-row">
                                     <label class="required form-label" for="vision_title">Vision Title (Arabic)</label>
@@ -173,6 +198,17 @@
                                         (English)</label>
                                     <textarea class="form-control mb-2" id="vision_description_en" name="vision_description_en"
                                         placeholder="Vision Description (English)" required>{{ $aboutUs->vision_description['en'] }}</textarea>
+                                </div>
+                                 <!-- Seo Description -->
+                                 <div class="mb-10 fv-row">
+                                    <label class="required form-label" for="seo_description">Seo Description
+                                        (Arabic)</label>
+                                    <textarea class="form-control mb-2" id="seo_description_ar" name="seo_description_ar"
+                                        placeholder="Seo Description (Arabic)" required>{{ $aboutUs->seo_description['ar'] ?? '' }}</textarea>
+                                    <label class="required form-label" for="seo_description">Seo Description
+                                        (English)</label>
+                                    <textarea class="form-control mb-2" id="seo_description_en" name="seo_description_en"
+                                        placeholder="Seo Description (English)" required>{{ $aboutUs->seo_description['en'] }}</textarea>
                                 </div>
 
                             </div>

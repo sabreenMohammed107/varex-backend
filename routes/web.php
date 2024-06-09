@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductGalleryController;
 use App\Http\Controllers\Admin\ProductTagController;
 use App\Http\Controllers\Admin\VarexMediaController;
+use App\Http\Controllers\Admin\WhyUsController;
 use App\Http\Controllers\ContactRequestController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\ProfileController;
@@ -55,7 +56,7 @@ Route::group([
 //         Route::get('/product/{slug}', [IndexController::class, 'show'])->name('product.show');
 //         Route::get('/media', [IndexController::class, 'mediaList']);
 //         Route::get('/contact', [IndexController::class, 'contact']);
-//         Route::post('/contact', [ContactRequestController::class, 'store'])->name('contact.store');
+//         Route::post('/contact', [ContactRequestController::class, 'store'])->name(' contact.store');
 //         Route::get('/about-us', [ContactRequestController::class, 'index'])->name('about.us');
 //         Route::get('/varex-certificates', [ContactRequestController::class, 'certificates'])->name('varex.certificates');
 //         Route::get('/blogs', [IndexController::class, 'blogList']);
@@ -91,6 +92,7 @@ Route::middleware('auth')->group(function () {
         Route::post('products/{product}/gallery', [ProductGalleryController::class, 'store'])->name('products.gallery.store');
         Route::put('products/{product}/gallery/{gallery}', [ProductGalleryController::class, 'update'])->name('products.gallery.update');
         Route::delete('products/{product}/gallery/{gallery}', [ProductGalleryController::class, 'destroy'])->name('products.gallery.destroy');
+        Route::resource('why-us', WhyUsController::class);
     });
 
 });

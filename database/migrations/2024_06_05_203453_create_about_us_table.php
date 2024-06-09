@@ -27,6 +27,10 @@ class CreateAboutUsTable extends Migration
             $table->json('mission_description')->nullable();
             $table->json('vision_title')->nullable();
             $table->json('vision_description')->nullable();
+            $table->json('quality_title')->nullable();
+            $table->json('quality_description')->nullable();
+            $table->json('seo_description')->nullable();
+
             $table->timestamps();
         });
     }

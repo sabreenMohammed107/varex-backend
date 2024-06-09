@@ -23,7 +23,10 @@ class AboutUs extends Model
         'mission_sub_title',
         'mission_description',
         'vision_title',
-        'vision_description'
+        'vision_description',
+        'quality_title',
+        'quality_description',
+        'seo_description'
     ];
 
     protected $casts = [
@@ -37,6 +40,9 @@ class AboutUs extends Model
         'mission_sub_title' => 'array',
         'mission_description' => 'array',
         'vision_title' => 'array',
-        'vision_description' => 'json'
+        'vision_description' => 'json',
+         'quality_title' => 'array',
+        'quality_description' => 'json',
+         'seo_description' => 'json'
     ];
 }

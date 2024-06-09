@@ -37,6 +37,9 @@ public function update(Request $request)
     $aboutUs->vision_title = ['ar' => $request->vision_title_ar, 'en' => $request->vision_title_en];
     $aboutUs->vision_description = ['ar' => $request->vision_description_ar, 'en' => $request->vision_description_en];
 
+    $aboutUs->quality_title = ['ar' => $request->quality_title_ar, 'en' => $request->quality_title_en];
+    $aboutUs->quality_description = ['ar' => $request->quality_description_ar, 'en' => $request->quality_description_en];
+    $aboutUs->seo_description = ['ar' => $request->seo_description_ar, 'en' => $request->seo_description_en];
     if ($request->hasFile('company_katalog')) {
         // Get file name with extension
         $fileNameWithExt = $request->file('company_katalog')->getClientOriginalName();

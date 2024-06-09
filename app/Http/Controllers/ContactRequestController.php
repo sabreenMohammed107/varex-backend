@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\AboutUs;
 use App\Models\Certificate;
 use App\Models\ContactRequest;
+use App\Models\Faq;
+use App\Models\WhyUs;
 use Illuminate\Http\Request;
 
 class ContactRequestController extends Controller
@@ -12,12 +14,15 @@ class ContactRequestController extends Controller
     public function index()
     {
         $about = AboutUs::first();
-        return view('aboutUs', compact('about'));
+        $whyUs = WhyUs::all();
+        $faqs = Faq::all();
+        return view('aboutUs', compact('about', 'whyUs', 'faqs'));
     }
-     public function certificates(){
+    public function certificates()
+    {
         $certificates = Certificate::all();
         return view('certificates', compact('certificates'));
-     }
+    }
     public function store(Request $request)
     {
         $validatedData = $request->validate([

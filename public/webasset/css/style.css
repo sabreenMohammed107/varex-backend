@@ -7666,6 +7666,10 @@ ul.wp-block-latest-posts.is-grid.alignwide {
   bottom: 100px;
   height: 70%;
 }
+.object-fit-cover {
+  -o-object-fit: cover;
+  object-fit: cover;
+}
 .ltn__slide-item-3 .slide-item-img img {
   text-align: right;
   margin-left: auto;
@@ -18335,9 +18339,92 @@ span.video-title {
   }
 }
 @media (min-width: 320px) and (max-width: 608px) {
-
   #about_us_page .section-our-mission .our-mission-p1 h3,
   #about_us_page .section-our-mission .our-mission-p2 h3 {
     font-size: 25px !important;
   }
+}
+#about_us_page
+  .section-our-mission
+  .our-vision-section-content
+  .vision-content {
+  -webkit-box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.25);
+  box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.25);
+  background-color: white;
+}
+
+#about_us_page .section-our-mission .our-vision-section-content {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  grid-template-rows: repeat(9, 1fr);
+}
+
+#about_us_page
+  .section-our-mission
+  .our-vision-section-content
+  .vision-content {
+  grid-area: 3 / 2 / 9 /6;
+  z-index: 5;
+}
+
+#about_us_page .section-our-mission .our-vision-section-content .vision-img {
+  grid-area: 2 / 5 / 8 / 9;
+}
+
+@media (min-width: 992px) and (max-width: 1200px) {
+  #about_us_page .section-our-mission .our-vision-section-content .vision-img {
+    grid-area: 2 / 2 / 8 / 9;
+  }
+
+  #about_us_page
+    .section-our-mission
+    .our-vision-section-content
+    .vision-content {
+    grid-area: 4 / 3 / 10 / 8;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+  #about_us_page .section-our-mission .our-vision-section-content .vision-img {
+    grid-area: 2 / 2 / 8 / 9;
+  }
+
+  #about_us_page
+    .section-our-mission
+    .our-vision-section-content
+    .vision-content {
+    grid-area: 4 / 3 / 9 / 8;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 768px) {
+  #about_us_page .section-our-mission .our-vision-section-content .vision-img {
+    grid-area: 2 / 2 / 8 / 9;
+  }
+
+  #about_us_page
+    .section-our-mission
+    .our-vision-section-content
+    .vision-content {
+    grid-area: 5 / 2 / 10 / 9;
+  }
+}
+
+@media (max-width: 576px) {
+  #about_us_page .section-our-mission .our-vision-section-content .vision-img {
+    display: none;
+  }
+
+  #about_us_page
+    .section-our-mission
+    .our-vision-section-content
+    .vision-content {
+    grid-area: 1 / 1 / 10 / 10;
+  }
+}
+
+#about_us_page .ltn__faq-inner-2 .card .ltn__card-title::before {
+  background-color: #18426399;
+  color: white;
 }
