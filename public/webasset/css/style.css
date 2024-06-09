@@ -19,7 +19,7 @@
 >>> TABLE OF CONTENTS:
 ===============================================================
 # Google fonts
-# Gutter Code 
+# Gutter Code
 # Normalize
 # Typography
 # Custom Class
@@ -38,7 +38,7 @@
 # Galleries
 # Unit test
 # ScrollUp
-# Owl Carousel 
+# Owl Carousel
 # Slick Slider
 # Background Overlay
 # Scrollbar
@@ -75,7 +75,7 @@ font-family: 'Nunito Sans', sans-serif;
 font-family: 'Roboto', sans-serif;
 */
 /* ====================================================
-    Gutter Code 
+    Gutter Code
 ==================================================== */
 .container,
 .container-fluid {
@@ -212,7 +212,7 @@ font-family: 'Roboto', sans-serif;
 }
 
 /* ----------------------------------------------------
-    Normalize  
+    Normalize
 ---------------------------------------------------- */
 :root {
   --ltn__primary-color: #fad731;
@@ -998,7 +998,7 @@ button:focus {
 /* .input-item-name.ltn__custom-icon::before {
   content: "\f007";
 } */
-/* 
+/*
 .input-item-email.ltn__custom-icon::before {
   content: "\f0e0";
 }
@@ -1403,7 +1403,7 @@ ul {
 }
 
 /* ----------------------------------------------------
-    Owl Carousel 
+    Owl Carousel
 ---------------------------------------------------- */
 .owl-dots {
   display: block;
@@ -1910,7 +1910,7 @@ ul {
 }
 
 /* ----------------------------------------------
-  Scrollbar 
+  Scrollbar
 ---------------------------------------------- */
 .ltn__scrollbar {
   overflow-y: auto;
@@ -9317,7 +9317,7 @@ ul.wp-block-latest-posts.is-grid.alignwide {
 # Common CSS
 # Section title
 # Category Area
-# Feature Area 
+# Feature Area
 # Countdown Area
 # Blog Area
 # Blog Details
@@ -9346,12 +9346,12 @@ ul.wp-block-latest-posts.is-grid.alignwide {
 # Service Area
 # Call To Action
 # Elements Area
-# Service Form 
+# Service Form
 # Get A Quote Form
 # Car Dealer Form
 # Video Area
 # Brand Logo
-# Progress Bar 
+# Progress Bar
 # Our Journey Area
 # Google Map Locations Area
 # Team Details
@@ -9817,7 +9817,7 @@ ul.wp-block-latest-posts.is-grid.alignwide {
 }
 
 /* ----------------------------------------------------
-    Feature Area 
+    Feature Area
 ---------------------------------------------------- */
 .ltn__feature-item {
   padding: 40px 25px 10px;
@@ -13708,7 +13708,7 @@ input.cart-plus-minus-box {
 }
 
 /* ----------------------------------------------------
-    Service Form 
+    Service Form
 ---------------------------------------------------- */
 .ltn__service-form-box {
   margin: 0;
@@ -14134,7 +14134,7 @@ input.cart-plus-minus-box {
 }
 
 /* ----------------------------------------------------
-    Progress Bar 
+    Progress Bar
 ---------------------------------------------------- */
 .ltn__progress-bar-wrap {
   margin-bottom: 50px;
@@ -16453,9 +16453,9 @@ footer .section-bg-2 {
 }
 
 .not-special-link a:hover {
-  transform: scale(1.2);
+  /* transform: scale(1.2); */
   color: var(--ltn__secondary-color-2) !important;
-  -webkit-transform: scale(1.2);
+  /* -webkit-transform: scale(1.2);
   -moz-transform: scale(1.2);
   -ms-transform: scale(1.2);
   -o-transform: scale(1.2);
@@ -16463,9 +16463,11 @@ footer .section-bg-2 {
   -webkit-transition: all 0.8s ease-in-out;
   -moz-transition: all 0.8s ease-in-out;
   -ms-transition: all 0.8s ease-in-out;
-  -o-transition: all 0.8s ease-in-out;
+  -o-transition: all 0.8s ease-in-out; */
 }
-
+.ltn__main-menu ul li a{
+    font-size: 1.1em !important;
+}
 .not-special-link-sm-menu a:hover {
   color: var(--ltn__secondary-color-2) !important;
   transition: all 0.8s ease-in-out;
