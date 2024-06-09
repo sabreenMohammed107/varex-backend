@@ -48,7 +48,7 @@
                     <a href="{{ url('/products') }}">Products</a>
                 </li>
                 <li class="not-special-link-sm-menu">
-                    <a href="blogs.html">Blogs</a>
+                    <a href="{{ url('/blogs') }}">Blogs</a>
                 </li>
                 <li class="not-special-link-sm-menu">
                     <a href="{{ url('/media') }}">Media</a>

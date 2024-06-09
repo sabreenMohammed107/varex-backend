@@ -7,7 +7,7 @@
                     <div class="ltn__top-bar-menu add-and-phone">
                         <ul class="d-flex justify-content-lg-start justify-content-md-between">
                             <li>
-                                <a href="locations.html"><img src="{{asset('webasset/img/icons/location.png')}}" alt="" srcset="" />
+                                <a href="#"><img src="{{asset('webasset/img/icons/location.png')}}" alt="" srcset="" />
                                     {{ $contactUsFirstRow->location['en'] ?? ''}}
                                 </a>
                             </li>

@@ -144,7 +144,7 @@
                                                 <div class="product-price">
                                                     <span>{!! $product->home_title['en'] !!}</span>
                                                 </div>
-                                                <h2 class="product-title"><a href="single_product.html">{{ $product->category->name['en'] ?? ''}}</a>
+                                                <h2 class="product-title"><a href="{{ url('product/'.$product->slug['en']) }}">{{ $product->category->name['en'] ?? ''}}</a>
                                                 </h2>
                                             </div>
                                         </div>
