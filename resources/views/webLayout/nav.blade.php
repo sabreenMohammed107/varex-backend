@@ -20,20 +20,28 @@
                 <span class="current"><img style="margin-right: 5px" src="{{asset('webasset/img/icons/cat-menu.png')}}" alt=""
                         srcset="" />All
                     Categories</span>
-                <ul class="list">
-                    <li data-value="Default Sorting" class="option selected focus">
-                        All
-                    </li>
-                    @foreach ($categoriesOrderedByRank as $category)
-                        <li class="option">{{ $category->name['en'] }}</li>
-                    @endforeach
-                </ul>
+                    <ul class="list">
+                        <li data-value="Default Sorting" class="option selected focus">
+
+                            <a href="#" onclick="mobsetSearchCategoryId(null); return false;">All</a>
+                        </li>
+                        @foreach ($categoriesOrderedByRank as $category)
+                            <li class="option"><a href="#" data-categoryid="{{ $category->id }}"
+                                    onclick="mobsetSearchCategoryId({{ $category->id }}); return false;">
+                                    {{ $category->name['en'] }}
+                                </a></li>
+                        @endforeach
+                    </ul>
+
+                <input type="hidden" id="mobselectedSearchCategoryId" value="">
+
             </div>
         </div>
         <div class="ltn__utilize-menu-search-form">
-            <form action="#">
-                <input type="text" placeholder="Search..." />
-                <button><i class="fas fa-search"></i></button>
+            <form action="{{ url('/products') }}">
+                <input type="text" name="mob_search_name"
+                id="mob_search_name" placeholder="Search..." />
+                <button id="mob_searchButton" ><i class="fas fa-search"></i></button>
             </form>
         </div>
         <div class="ltn__utilize-menu">

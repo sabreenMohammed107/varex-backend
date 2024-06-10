@@ -28,18 +28,23 @@ class IndexController extends Controller
     {
         $query = Product::where('featured', 1);
 
-        if ($request->filled('search_name')) {
-            $searchTerm = $request->search_name;
+        // Name search filtering
+        if ($request->filled('search_name') || $request->filled('mobsearchQuery')) {
+            $searchTerm = $request->filled('search_name') ? $request->search_name : $request->mobsearchQuery;
             $query->where(function ($q) use ($searchTerm) {
                 $q->where('home_title->en', 'like', '%' . $searchTerm . '%')
                     ->orWhere('home_title->ar', 'like', '%' . $searchTerm . '%');
             });
+        } else {
+            if ($request->filled('category_id') ||
+                ($request->filled('searchCategory') && $request->searchCategory != 'All') ||
+                ($request->filled('mobsearchCategory') && $request->mobsearchCategory != 'All')) {
+                $categoryId = $request->filled('category_id') ? $request->category_id :
+                ($request->filled('searchCategory') ? $request->searchCategory : $request->mobsearchCategory);
+                $query->where('category_id', $categoryId);
+            }
         }
 
-        if ($request->filled('category_id') || ($request->filled('searchCategory') && $request->searchCategory != 'All')) {
-            $categoryId = $request->filled('category_id') ? $request->category_id : $request->searchCategory;
-            $query->where('category_id', $categoryId);
-        }
         // Retrieve paginated products with applied filters
         $products = $query->orderBy('created_at', 'desc')->paginate(30);
         // If the request is AJAX, return JSON response
@@ -51,7 +56,6 @@ class IndexController extends Controller
         }
         $countAll = Product::count();
         $tags = ProductTag::all();
-        \Log::info( $products);
         return view('products.index', compact('products', 'countAll', 'tags'));
     }
     public function show($slug)
@@ -83,35 +87,37 @@ class IndexController extends Controller
         return view('contact', compact('all_media'));
     }
 
-    public function blogList(Request $request){
-       // Get the master blog
-       $masterBlog = Blog::where('master', 1)->first();
+    public function blogList(Request $request)
+    {
+        // Get the master blog
+        $masterBlog = Blog::where('master', 1)->first();
 
-       // Get paginated blogs excluding the master blog, assuming 10 blogs per page
-       $blogs = Blog::where('master', '!=', 1)->paginate(30);
+        // Get paginated blogs excluding the master blog, assuming 10 blogs per page
+        $blogs = Blog::where('master', '!=', 1)->paginate(30);
 
-       // Check if the request is an AJAX request
-       if ($request->ajax()) {
-           return view('blogs.partials.blogs', compact('blogs'))->render();
-       }
+        // Check if the request is an AJAX request
+        if ($request->ajax()) {
+            return view('blogs.partials.blogs', compact('blogs'))->render();
+        }
 
-       return view('blogs.index', compact('masterBlog', 'blogs'));
+        return view('blogs.index', compact('masterBlog', 'blogs'));
     }
     public function showBlog($slug)
     {
         // Fetch the blog using the provided slug
         $blog = Blog::where('slug->en', $slug)->orWhere('slug->ar', $slug)->firstOrFail();
 
-
         return view('blogs.show', compact('blog'));
     }
 
-    public function distribute(){
+    public function distribute()
+    {
         $about = AboutUs::first();
         return view('distribute', compact('about'));
     }
 
-    public function terms(){
+    public function terms()
+    {
         return view('terms');
     }
 }
