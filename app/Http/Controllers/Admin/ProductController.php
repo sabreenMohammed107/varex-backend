@@ -60,6 +60,7 @@ class ProductController extends Controller
         $product->featured = $request->has('featured');
         $product->best_selling = $request->has('best_selling');
         $product->tags = $request->tags;
+        $product->tag_id = $request->tag_id;
 
         //Upload main image
         if ($request->hasFile('main_image')) {
@@ -148,7 +149,7 @@ class ProductController extends Controller
         $product->featured = $request->has('featured');
         $product->best_selling = $request->has('best_selling');
         $product->tags = $request->tags;
-
+        $product->tag_id = $request->tag_id;
         //Upload main image
         if ($request->hasFile('main_image')) {
             $mainImage = $request->file('main_image');
