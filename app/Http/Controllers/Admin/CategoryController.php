@@ -99,15 +99,19 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         $category = Category::findOrFail($id);
+try {
+    if ($category->icon && File::exists(public_path($category->icon))) {
+        File::delete(public_path($category->icon));
+    }
 
+    // Delete the category
+    $category->delete();
+
+    return redirect()->route('admin.categories.index')->with('success', 'Category deleted successfully.');
+} catch (\Throwable $th) {
+    return redirect()->route('admin.categories.index')->with('flash_danger', 'cant delete');
+}
         // Delete the category icon if it exists
-        if ($category->icon && File::exists(public_path($category->icon))) {
-            File::delete(public_path($category->icon));
-        }
 
-        // Delete the category
-        $category->delete();
-
-        return redirect()->route('categories.index')->with('success', 'Category deleted successfully.');
     }
 }

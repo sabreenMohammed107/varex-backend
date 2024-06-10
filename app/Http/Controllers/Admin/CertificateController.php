@@ -108,6 +108,6 @@ class CertificateController extends Controller
         // Delete the certificate
         $certificate->delete();
 
-        return redirect()->route('categories.index')->with('success', 'Certificate deleted successfully.');
+        return redirect()->route('admin.certificates.index')->with('success', 'Certificate deleted successfully.');
     }
 }

@@ -141,13 +141,13 @@
         <div class="container-lg">
             <div class="row align-items-center">
                 <div class="short-by text-center col-2">
-                    <select class="nice-select w-100" id="search_category" name="search_category" style="display: none">
+                    {{-- <select class="nice-select w-100" id="search_category" name="search_category" style="display: none">
                         <option> <a href="#" onclick="setSearchCategoryId(null); return false;">All</a></option>
                         @foreach ($categoriesOrderedByRank as $category)
                             <option value="{{  $category->id }}">{{ $category->name['en'] }} -{{  $category->id  }}</option>
                         @endforeach
 
-                    </select>
+                    </select> --}}
                     <div style="
                     border: 1px solid;
                     font-weight: bold;
@@ -162,18 +162,17 @@
                             <li data-value="Default Sorting" class="option selected focus">
                                 <a href="#" onclick="setSearchCategoryId(null); return false;">All</a>
                             </li>
-                            <li style="display: none"><a href="#" data-categoryid="1" onclick="setSearchCategoryId(1); return false;">Category 1</a></li>
-                            <li style="display: none"><a href="#" data-categoryid="2" onclick="setSearchCategoryId(2); return false;">Category 2</a></li>
+
                             @foreach ($categoriesOrderedByRank as $category)
 
                             <li class="option">
-                                <a href="#" data-categoryid="{{$category->id}}" onclick="setSearchCategoryId({{$category->id}}); return false;">
+                                <a href="#" data-categoryid="{{$category->id}}" onclick="setSearchCategoryId({{$category->id}}); return false;" >
                                     {{ $category->name['en'] }}
                                 </a>
                             </li>
                             @endforeach
                         </ul>
-                        <input type="hidden" id="selectedSearchCategoryId" value="">
+                        <input type="hidden" id="selectedSearchCategoryInput" name="selectedSearchCategoryId" value="">
 
                   </div>
 
@@ -182,6 +181,7 @@
 
                     <div class="header-search-2 w-100">
                         <form id="searchForm" action="{{ url('/products') }}" method="get">
+                            <input type="hidden" id="selectedSearchCategoryForm" name="searchCategory" value="">
                             <input type="text" name="search_name"
                             id="search_name" value=""
                                 placeholder="What are you looking for?" />

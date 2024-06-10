@@ -35,6 +35,8 @@ class IndexController extends Controller
                 $q->where('home_title->en', 'like', '%' . $searchTerm . '%')
                     ->orWhere('home_title->ar', 'like', '%' . $searchTerm . '%');
             });
+
+
         } else {
             if ($request->filled('category_id') ||
                 ($request->filled('searchCategory') && $request->searchCategory != 'All') ||

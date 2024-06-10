@@ -54,23 +54,24 @@
         }
 
         /* Mobile screens: Disable hover effect */
-    @media (max-width: 768px), (pointer: coarse) {
-        #allProductsPage .product-img .qr-back-face-product {
-            display: none;
-        }
+        @media (max-width: 768px),
+        (pointer: coarse) {
+            #allProductsPage .product-img .qr-back-face-product {
+                display: none;
+            }
 
-        #allProductsPage .product-img:hover .qr-back-face-product {
-            display: none;
-        }
+            #allProductsPage .product-img:hover .qr-back-face-product {
+                display: none;
+            }
 
-        #allProductsPage .product-img:hover img.qr-front-face-product {
-            display: block;
-        }
+            #allProductsPage .product-img:hover img.qr-front-face-product {
+                display: block;
+            }
 
-        #allProductsPage .product-img:hover .product-badge {
-            display: block;
+            #allProductsPage .product-img:hover .product-badge {
+                display: block;
+            }
         }
-    }
     </style>
 @endsection
 
@@ -194,11 +195,12 @@
 
             // Event handler for search button click
             $('#searchButton').click(function(e) {
+                console.log(['test',$('#selectedSearchCategoryForm').val()])
                 e.preventDefault();
                 fetchProducts();
             });
-                // Event handler for search button click
-                $('#mob_searchButton').click(function(e) {
+            // Event handler for search button click
+            $('#mob_searchButton').click(function(e) {
                 e.preventDefault();
                 fetchProducts();
             });
@@ -239,10 +241,12 @@
             // Set the value of the element
             console.log(" categoryId:", categoryId);
             $('#selectedSearchCategoryId').val(categoryId);
+            setCategoryId(categoryId);
             // fetchProducts(); // Fetch products for the first page when category changes
 
 
         }
+
         function mobsetSearchCategoryId(categoryId) {
             // Set the value of the element
             console.log(" mobcategoryId:", categoryId);
@@ -252,29 +256,29 @@
 
         }
         // Function to initialize the event listeners
-    function initializeSearchCategory() {
-        const categoryLinks = document.querySelectorAll('.list .option a');
+        function initializeSearchCategory() {
+            const categoryLinks = document.querySelectorAll('.list .option a');
 
-        categoryLinks.forEach(link => {
-            link.addEventListener('click', function (event) {
-                event.preventDefault();  // Prevent the default link behavior
-                const categoryId = link.getAttribute('data-categoryid') || null;
-                setSearchCategoryId(categoryId);
+            categoryLinks.forEach(link => {
+                link.addEventListener('click', function(event) {
+                    event.preventDefault(); // Prevent the default link behavior
+                    const categoryId = link.getAttribute('data-categoryid') || null;
+                    setSearchCategoryId(categoryId);
+                });
             });
-        });
-    }
+        }
 
-    // Initialize the search category on page load
-    window.addEventListener('DOMContentLoaded', (event) => {
-        initializeSearchCategory();
-    });
+        // Initialize the search category on page load
+        window.addEventListener('DOMContentLoaded', (event) => {
+            initializeSearchCategory();
+        });
 
         function fetchProducts(page = 1) {
             console.log("Fetching products for page: " + page);
             var searchQuery = $('#search_name').val(); // Get the search query from the input field
             var mobsearchQuery = $('#mob_search_name').val();
             var categoryId = $('#selectedCategoryId').val(); // Get the selected category ID
-            var searchCategory = $('#selectedSearchCategoryId').val(); // Get the search query from the input field
+            var searchCategory = $('#selectedSearchCategoryForm').val(); // Get the search query from the input field
             console.log("Received categoryId:", searchCategory);
             var mobsearchCategory = $('#mobselectedSearchCategoryId').val();
             $.ajax({

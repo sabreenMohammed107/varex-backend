@@ -33,12 +33,13 @@
                         @endforeach
                     </ul>
 
-                <input type="hidden" id="mobselectedSearchCategoryId" value="">
 
             </div>
         </div>
         <div class="ltn__utilize-menu-search-form">
             <form action="{{ url('/products') }}">
+                <input type="hidden" id="mobselectedSearchCategoryId" name="mobselectedSearchCategoryId" value="">
+
                 <input type="text" name="mob_search_name"
                 id="mob_search_name" placeholder="Search..." />
                 <button id="mob_searchButton" ><i class="fas fa-search"></i></button>
