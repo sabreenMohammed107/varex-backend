@@ -4722,6 +4722,7 @@ ul.wp-block-latest-posts.is-grid.alignwide {
 @media (max-width: 1199px) {
   .widget {
     padding: 35px 20px 40px 20px;
+    display: none;
   }
   .top-rated-product-img {
     max-width: 70px;
