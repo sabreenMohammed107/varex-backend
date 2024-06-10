@@ -52,6 +52,25 @@
         #allProductsPage #liton_product_list .ltn__product-tab-content-inner .ltn__product-item.ltn__product-item-3 img.qr-code-img {
             padding-bottom: 25px;
         }
+
+        /* Mobile screens: Disable hover effect */
+    @media (max-width: 768px), (pointer: coarse) {
+        #allProductsPage .product-img .qr-back-face-product {
+            display: none;
+        }
+
+        #allProductsPage .product-img:hover .qr-back-face-product {
+            display: none;
+        }
+
+        #allProductsPage .product-img:hover img.qr-front-face-product {
+            display: block;
+        }
+
+        #allProductsPage .product-img:hover .product-badge {
+            display: block;
+        }
+    }
     </style>
 @endsection
 
