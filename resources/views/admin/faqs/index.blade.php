@@ -86,6 +86,7 @@
                                 </th>
                                 <th class="min-w-200px">En question</th>
                                 <th class="min-w-200px">Ar question</th>
+                                <th class="min-w-200px">Rank</th>
                                 <th class="text-end min-w-70px">Actions</th>
                             </tr>
                             <!--end::Table row-->
@@ -131,6 +132,7 @@
                                             </div>
                                         </div>
                                     </td>
+                                    <td> {{ $row->rank }}</td>
                                     <!--begin::Action=-->
                                     <td class="text-end">
                                         <a href="#" class="btn btn-sm btn-light btn-active-light-primary"
