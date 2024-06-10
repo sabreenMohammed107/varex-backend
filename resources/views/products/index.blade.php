@@ -1,118 +1,165 @@
 @extends('webLayout.main')
 
 @section('style')
+<style>
+    #allProductsPage .product-img .home-img img {
+        object-fit: contain;
+    }
+    #allProductsPage .product-img .qr-back-face-product {
+            display: none;
+
+        }
+    #allProductsPage .product-img:hover .qr-back-face-product {
+            display: block;
+            position: relative;
+            z-index: 500;
+            object-fit: contain;
+            width: 100%;
+            height: 100%;
+            padding:25px;
+        }
+
+    #allProductsPage .product-img:hover img.qr-front-face-product {
+        display: none;
+    }
+
+    #allProductsPage .product-img:hover .product-badge {
+        display: none;
+        }
+
+        #allProductsPage .home-img {
+            width:100%;
+            height:100%;
+        }
+        #allProductsPage #liton_product_grid .ltn__product-tab-content-inner .ltn__product-item:hover {
+            -webkit-box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.25);
+            -moz-box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.25);
+            box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.25);
+        }
+
+
+        #allProductsPage #liton_product_list .ltn__product-list-view .ltn__product-item-3 .product-info {
+            padding: 7px 25px 20px 2px;
+        }
+        #allProductsPage #liton_product_list .ltn__product-tab-content-inner .ltn__product-item.ltn__product-item-3 .product-img img {
+            height:100% !important ;
+        }
+        #allProductsPage #liton_product_list .ltn__product-tab-content-inner .ltn__product-item.ltn__product-item-3 img.qr-code-img {
+            padding-bottom : 25px;
+        }
+</style>
 @endsection
 
 @section('content')
-    <!-- BREADCRUMB AREA START -->
-    <div class="py-3">
-        <div class="container-lg">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="ltn__breadcrumb-inner ltn__breadcrumb-inner-2">
-                        <div class="ltn__breadcrumb-list ">
-                            <ul>
-                                <li><a href="{{ url('/') }}">Home</a></li>
-                                <li>Varex Products</li>
-                            </ul>
-                        </div>
+<!-- BREADCRUMB AREA START -->
+<div class="py-3">
+    <div class="container-lg">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ltn__breadcrumb-inner ltn__breadcrumb-inner-2">
+                    <div class="ltn__breadcrumb-list ">
+                        <ul>
+                            <li><a href="{{ url('/') }}">Home</a></li>
+                            <li>Varex Products</li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- BREADCRUMB AREA END -->
-    <!-- PRODUCT DETAILS AREA START -->
-    <div class="ltn__product-area ltn__product-gutter">
-        <div class="container-lg">
-            <div class="row">
-                <div class="col-lg-9 order-lg-2 mb-120">
-                    <div class="ltn__shop-options">
+</div>
+<!-- BREADCRUMB AREA END -->
+<!-- PRODUCT DETAILS AREA START -->
+<div class="ltn__product-area ltn__product-gutter" id="allProductsPage">
+    <div class="container-lg">
+        <div class="row">
+            <div class="col-lg-9 order-lg-2 mb-120">
+                <div class="ltn__shop-options">
+                    <ul>
+                        <li>
+                            <div class="showing-product-number text-right text-end">
+                                <span>Varex Products</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="ltn__grid-list-tab-menu ">
+                                <div class="nav">
+                                    <a class="active show" data-bs-toggle="tab" href="#liton_product_grid"><i
+                                            class="fas fa-th-large"></i></a>
+                                    <a data-bs-toggle="tab" href="#liton_product_list"><i class="fas fa-list"></i></a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div id="product-list">
+                    @include('products.partials.products_list', ['products' => $products])
+                </div>
+
+                <div class="ltn__pagination-area text-center">
+                    <div class="ltn__pagination pagination">
+                        <ul id="pagination-links">
+                            {!! $products->links('vendor.pagination.custom') !!}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3  mb-120">
+                <aside class="sidebar ltn__shop-sidebar">
+                    <!-- Category Widget -->
+
+                    <div class="widget ltn__menu-widget">
+                        <h4 class="ltn__widget-title ltn__widget-title-border">Categories</h4>
                         <ul>
-                            <li>
-                                <div class="showing-product-number text-right text-end">
-                                    <span>Varex Products</span>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="ltn__grid-list-tab-menu ">
-                                    <div class="nav">
-                                        <a class="active show" data-bs-toggle="tab" href="#liton_product_grid"><i
-                                                class="fas fa-th-large"></i></a>
-                                        <a data-bs-toggle="tab" href="#liton_product_list"><i class="fas fa-list"></i></a>
-                                    </div>
-                                </div>
+                            <li><a href="#" onclick="setCategoryId(null); return false;">All Category
+                                    ({{ $countAll }})</a></li>
+                            @foreach ($categoriesOrderedByRank as $category)
+                            <li><a href="#" class="proCategory" data-categoryid="{{ $category->id }}"
+                                    onclick="setCategoryId({{ $category->id }}); return false;">
+                                    {{ $category->name['en'] }} ({{ $category->products_count }})
+                                </a></li>
+                            @endforeach
+
+                        </ul>
+                        <input type="hidden" id="selectedCategoryId" value="">
+                    </div>
+
+                    <!-- Price Filter Widget -->
+                    <div class="widget ltn__price-filter-widget">
+                        <h4 class="ltn__widget-title ltn__widget-title-border">Tags</h4>
+                        <div class="price_filter">
+                            <div class="price_slider_amount">
+                                <span class="tag-bg f-s-13">All Tags</span>
+                                @foreach ($tags as $tag)
+                                <span class="tag-bg f-s-13">{{ $tag->title['en'] ?? '' }}</span>
+                                @endforeach
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Top Rated Product Widget -->
+
+                    <div class="logo-catalog">
+                        <div class="main-logo">
+                            <img src="{{ asset('webasset/img/logo.png') }}" alt="">
+                        </div>
+                        <ul class="cst-btn p-0">
+                            <li class="special-link shinep-0">
+                                <a class="p-0" download="#">Download Katalog</a>
                             </li>
                         </ul>
                     </div>
-                    <div id="product-list">
-                        @include('products.partials.products_list', ['products' => $products])
-                    </div>
-
-                    <div class="ltn__pagination-area text-center">
-                        <div class="ltn__pagination pagination">
-                            <ul id="pagination-links">
-                                {!! $products->links('vendor.pagination.custom') !!}
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3  mb-120">
-                    <aside class="sidebar ltn__shop-sidebar">
-                        <!-- Category Widget -->
-
-                        <div class="widget ltn__menu-widget">
-                            <h4 class="ltn__widget-title ltn__widget-title-border">Categories</h4>
-                            <ul>
-                                <li><a href="#" onclick="setCategoryId(null); return false;">All Category
-                                        ({{ $countAll }})</a></li>
-                                        @foreach ($categoriesOrderedByRank as $category)
-                                        <li><a href="#" class="proCategory" data-categoryid="{{ $category->id }}"
-                                                onclick="setCategoryId({{ $category->id }}); return false;">
-                                                {{ $category->name['en'] }} ({{ $category->products_count }})
-                                            </a></li>
-                                    @endforeach
-
-                            </ul>
-                            <input type="hidden" id="selectedCategoryId" value="">
-                        </div>
-
-                        <!-- Price Filter Widget -->
-                        <div class="widget ltn__price-filter-widget">
-                            <h4 class="ltn__widget-title ltn__widget-title-border">Tags</h4>
-                            <div class="price_filter">
-                                <div class="price_slider_amount">
-                                    <span class="tag-bg f-s-13">All Tags</span>
-                                    @foreach ($tags as $tag)
-                                        <span class="tag-bg f-s-13">{{ $tag->title['en'] ?? '' }}</span>
-                                    @endforeach
-
-
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Top Rated Product Widget -->
-
-                        <div class="logo-catalog">
-                            <div class="main-logo">
-                                <img src="{{ asset('webasset/img/logo.png') }}" alt="">
-                            </div>
-                            <ul class="cst-btn p-0">
-                                <li class="special-link shinep-0">
-                                    <a class="p-0" download="#">Download Katalog</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </aside>
-                </div>
+                </aside>
             </div>
         </div>
     </div>
-    <!-- PRODUCT DETAILS AREA END -->
+</div>
+<!-- PRODUCT DETAILS AREA END -->
 @endsection
 @section('webScript')
-    <script>
-        $(document).ready(function($) {
+<script>
+    $(document).ready(function($) {
             $(document).on('click', '.pagination a', function(event) {
                 event.preventDefault();
                 var pageUrl = $(this).attr('href');
@@ -184,5 +231,5 @@
                 }
             });
         }
-    </script>
+</script>
 @endsection

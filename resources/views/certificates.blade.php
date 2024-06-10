@@ -37,6 +37,11 @@
             <div class="ltn__gallery-item-img d-flex justify-content-center">
               <a href="{{ asset("$certificate->image") }}" data-rel="lightcase:myCollection">
                 <img src="{{ asset("$certificate->image") }}" alt="Image">
+                <div class="hover-layout"></div>
+
+                <div class="hover-content">
+                    <h3>Certificate Name</h3>
+                </div>
               </a>
             </div>
           </div>

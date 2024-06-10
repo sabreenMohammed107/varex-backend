@@ -5411,9 +5411,9 @@ ul.wp-block-latest-posts.is-grid.alignwide {
   transition: all 0.3s ease 0s;
   text-align: center;
 }
-.menu-product-item .product-info {
+/* .menu-product-item .product-info {
   padding: 25px 15px 15px;
-  padding-top: 0;
+  padding-top: 0; */
 }
 .menu-product-item .product-title {
   font-size: 16px;
@@ -8230,9 +8230,9 @@ ul.wp-block-latest-posts.is-grid.alignwide {
   color: var(--white);
 }
 
-.product-info {
+/* .product-info {
   padding: 20px 0 0;
-}
+} */
 
 .product-price {
   color: var(--ltn__secondary-color);
@@ -8326,7 +8326,7 @@ ul.wp-block-latest-posts.is-grid.alignwide {
   display: none;
 }
 .ltn__product-item-3 .product-info {
-  padding: 25px 2px 15px;
+  /* padding: 25px 2px 15px; */
 }
 .ltn__product-item-3 .product-title {
   font-size: 16px;
@@ -9024,7 +9024,7 @@ ul.wp-block-latest-posts.is-grid.alignwide {
 
 .ltn__product-list-view .ltn__product-item-3 .product-info {
   overflow: hidden;
-  padding: 25px 25px 20px 30px;
+  /* padding: 25px 25px 20px 30px; */
 }
 
 .ltn__product-list-view .product-hover-action {
@@ -9073,9 +9073,9 @@ ul.wp-block-latest-posts.is-grid.alignwide {
 }
 
 @media (max-width: 991px) {
-  .ltn__product-item-3 .product-info {
+  /* .ltn__product-item-3 .product-info {
     padding: 25px 15px 15px;
-  }
+  } */
   .ltn__product-item-3 .product-price {
     font-size: 16px;
   }
@@ -9100,9 +9100,9 @@ ul.wp-block-latest-posts.is-grid.alignwide {
   .ltn__product-list-view .ltn__product-item .product-info {
     padding: 25px 0 0 1px;
   }
-  .ltn__product-list-view .ltn__product-item-3 .product-info {
+  /* .ltn__product-list-view .ltn__product-item-3 .product-info {
     padding: 25px 25px 20px 30px;
-  }
+  } */
   .modal-product-info h3 {
     font-size: 22px;
   }
@@ -9163,11 +9163,11 @@ ul.wp-block-latest-posts.is-grid.alignwide {
   opacity: 0.9;
   visibility: visible;
 }
-.ltn__gallery-item:hover .ltn__gallery-item-img img {
+/* .ltn__gallery-item:hover .ltn__gallery-item-img img {
   -webkit-transform: scale(1.1);
   -ms-transform: scale(1.1);
   transform: scale(1.1);
-}
+} */
 .ltn__gallery-item:hover .ltn__gallery-action-icon {
   top: 50%;
   opacity: 1;
@@ -17045,7 +17045,7 @@ html {
 #liton_product_grid
   .ltn__product-tab-content-inner
   .ltn__product-item.ltn__product-item-3
-  .product-img
+  .product-img .qr-front-face-product
   img {
   width: 300px;
   height: 300px;
@@ -17085,12 +17085,16 @@ html {
   height: 300px !important;
   z-index: 500;
 }
-#liton_product_list .ltn__product-list-view .ltn__product-item-3 .product-info {
+/* #liton_product_list .ltn__product-list-view .ltn__product-item-3 .product-info {
   padding: 25px 25px 20px 0px !important;
-}
+} */
 #liton_product_list .ltn__product-list-view .ltn__product-item-3 h2 a {
   font-family: "Poppins", sans-serif !important;
   font-weight: 400 !important;
+}
+#liton_product_list .ltn__product-list-view .ltn__product-item-3 h2 a:hover {
+ color:var(--ltn__secondary-color-2)  !important;
+ text-decoration: underline;
 }
 .f-clr-gry {
   color: #0000007e;
@@ -18430,4 +18434,46 @@ span.video-title {
 #about_us_page .ltn__faq-inner-2 .card .ltn__card-title::before {
   background-color: #18426399;
   color: white;
+}
+
+/* edit all products css */
+#Certificate_page .ltn__gallery-active .ltn__gallery-item.filter_category_3 .ltn__gallery-item-img a{
+    position:relative;
+}
+#Certificate_page .ltn__gallery-active
+.ltn__gallery-item.filter_category_3
+.ltn__gallery-item-img a .hover-content{
+    display:none;
+    position:absolute;
+    bottom:0;
+    left:0;
+    z-index:26;
+}
+#Certificate_page .ltn__gallery-active
+.ltn__gallery-item.filter_category_3
+.ltn__gallery-item-img a .hover-content h3{
+    color:#fff;
+    padding-left:10px;
+}
+#Certificate_page .ltn__gallery-active
+.ltn__gallery-item.filter_category_3
+.ltn__gallery-item-img a:hover .hover-content{
+    display:block;
+}
+#Certificate_page .ltn__gallery-active
+.ltn__gallery-item.filter_category_3
+.ltn__gallery-item-img .hover-layout{
+    display:none;
+}
+#Certificate_page .ltn__gallery-active
+.ltn__gallery-item.filter_category_3
+.ltn__gallery-item-img a:hover .hover-layout{
+    display:block;
+    position:absolute;
+    width:100%;
+    height:100%;
+    top:0;
+    left:0;
+    background: linear-gradient(0deg, rgba(29,38,38,1) 0%, rgba(255,255,255,0) 100%);
+    z-index:15;
 }
