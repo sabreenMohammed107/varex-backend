@@ -193,7 +193,7 @@
                                                         </a>
                                                 <div class="product-badge">
                                                     <ul>
-                                                        <li class="sale-badge">@if($product->best_selling == 1)Popular @endif</li>
+                                                        <li class="sale-badge">{{ $product->tag->title['en'] ?? ''}}</li>
                                                     </ul>
                                                 </div>
                                             </div>
