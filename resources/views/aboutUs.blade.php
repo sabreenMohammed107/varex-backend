@@ -125,7 +125,7 @@
             </div>
             <div class="section-our-mission pt-100">
               <h3 class="main-title text-in-dark f-s-45 text-center pb-70">Why Us ?
-                <img class="mission-title-img" src="img/icons/header-under-title.png" alt="" srcset="">
+                <img class="mission-title-img" src="{{asset('webasset/img/icons/header-under-title.png')}}" alt="" srcset="">
               </h3>
               <div class="why-us-info row">
                 @isset($whyUs)
@@ -149,7 +149,7 @@
             </div>
             <div class="section-our-mission pt-100 pb-100">
               <h3 class="main-title text-in-dark f-s-45 text-center pb-70">Important Questions
-                <img class="mission-title-img" src="img/icons/header-under-title.png" alt="" srcset="">
+                <img class="mission-title-img" src="{{asset('webasset/img/icons/header-under-title.png')}}" alt="" srcset="">
               </h3>
               <div class="faq-sextion-about-us">
                 <div class="row">

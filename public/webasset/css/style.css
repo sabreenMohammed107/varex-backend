@@ -12418,7 +12418,7 @@ input.cart-plus-minus-box {
 }
 .ltn__faq-inner-2 .card .ltn__card-title[aria-expanded="true"] {
   background-color: transparent;
-  color: var(--ltn__primary-color);
+  color: rgb(174, 18, 60);
 }
 .ltn__faq-inner-2 .card .ltn__card-title[aria-expanded="true"]:before {
   color: var(--ltn__secondary-color);
@@ -18476,4 +18476,11 @@ span.video-title {
     left:0;
     background: linear-gradient(0deg, rgba(29,38,38,1) 0%, rgba(255,255,255,0) 100%);
     z-index:15;
+}
+
+/* Desktop view */
+@media (min-width: 1024px) {
+    #about_us_page .section-our-mission .our-vision-section-content .vision-content {
+        transform: translateX(-83px);
+    }
 }
