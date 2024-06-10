@@ -86,6 +86,9 @@
                                 </th>
                                 <th class="min-w-200px">En title</th>
                                 <th class="min-w-200px">Ar title</th>
+                                <th class="min-w-200px">Category</th>
+                                <th class="min-w-200px">Active</th>
+                                <th class="min-w-200px">Master</th>
                                 <th class="text-end min-w-70px">Actions</th>
                             </tr>
                             <!--end::Table row-->
@@ -137,6 +140,29 @@
                                         </div>
                                     </td>
                                     <!--begin::Action=-->
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            {{ $row->category->name['en']  ?? ''}}
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            @if ($row->active == 1)
+                                                <span style="color:green">true </span>
+                                               @else
+                                               <span style="color:red">false </span>
+                                               @endif
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            @if ($row->master == 1)
+                                            <span style="color:green">true </span>
+                                            @else
+                                            <span style="color:red">false </span>
+                                            @endif
+                                        </div>
+                                    </td>
                                     <td class="text-end">
                                         <a href="#" class="btn btn-sm btn-light btn-active-light-primary"
                                             data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Actions

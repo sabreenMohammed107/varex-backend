@@ -101,7 +101,7 @@
                                 </div>
                                 <div class="mb-10 fv-row">
                                     <label class="required form-label">Description Ar</label>
-                                    <textarea name="description_ar" class="form-control mb-2" placeholder="Blog description" required>{{ $blog->description['ar'] }}</textarea>
+                                    <textarea name="description_ar" class="form-control mb-2 ckeditor" placeholder="Blog description" required>{{ $blog->description['ar'] }}</textarea>
                                 </div>
                                 <div class="mb-10 fv-row">
                                     <label class="required form-label">Category</label>
