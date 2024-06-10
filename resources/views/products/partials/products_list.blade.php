@@ -14,11 +14,13 @@
                                 <img src="{{ asset("$product->qr_image") }}" alt="#"
                                 class='qr-back-face-product'>
                             </a>
+                            @if($product->best_selling == 1)
                             <div class="product-badge">
                                 <ul>
-                                    <li class="sale-badge">@if($product->best_selling == 1)Popular @endif</li>
+                                    <li class="sale-badge">Popular </li>
                                 </ul>
                             </div>
+                            @endif
                         </div>
                         <div class="product-info">
                             <h2 class="product-title mx-2">
