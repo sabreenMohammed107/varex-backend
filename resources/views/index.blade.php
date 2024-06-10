@@ -52,7 +52,7 @@
                                         {{ $slider->category->name['en'] ?? ''}}
                                      </h6>
                                      <h1 class="slide-title animated whit-clr">
-                                        {{ $slider->home_title['en'] }} <br />
+                                        {!! $slider->home_title['en'] !!} <br />
                                      </h1>
                                      <div class="btn-wrapper animated">
                                          <a href="{{ url('/products') }}" class="theme-btn-1 btn text-uppercase">More
