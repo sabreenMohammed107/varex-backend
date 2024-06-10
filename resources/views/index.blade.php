@@ -6,6 +6,11 @@
 @endsection
 
 @section('content')
+@if (session('success'))
+<div class="alert alert-success">
+    {{ session('success') }}
+</div>
+@endif
     <!-- SLIDER AREA START (slider-3) -->
     <div class="ltn__slider-area ltn__slider-3 section-bg-1">
         <div class="ltn__slide-one-active slick-slide-arrow-1 slick-slide-dots-1">

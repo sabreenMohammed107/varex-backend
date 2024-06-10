@@ -7,6 +7,7 @@ use App\Models\Certificate;
 use App\Models\ContactRequest;
 use App\Models\DistributeRequest;
 use App\Models\Faq;
+use App\Models\NewsLetter;
 use App\Models\WhyUs;
 use Illuminate\Http\Request;
 
@@ -51,4 +52,15 @@ class ContactRequestController extends Controller
 
         return redirect()->back()->with('success', 'Your message has been sent successfully!');
     }
+
+     public function newsLetter(Request $request){
+        $validatedData = $request->validate([
+           'email' => 'required|string|email|max:255',
+
+        ]);
+
+        NewsLetter::create($validatedData);
+
+        return redirect('/')->with('success', 'Your subscription has been sent successfully!');
+     }
 }

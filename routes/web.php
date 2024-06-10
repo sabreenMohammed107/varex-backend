@@ -46,6 +46,7 @@ Route::group([
         Route::get('/distribute', [IndexController::class, 'distribute']);
         Route::get('/terms-condations', [IndexController::class, 'terms']);
         Route::post('/distribute', [ContactRequestController::class, 'distribute'])->name('distribute.store');
+        Route::post('/newsLetter', [ContactRequestController::class, 'newsLetter'])->name('newsLetter.store');
 });
 // Route::group(
 //     [
