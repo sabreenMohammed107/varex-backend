@@ -191,11 +191,13 @@
                                                     <img src="{{ asset("$product->qr_image") }}" alt="#"
                                                     class='qr-back-face-product'>
                                                         </a>
-                                                <div class="product-badge">
-                                                    <ul>
-                                                        <li class="sale-badge">{{ $product->tag->title['en'] ?? ''}}</li>
-                                                    </ul>
-                                                </div>
+                                                        @if ($product->tag)
+                                                        <div class="product-badge">
+                                                            <ul>
+                                                                <li class="sale-badge">{{ $product->tag->title['en'] ?? ''}}</li>
+                                                            </ul>
+                                                        </div>
+                                                        @endif
                                             </div>
                                             <div class="product-info">
                                                 <div class="product-price">

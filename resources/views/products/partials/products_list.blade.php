@@ -15,11 +15,13 @@
                                 class='qr-back-face-product'>
                             </a>
 
+                            @if ($product->tag)
                             <div class="product-badge">
                                 <ul>
-                                    <li class="sale-badge">{{ $product->tag->title['en'] ?? ''}} </li>
+                                    <li class="sale-badge">{{ $product->tag->title['en'] ?? ''}}</li>
                                 </ul>
                             </div>
+                            @endif
 
                         </div>
                         <div class="product-info">
@@ -50,11 +52,14 @@
                             <a href="{{ url('product/'.$product->slug['en']) }}" class="home-img">
                                 <img src="{{ asset("$product->main_image") }}" alt="#">
                             </a>
+                            @if ($product->tag)
                             <div class="product-badge">
                                 <ul>
                                     <li class="sale-badge">{{ $product->tag->title['en'] ?? ''}}</li>
                                 </ul>
                             </div>
+                            @endif
+
                         </div>
                         <div class="product-list-content row mt-3 col-12 col-md-8">
                             <div class="prod-list-left col-md-9">
