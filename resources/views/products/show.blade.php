@@ -13,6 +13,7 @@
             object-fit: contain;
             width: 100%;
             height: 100%;
+            padding:25px;
         }
     #single-product-details .ltn__product-slider-area.ltn__product-gutter  .ltn__related-product-slider-one-active .ltn__product-item .product-img:hover a {
 

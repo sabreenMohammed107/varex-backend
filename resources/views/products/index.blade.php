@@ -16,6 +16,7 @@
             object-fit: contain;
             width: 100%;
             height: 100%;
+            padding:25px;
         }
 
     #allProductsPage .product-img:hover img.qr-front-face-product {
