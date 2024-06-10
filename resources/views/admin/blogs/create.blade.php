@@ -102,10 +102,10 @@
                                     <input type="checkbox" name="active" class="form-check-input" id="active" {{ old('active') ? 'checked' : '' }}>
                                     <label class="form-check-label" for="active">Active</label>
                                 </div>
-                                <div class="mb-10 fv-row form-check">
+                                {{-- <div class="mb-10 fv-row form-check">
                                     <input type="checkbox" name="featured" class="form-check-input" id="featured" {{ old('featured') ? 'checked' : '' }}>
                                     <label class="form-check-label" for="featured">Featured</label>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>

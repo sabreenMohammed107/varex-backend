@@ -95,7 +95,7 @@ class IndexController extends Controller
         $masterBlog = Blog::where('master', 1)->first();
 
         // Get paginated blogs excluding the master blog, assuming 10 blogs per page
-        $blogs = Blog::where('master', '!=', 1)->paginate(30);
+        $blogs = Blog::where('master', '!=', 1)->where('active', true)->paginate(30);
 
         // Check if the request is an AJAX request
         if ($request->ajax()) {

@@ -86,6 +86,7 @@
                                 </th>
                                 <th class="min-w-200px">En name</th>
                                 <th class="min-w-200px">Ar name</th>
+                                <th class="min-w-200px">Rank</th>
                                 <th class="text-end min-w-70px">Actions</th>
                             </tr>
                             <!--end::Table row-->
@@ -135,6 +136,9 @@
                                                 <!--end::Title-->
                                             </div>
                                         </div>
+                                    </td>
+                                    <td>
+                                        {{ $row->rank }}
                                     </td>
                                     <!--begin::Action=-->
                                     <td class="text-end">

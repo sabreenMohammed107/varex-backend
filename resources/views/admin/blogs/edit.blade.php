@@ -128,10 +128,10 @@
                                     <input type="checkbox" name="active" class="form-check-input" id="slider" {{ $blog->active==1 ? 'checked' : '' }}>
                                     <label class="form-check-label" for="active">Active</label>
                                 </div>
-                                <div class="mb-10 fv-row form-check">
+                                {{-- <div class="mb-10 fv-row form-check">
                                     <input type="checkbox" name="featured" class="form-check-input" id="featured" {{ $blog->featured==1 ? 'checked' : '' }}>
                                     <label class="form-check-label" for="featured">Featured</label>
-                                </div>
+                                </div> --}}
 
                             </div>
                         </div>

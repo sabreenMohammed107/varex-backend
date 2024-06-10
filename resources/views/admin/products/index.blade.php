@@ -84,8 +84,12 @@
                                             value="1" />
                                     </div>
                                 </th>
-                                <th class="min-w-200px">En name</th>
-                                <th class="min-w-200px">Ar name</th>
+                                <th class="min-w-200px">Home name</th>
+                                <th class="min-w-200px">Main name</th>
+                                <th class="min-w-200px">Ctegory</th>
+                                <th class="min-w-200px">Slider</th>
+                                <th class="min-w-200px">Featured</th>
+                                <th class="min-w-200px">Best Selling</th>
                                 <th class="text-end min-w-70px">Actions</th>
                             </tr>
                             <!--end::Table row-->
@@ -118,7 +122,7 @@
                                                 <!--begin::Title-->
                                                 <a href="#"
                                                     class="text-gray-800 text-hover-primary fs-5 fw-bolder mb-1"
-                                                    data-kt-ecommerce-category-filter="category_name">  {{ $row->title['en'] }}</a>
+                                                    data-kt-ecommerce-category-filter="category_name">  {{ $row->home_title['en'] }}</a>
                                                 <!--end::Title-->
                                             </div>
                                         </div>
@@ -131,9 +135,41 @@
                                                 <a href="#"
                                                     class="text-gray-800 text-hover-primary fs-5 fw-bolder mb-1"  data-kt-ecommerce-category-filter="category_id" value="{{ $row->id }}"
                                                     >
-                                                      {{ $row->title['ar'] }}</a>
+                                                      {{ $row->title['en'] }}</a>
                                                 <!--end::Title-->
                                             </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            {{ $row->category->name['en']  ?? ''}}
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            @if ($row->slider == 1)
+                                                <span style="color:green">true </span>
+                                               @else
+                                               <span style="color:red">false </span>
+                                               @endif
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            @if ($row->featured == 1)
+                                            <span style="color:green">true </span>
+                                            @else
+                                            <span style="color:red">false </span>
+                                            @endif
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            @if ($row->best_selling == 1)
+                                            <span style="color:green">true </span>
+                                            @else
+                                            <span style="color:red">false </span>
+                                            @endif
                                         </div>
                                     </td>
                                     <!--begin::Action=-->

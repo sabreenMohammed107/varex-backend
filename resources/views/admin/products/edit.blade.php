@@ -165,10 +165,10 @@
                                     <label class="required form-label">Rank</label>
                                     <input type="number" name="rank" class="form-control mb-2" placeholder="Product rank" value="{{$product->rank }}" required />
                                 </div>
-                                <div class="mb-10 fv-row form-check">
+                                {{-- <div class="mb-10 fv-row form-check">
                                     <input type="checkbox" name="popular" class="form-check-input" id="popular" {{ $product->popular==1 ? 'checked' : '' }}>
                                     <label class="form-check-label" for="popular">Popular</label>
-                                </div>
+                                </div> --}}
                                 <div class="mb-10 fv-row form-check">
                                     <input type="checkbox" name="slider" class="form-check-input" id="slider" {{ $product->slider==1 ? 'checked' : '' }}>
                                     <label class="form-check-label" for="slider">Slider</label>
