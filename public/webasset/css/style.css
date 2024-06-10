@@ -6719,10 +6719,10 @@ ul.wp-block-latest-posts.is-grid.alignwide {
 }
 
 @media (max-width: 991px) {
-  .header-search-column,
+  /* .header-search-column,
   .header-menu-column {
     display: none;
-  }
+  } */
   /* sticky */
   .sticky-active {
     position: inherit;
