@@ -1,5 +1,41 @@
 @extends('webLayout.main')
 
+@section('style')
+<style>
+#single-product-details .ltn__product-slider-area.ltn__product-gutter .ltn__related-product-slider-one-active .ltn__product-item .product-img .qr-back-face-product {
+            display: none;
+
+        }
+    #single-product-details .ltn__product-slider-area.ltn__product-gutter  .ltn__related-product-slider-one-active .ltn__product-item .product-img:hover .qr-back-face-product {
+            display: block;
+            position: relative;
+            z-index: 500;
+            object-fit: contain;
+            width: 100%;
+            height: 100%;
+        }
+    #single-product-details .ltn__product-slider-area.ltn__product-gutter  .ltn__related-product-slider-one-active .ltn__product-item .product-img:hover a {
+
+            width: 100%;
+            height: 100%;
+        }
+
+    #single-product-details .ltn__product-slider-area.ltn__product-gutter  .ltn__related-product-slider-one-active .ltn__product-item .product-img:hover img.qr-front-face-product {
+        display: none;
+    }
+
+    #single-product-details .ltn__product-slider-area.ltn__product-gutter  .ltn__related-product-slider-one-active .ltn__product-item .product-img:hover .product-badge {
+        display: none;
+        }
+
+        #single-product-details .ltn__product-slider-area.ltn__product-gutter  .ltn__related-product-slider-one-active .ltn__product-item .home-img {
+            width:100%;
+            height:100%;
+        }
+
+</style>
+@endsection
+
 @section('content')
   <!-- BREADCRUMB AREA START -->
   <div class="py-3">
@@ -21,7 +57,7 @@
 </div>
 <!-- BREADCRUMB AREA END -->
     <!-- PRODUCT DETAILS AREA START -->
-    <div class="ltn__product-area ltn__product-gutter">
+    <div class="ltn__product-area ltn__product-gutter" id='single-product-details'>
         <div class="container-lg">
             <div class="row">
                 <div class="col-lg-9 order-lg-2 mb-20">
@@ -132,8 +168,10 @@
                                         <div class="ltn__product-item ltn__product-item-3 text-center">
                                             <div class="product-img">
                                                 <a href="{{ url('product/'.$product->slug['en']) }}">
-                                                    <img src="{{ asset("$product->main_image") }}"
-                                                        alt="#"></a>
+                                                    <img src="{{ asset("$product->main_image") }}" alt="#" class='qr-front-face-product'>
+                                                    <img src="{{ asset("$product->qr_image") }}" alt="#"
+                                                    class='qr-back-face-product'>
+                                                        </a>
                                                 <div class="product-badge">
                                                     <ul>
                                                         <li class="sale-badge">>@if($product->best_selling == 1)Popular @endif</li>

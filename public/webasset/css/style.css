@@ -5411,9 +5411,9 @@ ul.wp-block-latest-posts.is-grid.alignwide {
   transition: all 0.3s ease 0s;
   text-align: center;
 }
-.menu-product-item .product-info {
+/* .menu-product-item .product-info {
   padding: 25px 15px 15px;
-  padding-top: 0;
+  padding-top: 0; */
 }
 .menu-product-item .product-title {
   font-size: 16px;
@@ -8230,9 +8230,9 @@ ul.wp-block-latest-posts.is-grid.alignwide {
   color: var(--white);
 }
 
-.product-info {
+/* .product-info {
   padding: 20px 0 0;
-}
+} */
 
 .product-price {
   color: var(--ltn__secondary-color);
@@ -8326,7 +8326,7 @@ ul.wp-block-latest-posts.is-grid.alignwide {
   display: none;
 }
 .ltn__product-item-3 .product-info {
-  padding: 25px 2px 15px;
+  /* padding: 25px 2px 15px; */
 }
 .ltn__product-item-3 .product-title {
   font-size: 16px;
@@ -9024,7 +9024,7 @@ ul.wp-block-latest-posts.is-grid.alignwide {
 
 .ltn__product-list-view .ltn__product-item-3 .product-info {
   overflow: hidden;
-  padding: 25px 25px 20px 30px;
+  /* padding: 25px 25px 20px 30px; */
 }
 
 .ltn__product-list-view .product-hover-action {
@@ -9073,9 +9073,9 @@ ul.wp-block-latest-posts.is-grid.alignwide {
 }
 
 @media (max-width: 991px) {
-  .ltn__product-item-3 .product-info {
+  /* .ltn__product-item-3 .product-info {
     padding: 25px 15px 15px;
-  }
+  } */
   .ltn__product-item-3 .product-price {
     font-size: 16px;
   }
@@ -9100,9 +9100,9 @@ ul.wp-block-latest-posts.is-grid.alignwide {
   .ltn__product-list-view .ltn__product-item .product-info {
     padding: 25px 0 0 1px;
   }
-  .ltn__product-list-view .ltn__product-item-3 .product-info {
+  /* .ltn__product-list-view .ltn__product-item-3 .product-info {
     padding: 25px 25px 20px 30px;
-  }
+  } */
   .modal-product-info h3 {
     font-size: 22px;
   }
@@ -17045,7 +17045,7 @@ html {
 #liton_product_grid
   .ltn__product-tab-content-inner
   .ltn__product-item.ltn__product-item-3
-  .product-img
+  .product-img .qr-front-face-product
   img {
   width: 300px;
   height: 300px;
@@ -17085,9 +17085,9 @@ html {
   height: 300px !important;
   z-index: 500;
 }
-#liton_product_list .ltn__product-list-view .ltn__product-item-3 .product-info {
+/* #liton_product_list .ltn__product-list-view .ltn__product-item-3 .product-info {
   padding: 25px 25px 20px 0px !important;
-}
+} */
 #liton_product_list .ltn__product-list-view .ltn__product-item-3 h2 a {
   font-family: "Poppins", sans-serif !important;
   font-weight: 400 !important;
@@ -18431,3 +18431,5 @@ span.video-title {
   background-color: #18426399;
   color: white;
 }
+
+/* edit all products css */

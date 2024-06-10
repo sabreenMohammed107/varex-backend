@@ -1,5 +1,3 @@
-
-
 <!-- resources/views/products/partials/products_list.blade.php -->
 
 <div class="tab-content">
@@ -12,7 +10,9 @@
                         <div class="product-img">
 
                             <a href="{{ url('product/'.$product->slug['en']) }}" class="home-img">
-                                <img src="{{ asset("$product->main_image") }}" alt="#">
+                                <img src="{{ asset("$product->main_image") }}" alt="#" class='qr-front-face-product'>
+                                <img src="{{ asset("$product->qr_image") }}" alt="#"
+                                class='qr-back-face-product'>
                             </a>
                             <div class="product-badge">
                                 <ul>
@@ -27,7 +27,8 @@
                                 </a>
                             </h2>
                             <div class="product-price">
-                                <span class="f-s-15 text-in-dark-light f-w-400"> {{ $product->category->name['en'] ?? ''}}</span>
+                                <span class="f-s-15 text-in-dark-light f-w-400"> {{ $product->category->name['en'] ??
+                                    ''}}</span>
                             </div>
                         </div>
                     </div>
@@ -41,8 +42,9 @@
             <div class="row">
                 @foreach($products as $product)
                 <div class="col-lg-12">
-                    <div class="ltn__product-item ltn__product-item-3">
-                        <div class="product-img">
+
+                    <div class="ltn__product-item ltn__product-item-3 row">
+                        <div class="product-img col-12 col-md-4">
                             <a href="#" class="home-img">
                                 <img src="{{ asset("$product->main_image") }}" alt="#">
                             </a>
@@ -52,7 +54,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="product-list-content row mt-3">
+                        <div class="product-list-content row mt-3 col-12 col-md-8">
                             <div class="prod-list-left col-md-9">
                                 <div class="product-info">
                                     <h2 class="product-title">
@@ -61,15 +63,17 @@
                                         </a>
                                     </h2>
                                     <div class="product-price">
-                                        <span class="f-s-15 text-in-dark-light f-w-400">{{ $product->category->name['en'] ?? ''}}</span>
+                                        <span class="f-s-15 text-in-dark-light f-w-400">{{
+                                            $product->category->name['en'] ?? ''}}</span>
                                     </div>
                                 </div>
                                 <div class="product-brief">
                                     <p class="f-clr-gry">{{ $product->description['en'] }}</p>
                                 </div>
                             </div>
-                            <div class="prod-list-right col-md-3 d-flex flex-column justify-items-end justify-content-end">
-                                <img src="img/product/qr/1.png" alt="" class="qr-code-img">
+                            <div
+                                class="prod-list-right col-4 col-sm-3 d-flex flex-column justify-items-end justify-content-end">
+                                <img src="{{ asset("$product->qr_image") }}" alt="" class="qr-code-img">
                             </div>
                         </div>
                     </div>
