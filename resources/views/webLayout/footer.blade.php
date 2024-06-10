@@ -19,7 +19,7 @@
                     <div class="col header-menu-column p-2">
                       <div class="header-search-2" style="min-width: auto">
                         <form id="#123" method="get" action="#">
-                          <input type="text" name="search" value="" placeholder="Email Address" />
+                          <input type="text" name="email" value="" autocomplete="email"  placeholder="Email Address" />
                           <button class="main-search" type="submit">
                             <span><i class="far fa-paper-plane px-2"></i>Subscribe</span>
                           </button>

@@ -1,6 +1,38 @@
 @extends('webLayout.main')
+@section('style')
+    <style>
+        .alert {
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid transparent;
+            border-radius: 4px;
+        }
 
+        .alert-success {
+            color: #3c763d;
+            background-color: #dff0d8;
+            border-color: #d6e9c6;
+        }
+
+        .alert-danger {
+            color: #a94442;
+            background-color: #f2dede;
+            border-color: #ebccd1;
+        }
+
+        .error-message {
+            color: #a94442;
+            font-size: 0.875em;
+            margin-top: 5px;
+        }
+    </style>
+@endsection
 @section('content')
+@if (session('success'))
+<div class="alert alert-success">
+    {{ session('success') }}
+</div>
+@endif
   <!-- PRODUCT DETAILS AREA START -->
   <div class="ltn__product-area ltn__product-gutter pt-80" id="distribute_page">
     <div class="container-lg">
@@ -57,29 +89,30 @@
       <div class="main-distributer-form pb-100">
         <div class="row align-items-center">
           <div class="col-12 col-lg-6 order-2 order-lg-1 form-inputs">
-            <form id="contact-form" action="" method="post">
+            <form id="destibute-form" action="{{ route('distribute.store') }}" method="post">
+                @csrf
               <div class="row">
                 <div class="col-12">
                   <div class="input-item input-item-name ltn__custom-icon">
-                    <label for="exampleFormControlInput1" class="form-label">Your Company Name</label>
-                    <input type="text" name="name">
+                    <label for="company" class="form-label">Your Company Name</label>
+                    <input type="text" id="company_name" name="company_name" autocomplete="company_name" >
                   </div>
                 </div>
                 <div class="col-12">
                   <div class="input-item input-item-name ltn__custom-icon">
-                    <label for="exampleFormControlInput1" class="form-label">Your Name</label>
-                    <input type="text" name="name">
+                    <label for="name" class="form-label">Your Name</label>
+                    <input type="text" id="name" name="name" autocomplete="name">
                   </div>
                 </div>
                 <div class="col-12">
                   <div class="input-item input-item-name ltn__custom-icon">
-                    <label for="exampleFormControlInput1" class="form-label">Telephone Number/WhatsApp</label>
-                    <input type="text" name="name">
+                    <label for="phone" class="form-label">Telephone Number/WhatsApp</label>
+                    <input type="text" id="phone" name="phone" autocomplete="phone">
                   </div>
                 </div>
                 <div class="input-item input-item-textarea ltn__custom-icon">
-                  <label for="exampleFormControlInput1" class="form-label">Your Massage</label>
-                  <textarea name="message"></textarea>
+                  <label for="message" class="form-label">Your Massage</label>
+                  <textarea name="message" id="message"></textarea>
                 </div>
                 <!-- <p><label class="input-info-save mb-0">Please fill in spaces marked with *</label></p> -->
                 <div class="btn-wrapper mt-0 col-12">

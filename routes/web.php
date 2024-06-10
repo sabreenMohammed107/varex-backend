@@ -45,6 +45,7 @@ Route::group([
         Route::get('/blog/{slug}', [IndexController::class, 'showBlog'])->name('blog.show');
         Route::get('/distribute', [IndexController::class, 'distribute']);
         Route::get('/terms-condations', [IndexController::class, 'terms']);
+        Route::post('/distribute', [ContactRequestController::class, 'distribute'])->name('distribute.store');
 });
 // Route::group(
 //     [
@@ -96,6 +97,7 @@ Route::middleware('auth')->group(function () {
         Route::delete('products/{product}/gallery/{gallery}', [ProductGalleryController::class, 'destroy'])->name('products.gallery.destroy');
         Route::resource('why-us', WhyUsController::class);
         Route::get('/contact-requests', [AdminContactRequestController::class, 'index'])->name('contact.requests');
+        Route::get('/distribute-requests', [AdminContactRequestController::class, 'distribute'])->name('distribute.requests');
 
     });
 

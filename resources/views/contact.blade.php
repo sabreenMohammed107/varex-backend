@@ -48,8 +48,8 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="input-item input-item-name ltn__custom-icon">
-                                    <input type="text" name="name" placeholder="Your Name and Surname"
-                                        value="{{ old('name') }}">
+                                    <input type="text" id="name" name="name" placeholder="Your Name and Surname"
+                                        value="{{ old('name') }}" autocomplete="name" >
                                     @error('name')
                                         <div class="error-message">{{ $message }}</div>
                                     @enderror
@@ -57,8 +57,8 @@
                             </div>
                             <div class="col-12">
                                 <div class="input-item input-item-name ltn__custom-icon">
-                                    <input type="email" name="email" placeholder="E-mail Address"
-                                        value="{{ old('email') }}">
+                                    <input type="email" id="email" name="email" placeholder="E-mail Address"
+                                        value="{{ old('email') }}" autocomplete="email">
                                     @error('email')
                                         <div class="error-message">{{ $message }}</div>
                                     @enderror
@@ -66,8 +66,8 @@
                             </div>
                             <div class="col-12">
                                 <div class="input-item input-item-name ltn__custom-icon">
-                                    <input type="text" name="phone" placeholder="Telephone Number"
-                                        value="{{ old('phone') }}">
+                                    <input type="text" id="phone" name="phone" placeholder="Telephone Number"
+                                        value="{{ old('phone') }}" autocomplete="phone">
                                     @error('phone')
                                         <div class="error-message">{{ $message }}</div>
                                     @enderror
@@ -75,14 +75,14 @@
                             </div>
                             <div class="col-12">
                                 <div class="input-item input-item-name ltn__custom-icon">
-                                    <input type="text" name="address" placeholder="Address" value="{{ old('address') }}">
+                                    <input type="text" id="address" name="address" placeholder="Address"autocomplete="Address"  value="{{ old('address') }}">
                                     @error('address')
                                         <div class="error-message">{{ $message }}</div>
                                     @enderror
                                 </div>
                             </div>
                             <div class="input-item input-item-textarea ltn__custom-icon">
-                                <textarea name="message" placeholder="Enter message">{{ old('message') }}</textarea>
+                                <textarea name="message" id="message" placeholder="Enter message">{{ old('message') }}</textarea>
                                 @error('message')
                                     <div class="error-message">{{ $message }}</div>
                                 @enderror

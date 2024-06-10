@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\AboutUs;
 use App\Models\Certificate;
 use App\Models\ContactRequest;
+use App\Models\DistributeRequest;
 use App\Models\Faq;
 use App\Models\WhyUs;
 use Illuminate\Http\Request;
@@ -34,6 +35,19 @@ class ContactRequestController extends Controller
         ]);
 
         ContactRequest::create($validatedData);
+
+        return redirect()->back()->with('success', 'Your message has been sent successfully!');
+    }
+    public function distribute(Request $request)
+    {
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'phone' => 'required|string|max:20',
+            'company_name' => 'required|string|max:255',
+            'message' => 'required|string',
+        ]);
+
+        DistributeRequest::create($validatedData);
 
         return redirect()->back()->with('success', 'Your message has been sent successfully!');
     }
