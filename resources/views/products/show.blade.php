@@ -33,7 +33,24 @@
             width:100%;
             height:100%;
         }
+/* Mobile screens: Disable hover effect */
+@media (max-width: 768px), (pointer: coarse) {
+        #allProductsPage .product-img .qr-back-face-product {
+            display: none;
+        }
 
+        #allProductsPage .product-img:hover .qr-back-face-product {
+            display: none;
+        }
+
+        #allProductsPage .product-img:hover img.qr-front-face-product {
+            display: block;
+        }
+
+        #allProductsPage .product-img:hover .product-badge {
+            display: block;
+        }
+    }
 
 </style>
 @endsection
