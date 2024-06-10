@@ -33,6 +33,24 @@
             width:100%;
             height:100%;
         }
+/* Mobile screens: Disable hover effect */
+@media (max-width: 768px), (pointer: coarse) {
+        #allProductsPage .product-img .qr-back-face-product {
+            display: none;
+        }
+
+        #allProductsPage .product-img:hover .qr-back-face-product {
+            display: none;
+        }
+
+        #allProductsPage .product-img:hover img.qr-front-face-product {
+            display: block;
+        }
+
+        #allProductsPage .product-img:hover .product-badge {
+            display: block;
+        }
+    }
 
 </style>
 @endsection
@@ -173,11 +191,13 @@
                                                     <img src="{{ asset("$product->qr_image") }}" alt="#"
                                                     class='qr-back-face-product'>
                                                         </a>
-                                                <div class="product-badge">
-                                                    <ul>
-                                                        <li class="sale-badge">>@if($product->best_selling == 1)Popular @endif</li>
-                                                    </ul>
-                                                </div>
+                                                        @if ($product->tag)
+                                                        <div class="product-badge">
+                                                            <ul>
+                                                                <li class="sale-badge">{{ $product->tag->title['en'] ?? ''}}</li>
+                                                            </ul>
+                                                        </div>
+                                                        @endif
                                             </div>
                                             <div class="product-info">
                                                 <div class="product-price">

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AboutUsController;
+use App\Http\Controllers\Admin\AdminContactRequestController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\CertificateController;
@@ -94,6 +95,8 @@ Route::middleware('auth')->group(function () {
         Route::put('products/{product}/gallery/{gallery}', [ProductGalleryController::class, 'update'])->name('products.gallery.update');
         Route::delete('products/{product}/gallery/{gallery}', [ProductGalleryController::class, 'destroy'])->name('products.gallery.destroy');
         Route::resource('why-us', WhyUsController::class);
+        Route::get('/contact-requests', [AdminContactRequestController::class, 'index'])->name('contact.requests');
+
     });
 
 });

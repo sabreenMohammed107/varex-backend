@@ -142,31 +142,41 @@
             <div class="row align-items-center">
                 <div class="short-by text-center col-2">
                     <select class="nice-select w-100" id="search_category" name="search_category" style="display: none">
-                        <option>All</option>
+                        <option> <a href="#" onclick="setSearchCategoryId(null); return false;">All</a></option>
                         @foreach ($categoriesOrderedByRank as $category)
-                            <option value="{{  $category->id }}">{{ $category->name['en'] }}</option>
+                            <option value="{{  $category->id }}">{{ $category->name['en'] }} -{{  $category->id  }}</option>
                         @endforeach
 
                     </select>
                     <div style="
-                  border: 1px solid;
-                  font-weight: bold;
-                  font-size: 13px;
-                  color: #184363;
-                  min-width: 100%;
-                "
-                        class="nice-select w-100 my-3" tabindex="0">
-                        <span class="current"><img style="margin-right: 15px" src="{{asset('webasset/img/icons/cat-menu.png')}}"
-                                alt="" srcset="" />All Categories</span>
+                    border: 1px solid;
+                    font-weight: bold;
+                    font-size: 13px;
+                    color: #184363;
+                    min-width: 100%;
+                  "
+                          class="nice-select w-100 my-3" tabindex="0">
+                          <span class="current"><img style="margin-right: 15px"
+                            src="{{ asset('webasset/img/icons/cat-menu.png') }}" alt="" />All Categories</span>
                         <ul class="list">
                             <li data-value="Default Sorting" class="option selected focus">
-                                All
+                                <a href="#" onclick="setSearchCategoryId(null); return false;">All</a>
                             </li>
+                            <li style="display: none"><a href="#" data-categoryid="1" onclick="setSearchCategoryId(1); return false;">Category 1</a></li>
+                            <li style="display: none"><a href="#" data-categoryid="2" onclick="setSearchCategoryId(2); return false;">Category 2</a></li>
                             @foreach ($categoriesOrderedByRank as $category)
-                                <li class="option">{{ $category->name['en'] }}</li>
+
+                            <li class="option">
+                                <a href="#" data-categoryid="{{$category->id}}" onclick="setSearchCategoryId({{$category->id}}); return false;">
+                                    {{ $category->name['en'] }}
+                                </a>
+                            </li>
                             @endforeach
                         </ul>
-                    </div>
+                        <input type="hidden" id="selectedSearchCategoryId" value="">
+
+                  </div>
+
                 </div>
                 <div class="col header-menu-column p-2">
 

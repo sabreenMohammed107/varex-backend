@@ -4722,6 +4722,7 @@ ul.wp-block-latest-posts.is-grid.alignwide {
 @media (max-width: 1199px) {
   .widget {
     padding: 35px 20px 40px 20px;
+    display: none;
   }
   .top-rated-product-img {
     max-width: 70px;
@@ -12418,7 +12419,7 @@ input.cart-plus-minus-box {
 }
 .ltn__faq-inner-2 .card .ltn__card-title[aria-expanded="true"] {
   background-color: transparent;
-  color: var(--ltn__primary-color);
+  color: rgb(174, 18, 60);
 }
 .ltn__faq-inner-2 .card .ltn__card-title[aria-expanded="true"]:before {
   color: var(--ltn__secondary-color);
@@ -16322,6 +16323,7 @@ footer .section-bg-2 {
 .best-selling-prod .ltn__product-item-3 .product-info h2 {
   font-size: 13px;
   color: #15a9e3;
+  padding: 10px 0;
 }
 .best-selling-prod .ltn__product-item-3 .product-info .product-price span {
   font-size: 16px;
@@ -18435,7 +18437,12 @@ span.video-title {
   background-color: #18426399;
   color: white;
 }
-
+.ltn__slide-item-2 .btn-wrapper {
+    margin-top: 0px;
+  }
+  .about-us-ceo-word-section {
+    margin: 0px 15px;
+  }
 /* edit all products css */
 #Certificate_page .ltn__gallery-active .ltn__gallery-item.filter_category_3 .ltn__gallery-item-img a{
     position:relative;
@@ -18476,4 +18483,11 @@ span.video-title {
     left:0;
     background: linear-gradient(0deg, rgba(29,38,38,1) 0%, rgba(255,255,255,0) 100%);
     z-index:15;
+}
+
+/* Desktop view */
+@media (min-width: 1024px) {
+    #about_us_page .section-our-mission .our-vision-section-content .vision-content {
+        transform: translateX(-83px);
+    }
 }

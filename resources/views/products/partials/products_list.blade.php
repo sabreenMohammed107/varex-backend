@@ -14,11 +14,15 @@
                                 <img src="{{ asset("$product->qr_image") }}" alt="#"
                                 class='qr-back-face-product'>
                             </a>
+
+                            @if ($product->tag)
                             <div class="product-badge">
                                 <ul>
-                                    <li class="sale-badge">@if($product->best_selling == 1)Popular @endif</li>
+                                    <li class="sale-badge">{{ $product->tag->title['en'] ?? ''}}</li>
                                 </ul>
                             </div>
+                            @endif
+
                         </div>
                         <div class="product-info">
                             <h2 class="product-title mx-2">
@@ -45,20 +49,23 @@
 
                     <div class="ltn__product-item ltn__product-item-3 row">
                         <div class="product-img col-12 col-md-4">
-                            <a href="#" class="home-img">
+                            <a href="{{ url('product/'.$product->slug['en']) }}" class="home-img">
                                 <img src="{{ asset("$product->main_image") }}" alt="#">
                             </a>
+                            @if ($product->tag)
                             <div class="product-badge">
                                 <ul>
-                                    <li class="sale-badge">@if($product->best_selling == 1)Popular @endif</li>
+                                    <li class="sale-badge">{{ $product->tag->title['en'] ?? ''}}</li>
                                 </ul>
                             </div>
+                            @endif
+
                         </div>
                         <div class="product-list-content row mt-3 col-12 col-md-8">
                             <div class="prod-list-left col-md-9">
                                 <div class="product-info">
                                     <h2 class="product-title">
-                                        <a href="#" class="f-s-25 text-in-dark">
+                                        <a href="{{ url('product/'.$product->slug['en']) }}" class="f-s-25 text-in-dark">
                                             {!! $product->home_title['en'] !!}
                                         </a>
                                     </h2>

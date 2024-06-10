@@ -362,7 +362,7 @@
 /* ----------------------------------------------------
     Popular Post Widget
 ---------------------------------------------------- */
-.ltn__popular-post-widget { 
+.ltn__popular-post-widget {
     ul {
         padding: 0;
         margin: 0;
@@ -419,7 +419,7 @@
            margin-bottom: 5px;
             a {
                 color: var(--ltn__secondary-color);
-            } 
+            }
         }
     }
 }
@@ -443,7 +443,7 @@
             list-style: none;
         }
     }
-} 
+}
 .ltn__top-rated-product-widget > ul > li {
     margin-bottom: 25px;
     padding-bottom: 25px;
@@ -515,8 +515,8 @@
   background-color: var(--ltn__secondary-color);
   background-image: none;
 }
-.price_filter .ui-state-default, 
-.price_filter .ui-widget-content .ui-state-default, 
+.price_filter .ui-state-default,
+.price_filter .ui-widget-content .ui-state-default,
 .price_filter .ui-widget-header .ui-state-default {
     background-color: var(--ltn__secondary-color);
   border: medium none;
@@ -555,8 +555,8 @@
             flex: 1 0 16.6666%;
             max-width: 16.6666%;
         }
-    } 
-} 
+    }
+}
 .ltn__instagram-widget {
     .ltn__instafeed-grid {
        .instagram_gallery {
@@ -567,8 +567,8 @@
                 flex: 0 0 33.333333%;
                 max-width: 33.333333%;
             }
-        } 
-    }  
+        }
+    }
 }
 .ltn__instafeed-slider {
    .slick-list {
@@ -578,8 +578,8 @@
             display: -ms-flexbox;
             display: flex;
         }
-    } 
-} 
+    }
+}
 
 .insta-slide-gutter {
     .slick-list {
@@ -601,7 +601,7 @@
             padding-left: 7.5px;
             margin: 7px 0;
         }
-    } 
+    }
 }
 
 /* ----------------------------------------------------
@@ -807,6 +807,10 @@
     .car-price-filter-range .price_filter .ui-state-default:last-child::after {
         display: none;
     }
+    .widget .ltn__price-filter-widget {
+            display: none !important;
+        }
+
 }
 
 /* ----------------------------------------------------

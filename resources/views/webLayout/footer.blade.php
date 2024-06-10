@@ -54,9 +54,9 @@
 
               <div class="footer-menu mt-5">
                 <ul>
-                  <li><a href="#">Privacy & Policy </a></li>
+                  <li><a href="{{ url('/distribute') }}">Distribute With Us</a></li>
+                  <li><a href="{{ url('/contact') }}">Contact Us</a></li>
                   <li><a href="{{ url('/terms-condations') }}">Terms & Conditions</a></li>
-                  <li><a href="#">Promotional Offers</a></li>
                 </ul>
               </div>
             </div>

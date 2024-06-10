@@ -1,36 +1,39 @@
 @extends('webLayout.main')
 
 @section('style')
-<style>
-    #allProductsPage .product-img .home-img img {
-        object-fit: contain;
-    }
-    #allProductsPage .product-img .qr-back-face-product {
+    <style>
+        #allProductsPage .product-img .home-img img {
+            object-fit: contain;
+        }
+
+        #allProductsPage .product-img .qr-back-face-product {
             display: none;
 
         }
-    #allProductsPage .product-img:hover .qr-back-face-product {
+
+        #allProductsPage .product-img:hover .qr-back-face-product {
             display: block;
             position: relative;
             z-index: 500;
             object-fit: contain;
             width: 100%;
             height: 100%;
-            padding:25px;
+            padding: 25px;
         }
 
-    #allProductsPage .product-img:hover img.qr-front-face-product {
-        display: none;
-    }
+        #allProductsPage .product-img:hover img.qr-front-face-product {
+            display: none;
+        }
 
-    #allProductsPage .product-img:hover .product-badge {
-        display: none;
+        #allProductsPage .product-img:hover .product-badge {
+            display: none;
         }
 
         #allProductsPage .home-img {
-            width:100%;
-            height:100%;
+            width: 100%;
+            height: 100%;
         }
+
         #allProductsPage #liton_product_grid .ltn__product-tab-content-inner .ltn__product-item:hover {
             -webkit-box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.25);
             -moz-box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.25);
@@ -41,125 +44,146 @@
         #allProductsPage #liton_product_list .ltn__product-list-view .ltn__product-item-3 .product-info {
             padding: 7px 25px 20px 2px;
         }
+
         #allProductsPage #liton_product_list .ltn__product-tab-content-inner .ltn__product-item.ltn__product-item-3 .product-img img {
-            height:100% !important ;
+            height: 100% !important;
         }
+
         #allProductsPage #liton_product_list .ltn__product-tab-content-inner .ltn__product-item.ltn__product-item-3 img.qr-code-img {
-            padding-bottom : 25px;
+            padding-bottom: 25px;
         }
-</style>
+
+        /* Mobile screens: Disable hover effect */
+    @media (max-width: 768px), (pointer: coarse) {
+        #allProductsPage .product-img .qr-back-face-product {
+            display: none;
+        }
+
+        #allProductsPage .product-img:hover .qr-back-face-product {
+            display: none;
+        }
+
+        #allProductsPage .product-img:hover img.qr-front-face-product {
+            display: block;
+        }
+
+        #allProductsPage .product-img:hover .product-badge {
+            display: block;
+        }
+    }
+    </style>
 @endsection
 
 @section('content')
-<!-- BREADCRUMB AREA START -->
-<div class="py-3">
-    <div class="container-lg">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="ltn__breadcrumb-inner ltn__breadcrumb-inner-2">
-                    <div class="ltn__breadcrumb-list ">
-                        <ul>
-                            <li><a href="{{ url('/') }}">Home</a></li>
-                            <li>Varex Products</li>
-                        </ul>
+    <!-- BREADCRUMB AREA START -->
+    <div class="py-3">
+        <div class="container-lg">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="ltn__breadcrumb-inner ltn__breadcrumb-inner-2">
+                        <div class="ltn__breadcrumb-list ">
+                            <ul>
+                                <li><a href="{{ url('/') }}">Home</a></li>
+                                <li>Varex Products</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<!-- BREADCRUMB AREA END -->
-<!-- PRODUCT DETAILS AREA START -->
-<div class="ltn__product-area ltn__product-gutter" id="allProductsPage">
-    <div class="container-lg">
-        <div class="row">
-            <div class="col-lg-9 order-lg-2 mb-120">
-                <div class="ltn__shop-options">
-                    <ul>
-                        <li>
-                            <div class="showing-product-number text-right text-end">
-                                <span>Varex Products</span>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="ltn__grid-list-tab-menu ">
-                                <div class="nav">
-                                    <a class="active show" data-bs-toggle="tab" href="#liton_product_grid"><i
-                                            class="fas fa-th-large"></i></a>
-                                    <a data-bs-toggle="tab" href="#liton_product_list"><i class="fas fa-list"></i></a>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-                <div id="product-list">
-                    @include('products.partials.products_list', ['products' => $products])
-                </div>
-
-                <div class="ltn__pagination-area text-center">
-                    <div class="ltn__pagination pagination">
-                        <ul id="pagination-links">
-                            {!! $products->links('vendor.pagination.custom') !!}
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3  mb-120">
-                <aside class="sidebar ltn__shop-sidebar">
-                    <!-- Category Widget -->
-
-                    <div class="widget ltn__menu-widget">
-                        <h4 class="ltn__widget-title ltn__widget-title-border">Categories</h4>
+    <!-- BREADCRUMB AREA END -->
+    <!-- PRODUCT DETAILS AREA START -->
+    <div class="ltn__product-area ltn__product-gutter" id="allProductsPage">
+        <div class="container-lg">
+            <div class="row">
+                <div class="col-lg-9 order-lg-2 mb-120">
+                    <div class="ltn__shop-options">
                         <ul>
-                            <li><a href="#" onclick="setCategoryId(null); return false;">All Category
-                                    ({{ $countAll }})</a></li>
-                            @foreach ($categoriesOrderedByRank as $category)
-                            <li><a href="#" class="proCategory" data-categoryid="{{ $category->id }}"
-                                    onclick="setCategoryId({{ $category->id }}); return false;">
-                                    {{ $category->name['en'] }} ({{ $category->products_count }})
-                                </a></li>
-                            @endforeach
-
-                        </ul>
-                        <input type="hidden" id="selectedCategoryId" value="">
-                    </div>
-
-                    <!-- Price Filter Widget -->
-                    <div class="widget ltn__price-filter-widget">
-                        <h4 class="ltn__widget-title ltn__widget-title-border">Tags</h4>
-                        <div class="price_filter">
-                            <div class="price_slider_amount">
-                                <span class="tag-bg f-s-13">All Tags</span>
-                                @foreach ($tags as $tag)
-                                <span class="tag-bg f-s-13">{{ $tag->title['en'] ?? '' }}</span>
-                                @endforeach
-
-
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Top Rated Product Widget -->
-
-                    <div class="logo-catalog">
-                        <div class="main-logo">
-                            <img src="{{ asset('webasset/img/logo.png') }}" alt="">
-                        </div>
-                        <ul class="cst-btn p-0">
-                            <li class="special-link shinep-0">
-                                <a class="p-0" download="#">Download Katalog</a>
+                            <li>
+                                <div class="showing-product-number text-right text-end">
+                                    <span>Varex Products</span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="ltn__grid-list-tab-menu ">
+                                    <div class="nav">
+                                        <a class="active show" data-bs-toggle="tab" href="#liton_product_grid"><i
+                                                class="fas fa-th-large"></i></a>
+                                        <a data-bs-toggle="tab" href="#liton_product_list"><i class="fas fa-list"></i></a>
+                                    </div>
+                                </div>
                             </li>
                         </ul>
                     </div>
-                </aside>
+                    <div id="product-list">
+                        @include('products.partials.products_list', ['products' => $products])
+                    </div>
+
+                    <div class="ltn__pagination-area text-center">
+                        <div class="ltn__pagination pagination">
+                            <ul id="pagination-links">
+                                {!! $products->links('vendor.pagination.custom') !!}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3  mb-120">
+                    <aside class="sidebar ltn__shop-sidebar">
+                        <!-- Category Widget -->
+
+                        <div class="widget ltn__menu-widget">
+                            <h4 class="ltn__widget-title ltn__widget-title-border">Categories</h4>
+                            <ul>
+                                <li><a href="#" onclick="setCategoryId(null); return false;">All Category
+                                        ({{ $countAll }})</a></li>
+                                @foreach ($categoriesOrderedByRank as $category)
+                                    <li><a href="#" class="proCategory" data-categoryid="{{ $category->id }}"
+                                            onclick="setCategoryId({{ $category->id }}); return false;">
+                                            {{ $category->name['en'] }} ({{ $category->products_count }})
+                                        </a></li>
+                                @endforeach
+
+                            </ul>
+                            <input type="hidden" id="selectedCategoryId" value="">
+                        </div>
+
+                        <!-- Price Filter Widget -->
+                        <div class="widget ltn__price-filter-widget">
+                            <h4 class="ltn__widget-title ltn__widget-title-border">Tags</h4>
+                            <div class="price_filter">
+                                <div class="price_slider_amount">
+                                    <span class="tag-bg f-s-13">All Tags</span>
+                                    @foreach ($tags as $tag)
+                                        <span class="tag-bg f-s-13">{{ $tag->title['en'] ?? '' }}</span>
+                                    @endforeach
+
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Top Rated Product Widget -->
+
+                        <div class="logo-catalog">
+                            <div class="main-logo">
+                                <img src="{{ asset('webasset/img/logo.png') }}" alt="">
+                            </div>
+                            <ul class="cst-btn p-0">
+                                <li class="special-link shinep-0">
+                                    <a class="p-0" download="#">Download Katalog</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </aside>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<!-- PRODUCT DETAILS AREA END -->
+    <!-- PRODUCT DETAILS AREA END -->
 @endsection
 @section('webScript')
-<script>
-    $(document).ready(function($) {
+    <script>
+        $(document).ready(function($) {
             $(document).on('click', '.pagination a', function(event) {
                 event.preventDefault();
                 var pageUrl = $(this).attr('href');
@@ -170,6 +194,11 @@
 
             // Event handler for search button click
             $('#searchButton').click(function(e) {
+                e.preventDefault();
+                fetchProducts();
+            });
+                // Event handler for search button click
+                $('#mob_searchButton').click(function(e) {
                 e.preventDefault();
                 fetchProducts();
             });
@@ -189,37 +218,73 @@
         // Function to set the selected category ID
 
         function setCategoryId(categoryId) {
-    // Set the value of the element
-    $('#selectedCategoryId').val(categoryId);
-    fetchProducts(); // Fetch products for the first page when category changes
+            // Set the value of the element
+            $('#selectedCategoryId').val(categoryId);
+            fetchProducts(); // Fetch products for the first page when category changes
 
-    // Remove the blue color and bold font weight from all categories
-    $('.proCategory').css({
-        'color': '',
-        'font-weight': ''
+            // Remove the blue color and bold font weight from all categories
+            $('.proCategory').css({
+                'color': '',
+                'font-weight': ''
+            });
+
+            // Set the color and bold font weight of the selected category
+            $(`.proCategory[data-categoryid="${categoryId}"]`).css({
+                'color': '#ae123c',
+                'font-weight': 'bold'
+            });
+        }
+
+        function setSearchCategoryId(categoryId) {
+            // Set the value of the element
+            console.log(" categoryId:", categoryId);
+            $('#selectedSearchCategoryId').val(categoryId);
+            // fetchProducts(); // Fetch products for the first page when category changes
+
+
+        }
+        function mobsetSearchCategoryId(categoryId) {
+            // Set the value of the element
+            console.log(" mobcategoryId:", categoryId);
+            $('#mobselectedSearchCategoryId').val(categoryId);
+            // fetchProducts(); // Fetch products for the first page when category changes
+
+
+        }
+        // Function to initialize the event listeners
+    function initializeSearchCategory() {
+        const categoryLinks = document.querySelectorAll('.list .option a');
+
+        categoryLinks.forEach(link => {
+            link.addEventListener('click', function (event) {
+                event.preventDefault();  // Prevent the default link behavior
+                const categoryId = link.getAttribute('data-categoryid') || null;
+                setSearchCategoryId(categoryId);
+            });
+        });
+    }
+
+    // Initialize the search category on page load
+    window.addEventListener('DOMContentLoaded', (event) => {
+        initializeSearchCategory();
     });
-
-    // Set the color and bold font weight of the selected category
-    $(`.proCategory[data-categoryid="${categoryId}"]`).css({
-        'color': '#ae123c',
-        'font-weight': 'bold'
-    });
-}
-
 
         function fetchProducts(page = 1) {
             console.log("Fetching products for page: " + page);
             var searchQuery = $('#search_name').val(); // Get the search query from the input field
+            var mobsearchQuery = $('#mob_search_name').val();
             var categoryId = $('#selectedCategoryId').val(); // Get the selected category ID
-            var searchCategory = $('#search_category').val(); // Get the search query from the input field
-            console.log("Received categoryId:", categoryId);
-
+            var searchCategory = $('#selectedSearchCategoryId').val(); // Get the search query from the input field
+            console.log("Received categoryId:", searchCategory);
+            var mobsearchCategory = $('#mobselectedSearchCategoryId').val();
             $.ajax({
                 url: "/products?page=" + page,
                 data: {
                     search_name: searchQuery,
                     category_id: categoryId, // Pass the selected category ID as data
-                    searchCategory: searchCategory
+                    searchCategory: searchCategory,
+                    mobsearchQuery: mobsearchQuery,
+                    mobsearchCategory: mobsearchCategory
                 },
                 success: function(data) {
                     // console.log("Received data:", data);
@@ -231,5 +296,5 @@
                 }
             });
         }
-</script>
+    </script>
 @endsection
