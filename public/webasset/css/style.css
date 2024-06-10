@@ -18435,7 +18435,12 @@ span.video-title {
   background-color: #18426399;
   color: white;
 }
-
+.ltn__slide-item-2 .btn-wrapper {
+    margin-top: 0px;
+  }
+  .about-us-ceo-word-section {
+    margin: 0px 15px;
+  }
 /* edit all products css */
 #Certificate_page .ltn__gallery-active .ltn__gallery-item.filter_category_3 .ltn__gallery-item-img a{
     position:relative;
