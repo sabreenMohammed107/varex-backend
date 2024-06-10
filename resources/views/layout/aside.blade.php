@@ -430,7 +430,7 @@
                             </span>
                             <!--end::Svg Icon-->
                         </span>
-                        <span class="menu-title">NewsLetter </span>
+                        <span class="menu-title">Distribute requests </span>
                     </a>
                 </div>
                 <div class="menu-item">
