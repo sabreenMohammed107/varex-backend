@@ -110,7 +110,7 @@
               </h3>
               <div class="about-us-ceo-word-section">
                 <div class="row">
-                  <div class="col-12 col-md-8 ceo-content">
+                  <div class="col-12 col-md-8 ceo-content mx-1">
                     {!! $about->seo_description['en'] ?? ' ' !!}
                     <div class="ceo-sign">
                       <h3 class="text-in-dark">{!! $about->manager_name['en'] ?? ' ' !!}</h3>
