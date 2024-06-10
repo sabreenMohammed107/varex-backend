@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use App\Models\ContactRequest;
 use App\Models\DistributeRequest;
 use App\Models\Faq;
+use App\Models\NewsLetter;
 use Illuminate\Http\Request;
 
 class AdminContactRequestController extends Controller
@@ -24,5 +25,13 @@ class AdminContactRequestController extends Controller
 
         // Return view with contact requests data
         return view('admin.contact_requests.distribute', compact('distributeRequests'));
+    }
+
+    public function newsLetter(){
+          // Fetch all contact requests
+          $newsLetterRequests = NewsLetter::all();
+
+          // Return view with contact requests data
+          return view('admin.contact_requests.newsLetter', compact('newsLetterRequests'));
     }
 }

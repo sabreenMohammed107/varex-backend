@@ -100,7 +100,7 @@
                                     <td>
                                         <input type="hidden" name="" id=""  data-kt-ecommerce-category-filter="category_id" value="{{$tag->id}}" >
 
-                                        {{ $tag->created_at->format('Y-m-d') }}
+                                        {{ $tag->created_at ? $tag->created_at->format('Y-m-d') : '' }}
                                     </td>
                                     <td>{{ $tag->title['en'] }}</td>
                                     <td class="text-end">

@@ -99,7 +99,7 @@ Route::middleware('auth')->group(function () {
         Route::resource('why-us', WhyUsController::class);
         Route::get('/contact-requests', [AdminContactRequestController::class, 'index'])->name('contact.requests');
         Route::get('/distribute-requests', [AdminContactRequestController::class, 'distribute'])->name('distribute.requests');
-
+        Route::get('/newsLetter-requests', [AdminContactRequestController::class, 'newsLetter'])->name('newsLetter.requests');
     });
 
 });
