@@ -260,7 +260,7 @@
             // Get the selected search category ID from the global search
             var searchCategoryId = $('#selectedSearchCategoryId').val();
 
-
+            var mobsearchQuery = $('#mob_search_name').val();
             // Determine URL
             var url = "/products";
 
@@ -275,7 +275,8 @@
                     page: page,
                     searchQuery: searchQuery,
                     category_id: categoryId,
-                    searchCategoryId: searchCategoryId // Add the selectedSearchCategoryId to the request data
+                    searchCategoryId: searchCategoryId, // Add the selectedSearchCategoryId to the request data
+                    mobsearchQuery: mobsearchQuery,
                 },
                 success: function(data) {
                     $('#product-list').html(data.products);

@@ -17,23 +17,27 @@
 
             </select>
             <div class="nice-select w-100 my-3" tabindex="0">
-                <span class="current"><img style="margin-right: 5px" src="{{asset('webasset/img/icons/cat-menu.png')}}" alt=""
-                        srcset="" />All
-                    Categories</span>
-                    <ul class="list">
-                        <li data-value="Default Sorting" class="option selected focus">
 
-                            <a href="#" onclick="mobsetSearchCategoryId(null); return false;">All</a>
-                        </li>
-                        @foreach ($categoriesOrderedByRank as $category)
-                            <li class="option"><a href="#" data-categoryid="{{ $category->id }}"
-                                    onclick="mobsetSearchCategoryId({{ $category->id }}); return false;">
-                                    {{ $category->name['en'] }}
-                                </a></li>
-                        @endforeach
-                    </ul>
-                    <input type="hidden" id="mobselectedSearchCategoryId" name="selectedSearchCategoryId" value="">
-
+                    <span class="current"><img style="margin-right: 5px"
+                        src="{{ asset('webasset/img/icons/cat-menu.png') }}" alt="" />
+                        @if(isset($catObj))
+                        {{ $catObj->name['en'] ?? '' }}
+                    @else
+                        All Categories
+                    @endif</span>
+                        <ul class="list category-select2" id="categoryList2">
+                            {{-- <li data-value="Default Sorting" class="option selected focus">
+                                <a href="#" data-categoryid="null">All</a>
+                            </li> --}}
+                            @foreach ($categoriesOrderedByRank as $category)
+                            <?php
+                            $id=$category->id ;
+                            ?>
+                            <li class="option" data-id="{{ $id }}" onclick="mobsetSearchCategoryId({{ $category->id }}, '{{ $category->name['en'] }}'); return false;">
+                                  {{ $category->name['en'] }}
+                            </li>
+                            @endforeach
+                        </ul>
 
             </div>
         </div>

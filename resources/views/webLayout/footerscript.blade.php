@@ -25,6 +25,25 @@
     window.location.href = `{{ url('/products') }}?selectedSearchCategoryId=${categoryId}`;
 
 }
+document.addEventListener('DOMContentLoaded', (event) => {
+    document.querySelector('.category-select2').addEventListener('click', function(event) {
+        // if (event.target.tagName === 'A') {
+            event.preventDefault();
+            const categoryId = event.target.getAttribute('data-id'); // Change to 'data-id'
+            const categoryName = event.target.textContent.trim(); // Get the category name
+            setSearchCategoryId(categoryId, categoryName); // Pass both categoryId and categoryName
+       // }
+    });
+});
+
+    function mobsetSearchCategoryId(categoryId, categoryName) {
+    console.log("categoryId:>>", categoryId);
+    console.log("categoryName:>>", categoryName);
+    document.getElementById('mobselectedSearchCategoryId').value = categoryId;
+    // Navigate to products page
+    window.location.href = `{{ url('/products') }}?mobselectedSearchCategoryId=${categoryId}`;
+
+}
     document.addEventListener('DOMContentLoaded', () => {
         const newsletterForm = document.getElementById('newsletterForm');
         const agreeCheckbox = document.getElementById('agree');
