@@ -27,40 +27,54 @@ class IndexController extends Controller
     public function productList(Request $request)
     {
         $query = Product::where('featured', 1);
-
+        \Log::info($request->all());
+        //from search button
         // Name search filtering
-        if ($request->filled('search_name') || $request->filled('mobsearchQuery')) {
+        if (($request->filled('search_name') && !empty($request->search_name)) || ($request->filled('mobsearchQuery') && !empty($request->mobsearchQuery))) {
             $searchTerm = $request->filled('search_name') ? $request->search_name : $request->mobsearchQuery;
-            $query->where(function ($q) use ($searchTerm) {
-                $q->where('home_title->en', 'like', '%' . $searchTerm . '%')
-                    ->orWhere('home_title->ar', 'like', '%' . $searchTerm . '%');
-            });
-
+            \Log::info(["has name", $searchTerm]);
+            $query->where('home_title->en', 'like', '%' . $searchTerm . '%')
+                ->orWhere('home_title->ar', 'like', '%' . $searchTerm . '%');
+            // ->orWhere('title->en', 'like', '%' . $searchTerm . '%')
+            // ->orWhere('title->ar', 'like', '%' . $searchTerm . '%');
 
         } else {
-            if ($request->filled('category_id') ||
-                ($request->filled('searchCategory') && $request->searchCategory != 'All') ||
-                ($request->filled('mobsearchCategory') && $request->mobsearchCategory != 'All')) {
-                $categoryId = $request->filled('category_id') ? $request->category_id :
-                ($request->filled('searchCategory') ? $request->searchCategory : $request->mobsearchCategory);
-                $query->where('category_id', $categoryId);
+            if ($request->filled('selectedSearchCategoryId') && $request->selectedSearchCategoryId) {
+                $query->where('category_id', $request->input('selectedSearchCategoryId'));
+                \Log::info("has category");
             }
         }
 
+        if ($request->has('category_id')) {
+            \Log::info("has categoryfilter");
+            $query->where('category_id', $request->category_id);
+        }
+        if (($request->filled('searchQuery') && !empty($request->searchQuery))) {
+            $searchTerm = $request->filled('searchQuery');
+            \Log::info(["has name", $searchTerm]);
+            $query->where('home_title->en', 'like', '%' . $searchTerm . '%')
+                ->orWhere('home_title->ar', 'like', '%' . $searchTerm . '%');
+            // ->orWhere('title->en', 'like', '%' . $searchTerm . '%')
+            // ->orWhere('title->ar', 'like', '%' . $searchTerm . '%');
+
+        }
         // Retrieve paginated products with applied filters
         $products = $query->orderBy('created_at', 'desc')->paginate(30);
+        \Log::info(["has products", $products->count()]);
         // If the request is AJAX, return JSON response
-        if ($request->ajax()) {
+        if ($request->filled('searchQuery') || $request->filled('category_id')) {
+            \Log::info(["has ajax"]);
             return response()->json([
                 'products' => view('products.partials.products_list', compact('products'))->render(),
                 'pagination' => $products->links('vendor.pagination.custom')->toHtml(),
-            ]);
-        }
+            ]);}
+        \Log::info(["no ajax"]);
         $countAll = Product::count();
         $tags = ProductTag::all();
         $about = AboutUs::firstOrFail();
-        return view('products.index', compact('products', 'countAll', 'tags','about'));
+        return view('products.index', compact('products', 'countAll', 'tags', 'about'));
     }
+
     public function show($slug)
     {
         // Fetch the product using the provided slug
@@ -76,7 +90,7 @@ class IndexController extends Controller
         $countAll = Product::count();
         $tags = ProductTag::all();
         $about = AboutUs::firstOrFail();
-        return view('products.show', compact('product', 'relatedProducts', 'countAll', 'tags','about'));
+        return view('products.show', compact('product', 'relatedProducts', 'countAll', 'tags', 'about'));
     }
 
     public function mediaList()

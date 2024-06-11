@@ -171,7 +171,8 @@
                             </div>
                             <ul class="cst-btn p-0">
                                 <li class="special-link shinep-0">
-                                    <a class="p-0" href="{{ $about->company_katalog }}" download="">Download Katalog</a>
+                                    <a class="p-0" href="{{ $about->company_katalog }}" download="">Download
+                                        Katalog</a>
                                 </li>
                             </ul>
                         </div>
@@ -193,23 +194,11 @@
                 fetchProducts(page);
             });
 
-            // Event handler for search button click
             $('#searchButton').click(function(e) {
-                console.log(['test',$('#selectedSearchCategoryForm').val()])
-                e.preventDefault();
-                fetchProducts();
-            });
-            // Event handler for search button click
-            $('#mob_searchButton').click(function(e) {
-                e.preventDefault();
-                fetchProducts();
-            });
-
-            // Event handler for pressing Enter key
-            $('#search_name').keypress(function(e) {
-                if (e.which == 13) { // 13 is the Enter key code
-                    e.preventDefault(); // Prevent default form submission behavior
-                    fetchProducts();
+                var searchQuery = $('#global-search-input').val(); // Get search query
+                if (searchQuery.trim() !== '') {
+                    // Redirect to search results page
+                    window.location.href = "/products?search_name=" + encodeURIComponent(searchQuery);
                 }
             });
 
@@ -237,15 +226,6 @@
             });
         }
 
-        function setSearchCategoryId(categoryId) {
-            // Set the value of the element
-            console.log(" categoryId:", categoryId);
-            $('#selectedSearchCategoryId').val(categoryId);
-            setCategoryId(categoryId);
-            // fetchProducts(); // Fetch products for the first page when category changes
-
-
-        }
 
         function mobsetSearchCategoryId(categoryId) {
             // Set the value of the element
@@ -255,43 +235,48 @@
 
 
         }
+
+        // function setSearchCategoryId(categoryId) {
+        //     // Set the value of the element
+        //     console.log(" categoryId:", categoryId);
+        //     $('#selectedSearchCategoryId').val(categoryId);
+        //     setCategoryId(categoryId)
+
+
+        // }
         // Function to initialize the event listeners
-        function initializeSearchCategory() {
-            const categoryLinks = document.querySelectorAll('.list .option a');
 
-            categoryLinks.forEach(link => {
-                link.addEventListener('click', function(event) {
-                    event.preventDefault(); // Prevent the default link behavior
-                    const categoryId = link.getAttribute('data-categoryid') || null;
-                    setSearchCategoryId(categoryId);
-                });
-            });
-        }
 
-        // Initialize the search category on page load
-        window.addEventListener('DOMContentLoaded', (event) => {
-            initializeSearchCategory();
-        });
 
         function fetchProducts(page = 1) {
             console.log("Fetching products for page: " + page);
-            var searchQuery = $('#search_name').val(); // Get the search query from the input field
-            var mobsearchQuery = $('#mob_search_name').val();
-            var categoryId = $('#selectedCategoryId').val(); // Get the selected category ID
-            var searchCategory = $('#selectedSearchCategoryForm').val(); // Get the search query from the input field
-            console.log("Received categoryId:", searchCategory);
-            var mobsearchCategory = $('#mobselectedSearchCategoryId').val();
+
+            // Get the search query from the input field
+            var searchQuery = $('#search_name').val();
+
+            // Get the selected category ID
+            var categoryId = $('#selectedCategoryId').val();
+
+            // Get the selected search category ID from the global search
+            var searchCategoryId = $('#selectedSearchCategoryId').val();
+
+            // Determine URL
+            var url = "/products";
+
+            // Check if global search input exists
+            if ($('#global-search-input').length) {
+                searchQuery = $('#global-search-input').val();
+            }
+
             $.ajax({
-                url: "/products?page=" + page,
+                url: url + "?page=" + page,
                 data: {
-                    search_name: searchQuery,
-                    category_id: categoryId, // Pass the selected category ID as data
-                    searchCategory: searchCategory,
-                    mobsearchQuery: mobsearchQuery,
-                    mobsearchCategory: mobsearchCategory
+                    page: page,
+                    searchQuery: searchQuery,
+                    category_id: categoryId,
+                    searchCategoryId: searchCategoryId // Add the selectedSearchCategoryId to the request data
                 },
                 success: function(data) {
-                    // console.log("Received data:", data);
                     $('#product-list').html(data.products);
                     $('#pagination-links').html(data.pagination);
                 },

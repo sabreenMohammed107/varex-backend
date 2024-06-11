@@ -158,21 +158,19 @@
                           class="nice-select w-100 my-3" tabindex="0">
                           <span class="current"><img style="margin-right: 15px"
                             src="{{ asset('webasset/img/icons/cat-menu.png') }}" alt="" />All Categories</span>
-                        <ul class="list">
-                            <li data-value="Default Sorting" class="option selected focus">
-                                <a href="#" onclick="setSearchCategoryId(null); return false;">All</a>
-                            </li>
-
-                            @foreach ($categoriesOrderedByRank as $category)
-
-                            <li class="option">
-                                <a href="#" data-categoryid="{{$category->id}}" onclick="setSearchCategoryId({{$category->id}}); return false;">
-                                    {{ $category->name['en'] }}
-                                </a>
-                            </li>
-                            @endforeach
-                        </ul>
-
+                            <ul class="list category-select" id="categoryList">
+                                <li data-value="Default Sorting" class="option selected focus">
+                                    <a href="#" data-categoryid="null">All</a>
+                                </li>
+                                @foreach ($categoriesOrderedByRank as $category)
+                                    <li class="option">
+                                        <a href="#" data-categoryid="{{ $category->id }}" onclick="setSearchCategoryId({{ $category->id }}); return false;" >
+                                            {{ $category->name['en'] }} -{{  $category->id  }}
+                                        </a>
+                                    </li>
+                                @endforeach
+                            </ul>
+                            <input type="hidden" id="selectedSearchCategoryId" name="selectedSearchCategoryId" value="">
                   </div>
 
                 </div>
@@ -182,7 +180,7 @@
                         <form id="searchForm" action="{{ url('/products') }}" method="get">
                             <input type="hidden" id="selectedSearchCategoryId" name="selectedSearchCategoryId" value="">
                             <input type="text" name="search_name"
-                            id="search_name" value=""
+                            id="global-search-input" value=""
                                 placeholder="What are you looking for?" />
                             <button id="searchButton" class="main-search" type="submit">
                                 <span><i class="icon-search"></i></span>

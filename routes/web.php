@@ -35,6 +35,7 @@ Route::group([
 ],function() {
     Route::get('/', [IndexController::class, 'index']);
         Route::get('/products', [IndexController::class, 'productList']);
+        Route::get('/products-search', [IndexController::class, 'productList2']);
         Route::get('/product/{slug}', [IndexController::class, 'show'])->name('product.show');
         Route::get('/media', [IndexController::class, 'mediaList']);
         Route::get('/contact', [IndexController::class, 'contact']);
