@@ -94,7 +94,7 @@
                             <img src="{{ asset("$feature->main_image") }}" alt="#" />
                         </div>
                         <div class="btn-wrapper animated">
-                            <a href="" class="theme-btn-1 btn f-s-11-5">Know More </a>
+                            <a href="{{ url('product/'.$feature->slug['en']) }}" class="theme-btn-1 btn f-s-11-5">Know More </a>
                         </div>
                     </div>
                 </div>

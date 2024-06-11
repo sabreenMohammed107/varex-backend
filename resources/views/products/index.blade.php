@@ -260,6 +260,7 @@
             // Get the selected search category ID from the global search
             var searchCategoryId = $('#selectedSearchCategoryId').val();
 
+
             // Determine URL
             var url = "/products";
 
@@ -285,5 +286,6 @@
                 }
             });
         }
+
     </script>
 @endsection

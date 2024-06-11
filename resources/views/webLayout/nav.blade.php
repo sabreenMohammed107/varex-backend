@@ -32,6 +32,7 @@
                                 </a></li>
                         @endforeach
                     </ul>
+                    <input type="hidden" id="mobselectedSearchCategoryId" name="selectedSearchCategoryId" value="">
 
 
             </div>

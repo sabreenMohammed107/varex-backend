@@ -40,6 +40,27 @@
             }
         });
     });
+    document.addEventListener('DOMContentLoaded', function () {
+        function mobsetSearchCategoryId(categoryId) {
+            console.log("categoryId:", categoryId);
+            document.getElementById('mobselectedSearchCategoryId').value = categoryId;
+        }
+
+        // Event delegation for dynamically added or modified elements
+        document.querySelector('.ltn__utilize-menu .list').addEventListener('click', function (event) {
+            var target = event.target;
+            while (target && target !== this) {
+                if (target.matches('a[data-categoryid]')) {
+                    event.preventDefault(); // Prevent the default action
+                    var categoryId = target.getAttribute('data-categoryid');
+                    mobsetSearchCategoryId(categoryId);
+                    return;
+                }
+                target = target.parentElement;
+            }
+        });
+    });
+
     //   $(document).ready(function($) {
     //       // Event handler for search button click
     //       $('#searchButton').click(function(e) {
