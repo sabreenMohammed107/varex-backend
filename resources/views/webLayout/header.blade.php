@@ -157,20 +157,26 @@
                   "
                           class="nice-select w-100 my-3" tabindex="0">
                           <span class="current"><img style="margin-right: 15px"
-                            src="{{ asset('webasset/img/icons/cat-menu.png') }}" alt="" />All Categories</span>
+                            src="{{ asset('webasset/img/icons/cat-menu.png') }}" alt="" />
+                            @if(isset($catObj))
+                            {{ $catObj->name['en'] ?? '' }}
+                        @else
+                            All Categories
+                        @endif</span>
                             <ul class="list category-select" id="categoryList">
-                                <li data-value="Default Sorting" class="option selected focus">
+                                {{-- <li data-value="Default Sorting" class="option selected focus">
                                     <a href="#" data-categoryid="null">All</a>
-                                </li>
+                                </li> --}}
                                 @foreach ($categoriesOrderedByRank as $category)
-                                    <li class="option">
-                                        <a href="#" data-categoryid="{{ $category->id }}" onclick="setSearchCategoryId({{ $category->id }}); return false;" >
-                                            {{ $category->name['en'] }}
-                                        </a>
-                                    </li>
+                                <?php
+                                $id=$category->id ;
+                                ?>
+                                <li class="option" data-id="{{ $id }}" onclick="setSearchCategoryId({{ $category->id }}, '{{ $category->name['en'] }}'); return false;">
+                                      {{ $category->name['en'] }}
+                                </li>
                                 @endforeach
                             </ul>
-                            <input type="hidden" id="selectedSearchCategoryId" name="selectedSearchCategoryId" value="">
+                            {{-- <input type="text" id="selectedSearchCategoryId" name="selectedSearchCategoryId" value=""> --}}
                   </div>
 
                 </div>

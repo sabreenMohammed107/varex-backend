@@ -6,26 +6,25 @@
 
   @yield('webScript')
   <script>
-    document.addEventListener('DOMContentLoaded', (event) => {
-        const categoryLinks = document.querySelectorAll('.category-select a');
-        categoryLinks.forEach(link => {
-            link.addEventListener('click', function(event) {
-                event.preventDefault();
-                const categoryId = this.getAttribute('data-categoryid');
-                setSearchCategoryId(categoryId);
-            });
-        });
+  document.addEventListener('DOMContentLoaded', (event) => {
+    document.querySelector('.category-select').addEventListener('click', function(event) {
+        // if (event.target.tagName === 'A') {
+            event.preventDefault();
+            const categoryId = event.target.getAttribute('data-id'); // Change to 'data-id'
+            const categoryName = event.target.textContent.trim(); // Get the category name
+            setSearchCategoryId(categoryId, categoryName); // Pass both categoryId and categoryName
+       // }
     });
+});
 
-    function setSearchCategoryId(categoryId) {
-        console.log("categoryId:>>", categoryId);
-        document.getElementById('selectedSearchCategoryId').value = categoryId;
-        // document.getElementById('selectedSearchCategoryForm').value = categoryId;
-        // Navigate to products page
-        window.location.href = `{{ url('/products') }}?selectedSearchCategoryId=${categoryId}`;
-        document.getElementById('selectedSearchCategoryId').value = null;
-    }
+    function setSearchCategoryId(categoryId, categoryName) {
+    console.log("categoryId:>>", categoryId);
+    console.log("categoryName:>>", categoryName);
+    document.getElementById('selectedSearchCategoryId').value = categoryId;
+    // Navigate to products page
+    window.location.href = `{{ url('/products') }}?selectedSearchCategoryId=${categoryId}`;
 
+}
     document.addEventListener('DOMContentLoaded', () => {
         const newsletterForm = document.getElementById('newsletterForm');
         const agreeCheckbox = document.getElementById('agree');
@@ -37,26 +36,6 @@
                 errorMessage.style.display = 'block';
             } else {
                 errorMessage.style.display = 'none';
-            }
-        });
-    });
-    document.addEventListener('DOMContentLoaded', function () {
-        function mobsetSearchCategoryId(categoryId) {
-            console.log("categoryId:", categoryId);
-            document.getElementById('mobselectedSearchCategoryId').value = categoryId;
-        }
-
-        // Event delegation for dynamically added or modified elements
-        document.querySelector('.ltn__utilize-menu .list').addEventListener('click', function (event) {
-            var target = event.target;
-            while (target && target !== this) {
-                if (target.matches('a[data-categoryid]')) {
-                    event.preventDefault(); // Prevent the default action
-                    var categoryId = target.getAttribute('data-categoryid');
-                    mobsetSearchCategoryId(categoryId);
-                    return;
-                }
-                target = target.parentElement;
             }
         });
     });

@@ -72,7 +72,8 @@ class IndexController extends Controller
         $countAll = Product::count();
         $tags = ProductTag::all();
         $about = AboutUs::firstOrFail();
-        return view('products.index', compact('products', 'countAll', 'tags', 'about'));
+        $catObj = Category::where('id',$request->selectedSearchCategoryId)->first();
+        return view('products.index', compact('products', 'countAll', 'tags', 'about','catObj'));
     }
 
     public function show($slug)

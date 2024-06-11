@@ -280,6 +280,7 @@
                 success: function(data) {
                     $('#product-list').html(data.products);
                     $('#pagination-links').html(data.pagination);
+
                 },
                 error: function(xhr, status, error) {
                     console.error("Error fetching products:", error);
