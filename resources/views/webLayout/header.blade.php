@@ -165,7 +165,7 @@
                                 @foreach ($categoriesOrderedByRank as $category)
                                     <li class="option">
                                         <a href="#" data-categoryid="{{ $category->id }}" onclick="setSearchCategoryId({{ $category->id }}); return false;" >
-                                            {{ $category->name['en'] }} -{{  $category->id  }}
+                                            {{ $category->name['en'] }}
                                         </a>
                                     </li>
                                 @endforeach
