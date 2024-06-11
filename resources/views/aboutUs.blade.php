@@ -118,7 +118,7 @@
                     </div>
                   </div>
                   <div class="col-12 col-md-4 ceo-img">
-                    <img src="{{asset('webasset/img/team/Rectangle10234.png')}}" alt="" srcset="">
+                    <img src="{{asset('webasset/img/team/manger.jpeg')}}" alt="" srcset="">
                   </div>
                 </div>
               </div>

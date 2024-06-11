@@ -201,11 +201,11 @@
                                 </div>
                                  <!-- Seo Description -->
                                  <div class="mb-10 fv-row">
-                                    <label class="required form-label" for="seo_description">Seo Description
+                                    <label class="required form-label" for="seo_description">CEO Description
                                         (Arabic)</label>
                                     <textarea class="form-control mb-2 ckeditor" id="seo_description_ar" name="seo_description_ar"
                                         placeholder="Seo Description (Arabic)" required>{{ $aboutUs->seo_description['ar'] ?? '' }}</textarea>
-                                    <label class="required form-label" for="seo_description">Seo Description
+                                    <label class="required form-label" for="seo_description">CEO Description
                                         (English)</label>
                                     <textarea class="form-control mb-2 ckeditor" id="seo_description_en" name="seo_description_en"
                                         placeholder="Seo Description (English)" required>{{ $aboutUs->seo_description['en'] }}</textarea>

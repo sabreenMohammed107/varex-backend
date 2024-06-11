@@ -58,7 +58,8 @@ class IndexController extends Controller
         }
         $countAll = Product::count();
         $tags = ProductTag::all();
-        return view('products.index', compact('products', 'countAll', 'tags'));
+        $about = AboutUs::firstOrFail();
+        return view('products.index', compact('products', 'countAll', 'tags','about'));
     }
     public function show($slug)
     {
@@ -74,7 +75,8 @@ class IndexController extends Controller
         // Return the view with the product and related products data
         $countAll = Product::count();
         $tags = ProductTag::all();
-        return view('products.show', compact('product', 'relatedProducts', 'countAll', 'tags'));
+        $about = AboutUs::firstOrFail();
+        return view('products.show', compact('product', 'relatedProducts', 'countAll', 'tags','about'));
     }
 
     public function mediaList()
