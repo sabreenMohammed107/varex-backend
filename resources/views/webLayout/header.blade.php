@@ -172,7 +172,7 @@
                                 $id=$category->id ;
                                 ?>
                                 <li class="option" data-id="{{ $id }}" onclick="setSearchCategoryId({{ $category->id }}, '{{ $category->name['en'] }}'); return false;">
-                                      {{ $category->name['en'] }}
+                                      {{ $category->name['en'] }} ({{ $category->products_count }})
                                 </li>
                                 @endforeach
                             </ul>
