@@ -27,7 +27,7 @@
                             <ul>
                                 <li>
                                     <!-- ltn__language-menu -->
-                                    <div class="ltn__drop-menu ltn__currency-menu">
+                                    {{-- <div class="ltn__drop-menu ltn__currency-menu">
                                         <ul class="text-center">
                                             <li>
                                                 <a href="#" class="">
@@ -36,12 +36,12 @@
                                                 <ul>
                                                     @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
                                                     @if (LaravelLocalization::getCurrentLocale() != 'ar' && $localeCode == 'ar')
-                                                    {{-- <li><a class="nav-link" rel="alternate" hreflang="{{ $localeCode }}"
+                                                    <li><a class="nav-link" rel="alternate" hreflang="{{ $localeCode }}"
                                                             href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
 
 
                                                             {{ __('links.ar') }}
-                                                        </a></li> --}}
+                                                        </a></li>
 
                                                         <li><a href="#">Arabic</a></li>
                                                     @endif
@@ -54,12 +54,12 @@
                                                     @endif
                                                     <!--|-->
                                                 @endforeach
-                                                    {{-- <li><a href="#">Arabic</a></li>
-                                                    <li><a href="#">English</a></li> --}}
+                                                    <li><a href="#">Arabic</a></li>
+                                                    <li><a href="#">English</a></li>
                                                 </ul>
                                             </li>
                                         </ul>
-                                    </div>
+                                    </div> --}}
                                 </li>
                                 <li>
                                     <!-- ltn__social-media -->

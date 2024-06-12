@@ -60,7 +60,7 @@
                                         {!! $slider->home_title['en'] !!} <br />
                                      </h1>
                                      <div class="btn-wrapper animated">
-                                         <a href="{{ url('/products') }}" class="theme-btn-1 btn text-uppercase">More
+                                         <a href="{{ url('product/'.$slider->slug['en']) }}" class="theme-btn-1 btn text-uppercase">More
                                              Details</a>
                                      </div>
                                  </div>
