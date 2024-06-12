@@ -18491,3 +18491,13 @@ span.video-title {
         transform: translateX(-83px);
     }
 }
+@media (min-width: 1200px) {
+    #home_page_slider .ltn__slide-item.ltn__slide-item-2.ltn__slide-item-3.ltn__slide-item-3-normal.bg-image.slick-slide {
+      padding: 0;
+      height: fit-content;
+    }
+
+    #home_page_slider .ltn__slide-item-inner {
+      min-height: 28vh;
+    }
+  }

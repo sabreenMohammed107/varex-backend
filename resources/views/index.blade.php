@@ -12,7 +12,7 @@
 </div>
 @endif
     <!-- SLIDER AREA START (slider-3) -->
-    <div class="ltn__slider-area ltn__slider-3 section-bg-1">
+    <div class="ltn__slider-area ltn__slider-3 section-bg-1" id='home_page_slider'>
         <div class="ltn__slide-one-active slick-slide-arrow-1 slick-slide-dots-1">
             <!-- ltn__slide-item -->
             @isset($sliders)
@@ -203,7 +203,7 @@
     <div class="ltn__about-us-area pb-70">
         <div class="container-lg">
             <div class="row">
-                <div class="col-lg-5 align-self-center row justify-content-center">
+                <div class="col-lg-5 align-self-center justify-content-center">
                     <div class="about-us-img-wrap about-img-left">
                         <img width="100%" src="{{asset('webasset/img/bg/Group15128(1).png')}}" alt="About Us Image" />
                     </div>
