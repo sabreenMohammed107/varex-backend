@@ -108,7 +108,7 @@
                                 <!--end::Label-->
                                 <!--begin::Input-->
                                 <input type="text" name="video_link" class="form-control mb-2" placeholder="Vedio link"
-                                    value="{{ old('video_link') }}" required />
+                                    value="{{ old('video_link') }}"  />
                                 <!--end::Input-->
                             </div>
                             <!--end::Input group-->

@@ -40,7 +40,7 @@
                                          </div>
                                      </div>
                                      <div class="slid-logo-img animated col-3 d-none d-lg-block">
-                                         <img src="{{asset('webasset/img/slider/logo-dark-2.png')}}" alt="" srcset="" />
+                                         {{-- <img src="{{asset('webasset/img/slider/logo-dark-2.png')}}" alt="" srcset="" /> --}}
                                      </div>
                                      <div class="slid-itm-img animated col-7 col-lg-6 ">
                                          <img src="{{ asset("$slider->main_image") }}" alt="" srcset="" />

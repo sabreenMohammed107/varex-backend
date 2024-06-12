@@ -40,7 +40,7 @@
                 <div class="hover-layout"></div>
 
                 <div class="hover-content">
-                    <h3>Certificate Name</h3>
+                    <h3>{{ $certificate->name['en'] ?? ''}}</h3>
                 </div>
               </a>
             </div>
