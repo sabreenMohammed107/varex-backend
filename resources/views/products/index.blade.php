@@ -103,7 +103,10 @@
                         <ul>
                             <li>
                                 <div class="showing-product-number text-right text-end">
-                                    <span>Varex Products</span>
+                                    <span>Varex Products </span><span id="product-cat">@if(isset($catObj))
+                                        - {{ $catObj->name['en'] ?? '' }} </a>
+
+                                    @endif</span>
                                 </div>
                             </li>
                             <li>
@@ -281,6 +284,11 @@
                 success: function(data) {
                     $('#product-list').html(data.products);
                     $('#pagination-links').html(data.pagination);
+                    if(data.productCat){
+                        $('#product-cat').html('-'+data.productCat);
+
+                    }
+
 
                 },
                 error: function(xhr, status, error) {

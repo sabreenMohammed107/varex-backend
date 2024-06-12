@@ -30,8 +30,8 @@ class IndexController extends Controller
         \Log::info($request->all());
         //from search button
         // Name search filtering
-        if (($request->filled('search_name') && !empty($request->search_name)) ) {
-            $searchTerm =$request->search_name ;
+        if (($request->filled('search_name') && !empty($request->search_name))) {
+            $searchTerm = $request->search_name;
             $query->where('home_title->en', 'like', '%' . $searchTerm . '%')
                 ->orWhere('home_title->ar', 'like', '%' . $searchTerm . '%');
 
@@ -40,11 +40,10 @@ class IndexController extends Controller
                 $query->where('category_id', $request->input('selectedSearchCategoryId'));
             }
         }
-        if (($request->filled('mob_search_name') && !empty($request->mob_search_name)) ) {
-            $searchTerm =  $request->mob_search_name;
+        if (($request->filled('mob_search_name') && !empty($request->mob_search_name))) {
+            $searchTerm = $request->mob_search_name;
             $query->where('home_title->en', 'like', '%' . $searchTerm . '%')
                 ->orWhere('home_title->ar', 'like', '%' . $searchTerm . '%');
-
 
         } else {
             if ($request->filled('mobselectedSearchCategoryId') && $request->mobselectedSearchCategoryId) {
@@ -60,29 +59,34 @@ class IndexController extends Controller
             $query->where('home_title->en', 'like', '%' . $searchTerm . '%')
                 ->orWhere('home_title->ar', 'like', '%' . $searchTerm . '%');
 
-
         }
         if (($request->filled('mobsearchQuery') && !empty($request->mobsearchQuery))) {
             $searchTerm = $request->filled('mobsearchQuery');
             $query->where('home_title->en', 'like', '%' . $searchTerm . '%')
                 ->orWhere('home_title->ar', 'like', '%' . $searchTerm . '%');
 
-
         }
         // Retrieve paginated products with applied filters
         $products = $query->orderBy('created_at', 'desc')->paginate(30);
         // If the request is AJAX, return JSON response
         if ($request->filled('searchQuery') || $request->filled('category_id') || $request->filled('mobsearchQuery')) {
+            $catName = "";
+            $productCat = Category::where('id', $request->category_id)->first();
+            if ($productCat) {
+                $catName = $productCat->name['en'];
+            }
             return response()->json([
                 'products' => view('products.partials.products_list', compact('products'))->render(),
                 'pagination' => $products->links('vendor.pagination.custom')->toHtml(),
-            ]);}
+                'productCat' => $catName,
+            ]);
+        }
         \Log::info(["no ajax"]);
         $countAll = Product::count();
         $tags = ProductTag::all();
         $about = AboutUs::firstOrFail();
-        $catObj = Category::where('id',$request->selectedSearchCategoryId)->first();
-        return view('products.index', compact('products', 'countAll', 'tags', 'about','catObj'));
+        $catObj = Category::where('id', $request->selectedSearchCategoryId)->first();
+        return view('products.index', compact('products', 'countAll', 'tags', 'about', 'catObj'));
     }
 
     public function show($slug)
