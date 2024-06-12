@@ -287,6 +287,7 @@
                     if(data.productCat){
                         $('#product-cat').html('-'+data.productCat);
 
+                        $('#current_cat').html(data.productCat);
                     }
 
 

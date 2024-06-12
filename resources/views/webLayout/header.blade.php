@@ -156,7 +156,7 @@
                     min-width: 100%;
                   "
                           class="nice-select w-100 my-3" tabindex="0">
-                          <span class="current"><img style="margin-right: 15px"
+                          <span class="current" id="current_cat"><img style="margin-right: 15px"
                             src="{{ asset('webasset/img/icons/cat-menu.png') }}" alt="" />
                             @if(isset($catObj))
                             {{ $catObj->name['en'] ?? '' }}
