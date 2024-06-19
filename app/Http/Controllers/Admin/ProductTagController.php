@@ -25,6 +25,7 @@ class ProductTagController extends Controller
 
         $tag = new ProductTag();
         $tag->title = ['ar' => $request->title_ar, 'en' => $request->title_en];
+        $tag->tag_color =  $request->tag_color;
         $tag->save();
         // Redirect back to the Tag with a success message
         return redirect()->route('admin.tags.index')
@@ -43,6 +44,7 @@ class ProductTagController extends Controller
 
         $tag = ProductTag::findOrFail($id);
         $tag->title = ['ar' => $request->title_ar, 'en' => $request->title_en];
+        $tag->tag_color =  $request->tag_color;
         $tag->save();
         return redirect()->route('admin.tags.index')
             ->with('success', 'Tag uploaded successfully');

@@ -321,14 +321,7 @@
                             </a>
                         </div>
 
-                        <div class="menu-item">
-                            <a class="menu-link" href="{{ route('admin.tags.create') }}">
-                                <span class="menu-bullet">
-                                    <span class="bullet bullet-dot"></span>
-                                </span>
-                                <span class="menu-title">Add Tag</span>
-                            </a>
-                        </div>
+
 
 
                     </div>

@@ -26,7 +26,7 @@
         }
 
         #allProductsPage .product-img:hover .product-badge {
-            display: none;
+            /* display: none; */
         }
 
         #allProductsPage .home-img {

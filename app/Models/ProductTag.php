@@ -11,6 +11,7 @@ class ProductTag extends Model
     protected $fillable = [
 
         'title',
+        'tag_color',
 
     ];
     protected $casts = [

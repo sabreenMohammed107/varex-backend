@@ -17,7 +17,7 @@
                             @if ($product->tag)
                             <div class="product-badge">
                                 <ul>
-                                    <li class="sale-badge">{{ $product->tag->title['en'] ?? ''}}</li>
+                                    <li class="sale-badge" style="background-color:{{ $product->tag->tag_color ?? '#e9184f' }}" >{{ $product->tag->title['en'] ?? ''}}</li>
                                 </ul>
                             </div>
                             @endif

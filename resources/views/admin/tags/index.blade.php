@@ -152,7 +152,7 @@
                                             <!--begin::Modal body-->
                                             <div class="modal-body scroll-y px-10 px-lg-15 pt-0 pb-15">
                                                 <!--begin:Form-->
-                                                <form id="kt_modal_edit_image_form_{{ $tag->id }}" class="form" method="POST" action="{{ route('admin.tags.update',$tag->id) }}" enctype="multipart/form-data">
+                                                <form id="kt_modal_edit_image_form_{{ $tag->id }}" class="form" method="POST" action="{{ route('admin.tags.update', $tag->id) }}" enctype="multipart/form-data">
                                                     @csrf
                                                     @method('PUT')
                                                     <!--begin::Heading-->
@@ -162,11 +162,15 @@
                                                     <!--end::Heading-->
                                                     <div class="mb-10 fv-row">
                                                         <label class="required form-label">Title En</label>
-                                                        <input type="text" name="title_en" class="form-control mb-2" placeholder="Product title en" value="{{ $tag->title['en']  }}" required />
+                                                        <input type="text" name="title_en" class="form-control mb-2" placeholder="Product title en" value="{{ $tag->title['en'] }}" required />
                                                     </div>
                                                     <div class="mb-10 fv-row">
                                                         <label class="required form-label">Title Ar</label>
                                                         <input type="text" name="title_ar" class="form-control mb-2" placeholder="Product title ar" value="{{ $tag->title['ar'] }}" required />
+                                                    </div>
+                                                    <div class="mb-10 fv-row">
+                                                        <label class="form-label">Tag Color</label>
+                                                        <input type="color" name="tag_color" class="form-control mb-2" value="{{ $tag->color ?? '#000' }}" />
                                                     </div>
                                                     <!--begin::Actions-->
                                                     <div class="text-center">
@@ -176,6 +180,7 @@
                                                     </div>
                                                     <!--end::Actions-->
                                                 </form>
+
                                                 <!--end:Form-->
                                             </div>
                                             <!--end::Modal body-->
@@ -234,6 +239,10 @@
                         <div class="mb-10 fv-row">
                             <label class="required form-label">Title Ar</label>
                             <input type="text" name="title_ar" class="form-control mb-2" placeholder="Product title ar" value="{{ old('title_ar') }}" required />
+                        </div>
+                        <div class="mb-10 fv-row">
+                            <label class="form-label">Tag Color</label>
+                            <input type="color" name="tag_color" class="form-control mb-2" value="#000" />
                         </div>
                         <!--begin::Actions-->
                         <div class="text-center">
