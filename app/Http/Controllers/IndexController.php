@@ -52,9 +52,12 @@ class IndexController extends Controller
         }
 
         if ($request->filled('category_id')) {
+            if ($request->category_id != 0) {
+                $query->where('category_id', $request->category_id);
+            }
 
-            $query->where('category_id', $request->category_id);
         }
+
         if (($request->filled('searchQuery') && !empty($request->searchQuery))) {
 
             $searchTerm = $request->filled('searchQuery');
@@ -72,7 +75,7 @@ class IndexController extends Controller
         $products = $query->paginate(30);
         // If the request is AJAX, return JSON response
         // if ($request->ajax()) {
-        if ($request->page >= 2 || $request->filled('searchQuery') || $request->filled('category_id') || $request->filled('mobsearchQuery')) {
+        if ($request->filled('page') || $request->filled('searchQuery') || $request->filled('category_id') || $request->filled('mobsearchQuery')) {
             $catName = "";
             if ($request->filled('category_id')) {
                 $productCat = Category::where('id', $request->category_id)->first();

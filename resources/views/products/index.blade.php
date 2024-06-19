@@ -103,10 +103,12 @@
                         <ul>
                             <li>
                                 <div class="showing-product-number text-right text-end">
-                                    <span>Varex Products </span><span id="product-cat">@if(isset($catObj))
-                                        - {{ $catObj->name['en'] ?? '' }} </a>
-
-                                    @endif</span>
+                                    <span>Varex Products </span><span id="product-cat">
+                                        @if (isset($catObj))
+                                            - {{ $catObj->name['en'] ?? '' }}
+                                            </a>
+                                        @endif
+                                    </span>
                                 </div>
                             </li>
                             <li>
@@ -139,7 +141,7 @@
                         <div class="widget ltn__menu-widget">
                             <h4 class="ltn__widget-title ltn__widget-title-border">Categories</h4>
                             <ul>
-                                <li><a href="#" onclick="setCategoryId(null); return false;">All Category
+                                <li><a href="#" onclick="setCategoryId(0); return false;">All Category
                                         ({{ $countAll }})</a></li>
                                 @foreach ($categoriesOrderedByRank as $category)
                                     <li><a href="#" class="proCategory" data-categoryid="{{ $category->id }}"
@@ -265,17 +267,17 @@
 
             var mobsearchQuery = $('#mob_search_name').val();
             // Determine URL
-             var url = "/products";
+            var url = "/products";
 
             // Check if global search input exists
             if ($('#global-search-input').length) {
                 searchQuery = $('#global-search-input').val();
             }
             $.ajax({
-             url: url + "?page=" + page,
+                url: url + "?page=" + page,
                 url: url,
                 data: {
-                     page: page,
+                    page: page,
                     searchQuery: searchQuery,
                     category_id: categoryId,
                     searchCategoryId: searchCategoryId, // Add the selectedSearchCategoryId to the request data
@@ -284,10 +286,14 @@
                 success: function(data) {
                     $('#product-list').html(data.products);
                     $('#pagination-links').html(data.pagination);
-                    if(data.productCat){
-                        $('#product-cat').html('-'+data.productCat);
+                    if (data.productCat) {
+                        $('#product-cat').html('-' + data.productCat);
 
                         $('#current_cat').html(data.productCat);
+                    } else {
+                        $('#product-cat').html('');
+                        $('#current_cat').html('All Categories');
+
                     }
 
 
@@ -297,6 +303,5 @@
                 }
             });
         }
-
     </script>
 @endsection
