@@ -10,9 +10,8 @@
                         <div class="product-img">
 
                             <a href="{{ url('product/'.$product->slug['en']) }}" class="home-img">
-                                <img src="{{ asset("$product->main_image") }}" alt="#" class='qr-front-face-product'>
-                                <img src="{{ asset("$product->qr_image") }}" alt="#"
-                                class='qr-back-face-product'>
+                                <img src="{{ asset("$product->main_image") }}" alt="#" >
+
                             </a>
 
                             @if ($product->tag)
