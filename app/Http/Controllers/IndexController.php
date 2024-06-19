@@ -26,7 +26,7 @@ class IndexController extends Controller
 
     public function productList(Request $request)
     {
-        $query = Product::orderBy('rank', 'acs');
+        $query = Product::orderBy('rank', 'asc');
         \Log::info($request->all());
         //from search button
         // Name search filtering
