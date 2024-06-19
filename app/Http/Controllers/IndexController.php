@@ -51,10 +51,12 @@ class IndexController extends Controller
             }
         }
 
-        if ($request->has('category_id')) {
+        if ($request->filled('category_id')) {
+
             $query->where('category_id', $request->category_id);
         }
         if (($request->filled('searchQuery') && !empty($request->searchQuery))) {
+
             $searchTerm = $request->filled('searchQuery');
             $query->where('home_title->en', 'like', '%' . $searchTerm . '%')
                 ->orWhere('home_title->ar', 'like', '%' . $searchTerm . '%');
@@ -67,13 +69,16 @@ class IndexController extends Controller
 
         }
         // Retrieve paginated products with applied filters
-        $products = $query->orderBy('created_at', 'desc')->paginate(30);
+        $products = $query->paginate(30);
         // If the request is AJAX, return JSON response
-        if ($request->filled('searchQuery') || $request->filled('category_id') || $request->filled('mobsearchQuery')) {
+        // if ($request->ajax()) {
+        if ($request->page >= 2 || $request->filled('searchQuery') || $request->filled('category_id') || $request->filled('mobsearchQuery')) {
             $catName = "";
-            $productCat = Category::where('id', $request->category_id)->first();
-            if ($productCat) {
-                $catName = $productCat->name['en'];
+            if ($request->filled('category_id')) {
+                $productCat = Category::where('id', $request->category_id)->first();
+                if ($productCat) {
+                    $catName = $productCat->name['en'];
+                }
             }
             return response()->json([
                 'products' => view('products.partials.products_list', compact('products'))->render(),

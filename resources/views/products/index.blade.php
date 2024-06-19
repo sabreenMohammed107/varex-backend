@@ -195,6 +195,7 @@
                 var page = pageUrl ? pageUrl.split('page=')[1] : 1;
                 console.log("Extracted page:", page); // Debugging log
                 fetchProducts(page);
+
             });
 
             $('#searchButton').click(function(e) {
@@ -251,8 +252,7 @@
 
 
 
-        function fetchProducts(page = 1) {
-            console.log("Fetching products for page: " + page);
+        function fetchProducts(page) {
 
             // Get the search query from the input field
             var searchQuery = $('#search_name').val();
@@ -265,17 +265,17 @@
 
             var mobsearchQuery = $('#mob_search_name').val();
             // Determine URL
-            var url = "/products";
+             var url = "/products";
 
             // Check if global search input exists
             if ($('#global-search-input').length) {
                 searchQuery = $('#global-search-input').val();
             }
-
             $.ajax({
-                url: url + "?page=" + page,
+             url: url + "?page=" + page,
+                url: url,
                 data: {
-                    page: page,
+                     page: page,
                     searchQuery: searchQuery,
                     category_id: categoryId,
                     searchCategoryId: searchCategoryId, // Add the selectedSearchCategoryId to the request data
