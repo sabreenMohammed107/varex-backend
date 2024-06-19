@@ -40,6 +40,13 @@ public function update(Request $request)
     $aboutUs->quality_title = ['ar' => $request->quality_title_ar, 'en' => $request->quality_title_en];
     $aboutUs->quality_description = ['ar' => $request->quality_description_ar, 'en' => $request->quality_description_en];
     $aboutUs->seo_description = ['ar' => $request->seo_description_ar, 'en' => $request->seo_description_en];
+     //Upload main image
+     if ($request->hasFile('image')) {
+        $mainImage = $request->file('image');
+        $mainImageName = time() . '_' . $mainImage->getClientOriginalName();
+        $mainImage->move(public_path('uploads/about'), $mainImageName);
+        $aboutUs->image = 'uploads/about/' . $mainImageName;
+    }
     if ($request->hasFile('company_katalog')) {
         // Get file name with extension
         $fileNameWithExt = $request->file('company_katalog')->getClientOriginalName();

@@ -11,6 +11,46 @@
 
                 @csrf
                 @method('PUT')
+                <div class="d-flex flex-column gap-7 gap-lg-10 w-100 w-lg-300px mb-7 me-lg-10">
+                    <!--begin::Thumbnail settings-->
+                    <div class="card card-flush py-4">
+                        <!--begin::Card header-->
+                        <div class="card-header">
+                            <!--begin::Card title-->
+                            <div class="card-title">
+                                <h2> Manger Image</h2>
+                            </div>
+                            <!--end::Card title-->
+                        </div>
+                        <!--end::Card header-->
+                        <!--begin::Image input wrapper-->
+                        <div class="card-body text-center pt-0">
+                            <!--begin::Image input-->
+                            <div class="image-input image-input-empty image-input-outline mb-3" data-kt-image-input="true"
+                                style="background-image:  url('{{ asset("$aboutUs->image") }}');">
+                                <div class="image-input-wrapper w-150px h-150px"
+                                    style="background-image:  url('{{ asset("$aboutUs->image") }}');">
+
+                                </div>
+                                <!--end::Preview existing avatar-->
+                                <!--begin::Edit-->
+                                <label class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
+                                    data-kt-image-input-action="change" data-bs-toggle="tooltip" title="Change avatar">
+                                    <i class="bi bi-pencil-fill fs-7"></i>
+                                    <!--begin::Inputs-->
+                                    <input type="file" name="image" accept=".png, .jpg, .jpeg" />
+                                    <input type="hidden" name="avatar_remove" />
+                                    <!--end::Inputs-->
+                                </label>
+                                <!--end::Edit-->
+
+                            </div>
+                            <!--end::Image input-->
+                        </div>
+                        <!--end::Image input wrapper-->
+                    </div>
+                    <!--end::Thumbnail settings-->
+                </div>
                 <!--begin::Main column-->
                 <div class="d-flex flex-column flex-row-fluid gap-7 gap-lg-10">
                     <!--begin::General options-->

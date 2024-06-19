@@ -105,7 +105,7 @@
               </div>
             </div>
             <div class="section-our-mission pt-100">
-              <h3 class="main-title text-in-dark f-s-45 text-center pb-70">CEO Word
+              <h3 class="main-title text-in-dark f-s-45 text-center pb-70">Co-founder Word
                 <img class="mission-title-img" src="{{asset('webasset/img/icons/header-under-title.png')}}" alt="" srcset="">
               </h3>
               <div class="about-us-ceo-word-section">
@@ -118,13 +118,13 @@
                     </div>
                   </div>
                   <div class="col-12 col-md-4 ceo-img">
-                    <img src="{{asset('webasset/img/team/manger.jpeg')}}" alt="" srcset="">
+                    <img src="{{ $about->image }}" alt="" srcset="">
                   </div>
                 </div>
               </div>
             </div>
             <div class="section-our-mission pt-100">
-              <h3 class="main-title text-in-dark f-s-45 text-center pb-70">Why Us ?
+              <h3 class="main-title text-in-dark f-s-45 text-center pb-70">Why Varex ?
                 <img class="mission-title-img" src="{{asset('webasset/img/icons/header-under-title.png')}}" alt="" srcset="">
               </h3>
               <div class="why-us-info row">
