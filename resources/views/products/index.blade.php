@@ -257,7 +257,6 @@
         function fetchProducts(page) {
 
             // Get the search query from the input field
-            var searchQuery = $('#search_name').val();
 
             // Get the selected category ID
             var categoryId = $('#selectedCategoryId').val();
@@ -273,6 +272,18 @@
             if ($('#global-search-input').length) {
                 searchQuery = $('#global-search-input').val();
             }
+            // // Function to get URL parameter value
+            function getUrlParameter(name) {
+                name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+                var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+                var results = regex.exec(location.search);
+                return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+            }
+            // var searchQuery = $('#search_name').val();
+
+            // Get the search_name parameter from the URL
+             var searchQuery = getUrlParameter('search_name');
+
             $.ajax({
                 url: url + "?page=" + page,
                 url: url,

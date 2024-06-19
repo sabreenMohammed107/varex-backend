@@ -30,6 +30,7 @@ class IndexController extends Controller
         \Log::info($request->all());
         //from search button
         // Name search filtering
+        $searchTerm = null;
         if (($request->filled('search_name') && !empty($request->search_name))) {
             $searchTerm = $request->search_name;
             $query->where('home_title->en', 'like', '%' . $searchTerm . '%')
@@ -60,22 +61,24 @@ class IndexController extends Controller
 
         if (($request->filled('searchQuery') && !empty($request->searchQuery))) {
 
-            $searchTerm = $request->filled('searchQuery');
+            $searchTerm = $request->searchQuery;
             $query->where('home_title->en', 'like', '%' . $searchTerm . '%')
                 ->orWhere('home_title->ar', 'like', '%' . $searchTerm . '%');
 
         }
         if (($request->filled('mobsearchQuery') && !empty($request->mobsearchQuery))) {
-            $searchTerm = $request->filled('mobsearchQuery');
+            $searchTerm = $request->mobsearchQuery;
             $query->where('home_title->en', 'like', '%' . $searchTerm . '%')
                 ->orWhere('home_title->ar', 'like', '%' . $searchTerm . '%');
 
         }
         // Retrieve paginated products with applied filters
         $products = $query->paginate(30);
+        \Log::info([$products->count(),"here"]);
         // If the request is AJAX, return JSON response
         // if ($request->ajax()) {
         if ($request->filled('page') || $request->filled('searchQuery') || $request->filled('category_id') || $request->filled('mobsearchQuery')) {
+             \Log::info(["no ajax"]);
             $catName = "";
             if ($request->filled('category_id')) {
                 $productCat = Category::where('id', $request->category_id)->first();
@@ -94,7 +97,7 @@ class IndexController extends Controller
         $tags = ProductTag::all();
         $about = AboutUs::firstOrFail();
         $catObj = Category::where('id', $request->selectedSearchCategoryId)->first();
-        return view('products.index', compact('products', 'countAll', 'tags', 'about', 'catObj'));
+        return view('products.index', compact('products', 'countAll', 'tags', 'about', 'catObj','searchTerm'));
     }
 
     public function show($slug)

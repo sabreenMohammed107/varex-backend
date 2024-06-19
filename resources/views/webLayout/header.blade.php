@@ -186,7 +186,7 @@
                         <form id="searchForm" action="{{ url('/products') }}" method="get">
                             <input type="hidden" id="selectedSearchCategoryId" name="selectedSearchCategoryId" value="">
                             <input type="text" name="search_name"
-                            id="global-search-input" value=""
+                            id="global-search-input" value="@isset($searchTerm){{$searchTerm}}@endisset"
                                 placeholder="What are you looking for?" />
                             <button id="searchButton" class="main-search" type="submit">
                                 <span><i class="icon-search"></i></span>
