@@ -237,18 +237,7 @@
                          </div>
 
                         <!-- Price Filter Widget -->
-                        <div class="widget ltn__price-filter-widget">
-                            <h4 class="ltn__widget-title ltn__widget-title-border">Tags</h4>
-                            <div class="price_filter">
-                                <div class="price_slider_amount">
-                                    <span class="tag-bg f-s-13">All Tags</span>
-                                    @foreach ($tags as $tag )
-                                    <span class="tag-bg f-s-13">{{ $tag->title['en'] ?? '' }}</span>
-                                    @endforeach
 
-                                </div>
-                            </div>
-                        </div>
                         <!-- Top Rated Product Widget -->
 
                         <div class="logo-catalog">

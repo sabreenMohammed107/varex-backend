@@ -186,7 +186,7 @@
                         </div>
                         <div class="ltn__category-item-name">
                             <h5>
-                                <a href="{{ url('/products') }}" class="f-s-15 text-in-dark">{{ $category->name['en'] }}</a>
+                                <a href="{{ url('/products') }}" onclick="setSearchCategoryId({{ $category->id }}, '{{ $category->name['en'] }}'); return false;" class="f-s-15 text-in-dark">{{ $category->name['en'] }}</a>
                             </h5>
                             <h6 class="f-s-13 text-in-dark">[ {{ $category->products_count }} item{{ $category->products_count > 1 ? 's' : '' }} ]</h6>
                         </div>

@@ -81,10 +81,11 @@
                                       <i class="icon-placeholder"></i>
                                   </div>
                                   <div class="footer-address-info">
-                                      <p>
-                                          <a href="tel: 32 Omar Ibn Abd El Azeez, Helwan" class="scnd-hovr">
-                                              {{ $contactUsFirstRow->location['en'] ?? '' }}</a>
-                                      </p>
+                                    <p>
+                                        <a href="https://www.google.com/maps/search/?api=1&query={{ urlencode($contactUsFirstRow->location['en'] ?? '') }}" target="_blank">
+                                            {{ $contactUsFirstRow->location['en'] ?? '' }}
+                                        </a>
+                                    </p>
                                   </div>
                               </li>
                               <li>
@@ -93,7 +94,7 @@
                                   </div>
                                   <div class="footer-address-info">
                                       <p>
-                                          <a href="{{ $contactUsFirstRow->email1 ?? '' }}"
+                                          <a href="mailto:{{ $contactUsFirstRow->email1 ?? '' }}"
                                               class="scnd-hovr">{{ $contactUsFirstRow->email1 ?? '' }}</a>
                                       </p>
                                   </div>

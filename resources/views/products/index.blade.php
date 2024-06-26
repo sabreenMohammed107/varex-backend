@@ -72,6 +72,10 @@
                 display: block;
             }
         }
+
+        .tag-bg {
+            cursor: pointer;
+        }
     </style>
 @endsection
 
@@ -106,7 +110,8 @@
                                     <span>Varex Products </span><span id="product-cat">
                                         @if (isset($catObj))
                                             - {{ $catObj->name['en'] ?? '' }}
-                                            </a>
+                                        @else
+                                            - {{ $catName ?? '' }}
                                         @endif
                                     </span>
                                 </div>
@@ -159,13 +164,16 @@
                             <h4 class="ltn__widget-title ltn__widget-title-border">Tags</h4>
                             <div class="price_filter">
                                 <div class="price_slider_amount">
-                                    <span class="tag-bg f-s-13">All Tags</span>
+                                    <span class="tag-bg f-s-13" onclick="setTagId(0); return false;"
+                                        style="cursor: pointer;">All Tags</span>
                                     @foreach ($tags as $tag)
-                                        <span class="tag-bg f-s-13">{{ $tag->title['en'] ?? '' }}</span>
+                                        <span class="tag-bg f-s-13 proTag"  data-tagid="{{ $tag->id }}" onclick="setTagId({{ $tag->id }}); return false;"
+                                            style="cursor: pointer;">
+                                            {{ $tag->title['en'] ?? '' }}
+                                        </span>
                                     @endforeach
-
-
                                 </div>
+                                <input type="hidden" id="selectedTagId" value="">
                             </div>
                         </div>
                         <!-- Top Rated Product Widget -->
@@ -231,7 +239,25 @@
                 'font-weight': 'bold'
             });
         }
+        // Function to set the selected tagId ID
 
+        function setTagId(tagId) {
+            // Set the value of the element
+            $('#selectedTagId').val(tagId);
+            fetchProducts(); // Fetch products for the first page when category changes
+
+            // Remove the blue color and bold font weight from all categories
+            $('.proTag').css({
+                'color': '',
+                'font-weight': ''
+            });
+
+            // Set the color and bold font weight of the selected category
+            $(`.proTag[data-tagid="${tagId}"]`).css({
+                'color': '#ae123c',
+                'font-weight': 'bold'
+            });
+        }
 
         function mobsetSearchCategoryId(categoryId) {
             // Set the value of the element
@@ -260,7 +286,7 @@
 
             // Get the selected category ID
             var categoryId = $('#selectedCategoryId').val();
-
+            var tagId = $('#selectedTagId').val();
             // Get the selected search category ID from the global search
             var searchCategoryId = $('#selectedSearchCategoryId').val();
 
@@ -282,7 +308,7 @@
             // var searchQuery = $('#search_name').val();
 
             // Get the search_name parameter from the URL
-             var searchQuery = getUrlParameter('search_name');
+            var searchQuery = getUrlParameter('search_name');
 
             $.ajax({
                 url: url + "?page=" + page,
@@ -291,6 +317,7 @@
                     page: page,
                     searchQuery: searchQuery,
                     category_id: categoryId,
+                    tag_id: tagId,
                     searchCategoryId: searchCategoryId, // Add the selectedSearchCategoryId to the request data
                     mobsearchQuery: mobsearchQuery,
                 },
@@ -302,8 +329,8 @@
 
                         $('#current_cat').html(data.productCat);
                     } else {
-                        $('#product-cat').html('');
-                        $('#current_cat').html('All Categories');
+                        // $('#product-cat').html('');
+                        // $('#current_cat').html('All Categories');
 
                     }
 

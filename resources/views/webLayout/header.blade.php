@@ -7,16 +7,16 @@
                     <div class="ltn__top-bar-menu add-and-phone">
                         <ul class="d-flex justify-content-lg-start justify-content-md-between">
                             <li>
-                                <a href="#"><img src="{{asset('webasset/img/icons/location.png')}}" alt="" srcset="" />
-                                    {{ $contactUsFirstRow->location['en'] ?? ''}}
+                                <a href="https://www.google.com/maps/search/?api=1&query={{ urlencode($contactUsFirstRow->location['en'] ?? '') }}" target="_blank">
+                                    <img src="{{asset('webasset/img/icons/location.png')}}" alt="" />
+                                    {{ $contactUsFirstRow->location['en'] ?? '' }}
                                 </a>
                             </li>
-                            <li>
-                                <a href="mailto:mibrahem@varex.com.eg?Subject=Flower%20greetings%20to%20you"><img
-                                        src="{{asset('webasset/img/icons/call-phone.png')}}" alt="" srcset="" />
-                                    Sales & Service Support : {{ $contactUsFirstRow->sales_phone }} /
-                                    {{ $contactUsFirstRow->service_support_phone }}
-                                </a>
+                            <li style="font-size: 14px;color: #56778f;">
+                                <img src="{{asset('webasset/img/icons/call-phone.png')}}" alt="" />
+                                Sales & Service Support:
+                                <a href="tel:{{ $contactUsFirstRow->sales_phone }}">{{ $contactUsFirstRow->sales_phone }}</a> /
+                                <a href="tel:{{ $contactUsFirstRow->service_support_phone }}">{{ $contactUsFirstRow->service_support_phone }}</a>
                             </li>
                         </ul>
                     </div>

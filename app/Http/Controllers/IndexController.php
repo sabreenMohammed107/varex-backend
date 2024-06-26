@@ -59,6 +59,13 @@ class IndexController extends Controller
 
         }
 
+        if ($request->filled('tag_id')) {
+            if ($request->tag_id != 0) {
+                $query->where('tag_id', $request->tag_id);
+            }
+
+        }
+
         if (($request->filled('searchQuery') && !empty($request->searchQuery))) {
 
             $searchTerm = $request->searchQuery;
@@ -77,9 +84,9 @@ class IndexController extends Controller
         \Log::info([$products->count(),"here"]);
         // If the request is AJAX, return JSON response
         // if ($request->ajax()) {
-        if ($request->filled('page') || $request->filled('searchQuery') || $request->filled('category_id') || $request->filled('mobsearchQuery')) {
-             \Log::info(["no ajax"]);
             $catName = "";
+        if ($request->filled('page')||$request->filled('tag_id')  || $request->filled('searchQuery') || $request->filled('category_id') || $request->filled('mobsearchQuery')) {
+             \Log::info(["no ajax"]);
             if ($request->filled('category_id')) {
                 $productCat = Category::where('id', $request->category_id)->first();
                 if ($productCat) {
@@ -97,7 +104,10 @@ class IndexController extends Controller
         $tags = ProductTag::all();
         $about = AboutUs::firstOrFail();
         $catObj = Category::where('id', $request->selectedSearchCategoryId)->first();
-        return view('products.index', compact('products', 'countAll', 'tags', 'about', 'catObj','searchTerm'));
+        if ($catObj) {
+            $catName = $catObj->name['en'];
+        }
+        return view('products.index', compact('products', 'countAll', 'tags', 'about', 'catObj','searchTerm','catName'));
     }
 
     public function show($slug)

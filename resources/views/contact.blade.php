@@ -113,8 +113,9 @@
                                         </div>
                                         <div class="contact-data">
                                             <h5>WhatsApp</h5>
-                                            <p>{{ $contactUsFirstRow->whatsapp ?? '' }}</p>
-                                        </div>
+                                            <p>
+                                                <a href="https://wa.me/{{ $contactUsFirstRow->whatsapp ?? '' }}" target="_blank">{{ $contactUsFirstRow->whatsapp ?? '' }}</a>
+                                            </p>                                        </div>
                                     </div>
 
                                     <div class="col-12 col-lg-6 d-flex pt-3">
@@ -123,7 +124,11 @@
                                         </div>
                                         <div class="contact-data">
                                             <h5>Location</h5>
-                                            <p>{{ $contactUsFirstRow->location['en'] ?? '' }}</p>
+                                            <p>
+                                                <a href="https://www.google.com/maps/search/?api=1&query={{ urlencode($contactUsFirstRow->location['en'] ?? '') }}" target="_blank">
+                                                    {{ $contactUsFirstRow->location['en'] ?? '' }}
+                                                </a>
+                                            </p>
                                         </div>
                                     </div>
                                     <div class="col-12 col-lg-6 d-flex pt-3">
@@ -132,8 +137,12 @@
                                         </div>
                                         <div class="contact-data">
                                             <h5>Phone Number</h5>
-                                            <p>{{ $contactUsFirstRow->sales_phone }} </p>
-                                            <p>{{ $contactUsFirstRow->service_support_phone }}</p>
+                                            <p>
+                                                <a href="tel:{{ $contactUsFirstRow->sales_phone }}">{{ $contactUsFirstRow->sales_phone }}</a>
+                                            </p>
+                                            <p>
+                                                <a href="tel:{{ $contactUsFirstRow->service_support_phone }}">{{ $contactUsFirstRow->service_support_phone }}</a>
+                                            </p>
                                         </div>
                                     </div>
                                     <div class="col-12 col-lg-6 d-flex pt-3">
@@ -142,8 +151,14 @@
                                         </div>
                                         <div class="contact-data">
                                             <h5>E-MAIL</h5>
-                                            <p>{{ $contactUsFirstRow->email1 }}</p>
-                                            <p>{{ $contactUsFirstRow->email2 }}</p>
+                                            <p>
+                                                <a href="mailto:{{ $contactUsFirstRow->email1 ?? '' }}"
+                                                    class="scnd-hovr">{{ $contactUsFirstRow->email1 ?? '' }}</a>
+                                            </p>
+                                            <p>
+                                                <a href="mailto:{{ $contactUsFirstRow->email2 ?? '' }}"
+                                                    class="scnd-hovr">{{ $contactUsFirstRow->email2 ?? '' }}</a>
+                                            </p>
                                         </div>
                                     </div>
 
