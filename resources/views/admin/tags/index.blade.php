@@ -170,7 +170,7 @@
                                                     </div>
                                                     <div class="mb-10 fv-row">
                                                         <label class="form-label">Tag Color</label>
-                                                        <input type="color" name="tag_color" class="form-control mb-2" value="{{ $tag->color ?? '#000' }}" />
+                                                        <input type="color" name="tag_color" class="form-control mb-2" value="{{ $tag->tag_color ?? '#000' }}" />
                                                     </div>
                                                     <!--begin::Actions-->
                                                     <div class="text-center">
