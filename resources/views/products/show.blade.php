@@ -228,7 +228,7 @@
                                         ({{ $countAll }})</a></li>
                                 @foreach ($categoriesOrderedByRank as $category)
                                     <li><a href="{{ url('/products') }}"
-                                            onclick="setCategoryId({{ $category->id }}); return false;">{{ $category->name['en'] }}
+                                        onclick="setSearchCategoryId({{ $category->id }}, '{{ $category->name['en'] }}'); return false;" >{{ $category->name['en'] }}
                                             ({{ $category->products_count }})
                                         </a></li>
                                 @endforeach
