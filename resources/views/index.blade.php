@@ -180,7 +180,7 @@
                 <div class="col-12">
                     <div class="ltn__category-item ltn__category-item-3 text-center">
                         <div class="ltn__category-item-img">
-                            <a href="{{ url('/products') }}">
+                            <a href="{{ url('/products') }}" onclick="setSearchCategoryId({{ $category->id }}, '{{ $category->name['en'] }}'); return false;" >
                                 <img src="{{asset($category->icon)}}" alt="Image" />
                             </a>
                         </div>
