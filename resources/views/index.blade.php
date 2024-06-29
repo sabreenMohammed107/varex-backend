@@ -183,7 +183,7 @@
                         <div class="card border-0 mb-4">
                             <div class="row no-gutters">
                                 <div class="col-md-5 icon-position rounded-left"
-                                    style="background-image:url(https://www.wrappixel.com/demos/ui-kit/wrapkit/assets/images/features/feature13/img1.jpg) ; ">
+                                    style="background-image:url({{ asset("$feature->main_image") }}) ; ">
                                     {{-- <div class="icon-round bg-success-gradiant text-white display-5">B</div> --}}
                                 </div>
                                 <div class="col-md-7">
