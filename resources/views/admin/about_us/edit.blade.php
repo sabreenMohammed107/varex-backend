@@ -138,7 +138,37 @@
                                                 target="_blank">View</a></p>
                                     @endif
                                 </div>
+                                 <!-- mission image -->
+                                 <div class="mb-10 fv-row">
+                                    <label class="form-label" for="company_katalog">Mission Image</label>
+                                    <input type="file" class="form-control mb-2" id="mission_image"
+                                        name="mission_image">
+                                    @if ($aboutUs->mission_image)
+                                        <p>Current Mission Image: <img width="100" src="{{ asset($aboutUs->mission_image) }}"
+                                               />
+                                    @endif
+                                </div>
 
+                                 <!-- mission image -->
+                                 <div class="mb-10 fv-row">
+                                    <label class="form-label" for="company_katalog">Vision Image</label>
+                                    <input type="file" class="form-control mb-2" id="vision_image"
+                                        name="vision_image">
+                                    @if ($aboutUs->vision_image)
+                                        <p>Current Vision Image: <img width="100" src="{{ asset($aboutUs->vision_image) }}"
+                                               />
+                                    @endif
+                                </div>
+                                 <!-- mission image -->
+                                 <div class="mb-10 fv-row">
+                                    <label class="form-label" for="company_katalog">Quality Image</label>
+                                    <input type="file" class="form-control mb-2" id="quality_image"
+                                        name="quality_image">
+                                    @if ($aboutUs->quality_image)
+                                        <p>Current Quality Image: <img width="100" src="{{ asset($aboutUs->quality_image) }}"
+                                               />
+                                    @endif
+                                </div>
                                 <!-- About Banner Text -->
                                 <div class="mb-10 fv-row">
                                     <label class="required form-label" for="about_banner_text">About Banner Text

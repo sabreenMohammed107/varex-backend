@@ -27,7 +27,11 @@ class AboutUs extends Model
         'quality_title',
         'quality_description',
         'seo_description',
-        'image'
+        'image',
+        'mission_image',
+        'vision_image',
+        'quality_image',
+
     ];
 
     protected $casts = [

@@ -57,7 +57,7 @@
                         <img class="item-img-bg" src="{{asset('webasset/img/about-us/y-bg.png')}}" alt="" srcset="">
                         <img class="item-img-hash" src="{{asset('webasset/img/about-us/small-shape.png')}}" alt="" srcset="">
                         <img class="item-img-star" src="{{asset('webasset/img/about-us/star-bg.png')}}" alt="" srcset="">
-                        <img class="item-img-main" src="{{asset('webasset/img/about-us/1.png')}}" alt="" srcset="">
+                        <img class="item-img-main" src="{{ $about->mission_image }}" alt="" srcset="">
                         <img class="item-img-zegzag" src="{{asset('webasset/img/about-us/Frame.png')}}" alt="" srcset="">
                       </div>
                 </div>
@@ -69,7 +69,7 @@
                         <img class="item-img-bg" src="{{asset('webasset/img/about-us/y-bg.png')}}" alt="" srcset="">
                         <img class="item-img-hash" src="{{asset('webasset/img/about-us/small-shape.png')}}" alt="" srcset="">
                         <img class="item-img-star" src="{{asset('webasset/img/about-us/star-bg.png')}}" alt="" srcset="">
-                        <img class="item-img-main" src="{{asset('webasset/img/about-us/2.png')}}" alt="" srcset="">
+                        <img class="item-img-main" src="{{$about->quality_image}}" alt="" srcset="">
                         <img class="item-img-zegzag" src="{{asset('webasset/img/about-us/Frame.png')}}" alt="" srcset="">
                       </div>
                 </div>
@@ -100,7 +100,7 @@
                   <p>{!! $about->vision_description['en'] ?? ' ' !!}</p>
                 </div>
                 <div class="vision-img">
-                  <img src="{{asset('webasset/img/bg/Rectangle 10206.png')}}" class="w-100 object-fit-cover border-r-30 h-100" alt="">
+                  <img src="{{ $about->vision_image }}" class="w-100 object-fit-cover border-r-30 h-100" alt="">
                 </div>
               </div>
             </div>

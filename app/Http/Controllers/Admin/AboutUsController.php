@@ -47,6 +47,27 @@ public function update(Request $request)
         $mainImage->move(public_path('uploads/about'), $mainImageName);
         $aboutUs->image = 'uploads/about/' . $mainImageName;
     }
+     //Upload mission image
+     if ($request->hasFile('mission_image')) {
+        $mission_image = $request->file('mission_image');
+        $main_mission_image = time() . '_' . $mission_image->getClientOriginalName();
+        $mission_image->move(public_path('uploads/about'), $main_mission_image);
+        $aboutUs->mission_image = 'uploads/about/' . $main_mission_image;
+    }
+      //Upload vision image
+      if ($request->hasFile('vision_image')) {
+        $vision_image = $request->file('vision_image');
+        $main_vision_image = time() . '_' . $vision_image->getClientOriginalName();
+        $vision_image->move(public_path('uploads/about'), $main_vision_image);
+        $aboutUs->vision_image = 'uploads/about/' . $main_vision_image;
+    }
+     //Upload quality image
+     if ($request->hasFile('quality_image')) {
+        $quality_image = $request->file('quality_image');
+        $main_quality_image = time() . '_' . $quality_image->getClientOriginalName();
+        $quality_image->move(public_path('uploads/about'), $main_quality_image);
+        $aboutUs->quality_image = 'uploads/about/' . $main_quality_image;
+    }
     if ($request->hasFile('company_katalog')) {
         // Get file name with extension
         $fileNameWithExt = $request->file('company_katalog')->getClientOriginalName();
