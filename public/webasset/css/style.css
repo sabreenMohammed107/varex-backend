@@ -18506,3 +18506,37 @@ span.video-title {
         height: 515px;
     }
   }
+/* ----------------------------------- */
+/* ---------------badge of products-------------- */
+/* ----------------------------------- */
+.badge-shape {
+    position: absolute;
+    top: 0;
+    right: -31px;
+    z-index: 502;
+    height: 0;
+    width: 0;
+    border-top: 16px solid transparent;
+    border-right: 16px solid transparent;
+    border-bottom: 16px solid transparent;
+
+  }
+
+  .product-badge li {
+    padding: 4px 12px;
+    border-radius: 0 !important;
+    position: relative;
+
+  }
+
+  .product-badge {
+    position: absolute;
+    top: -16px;
+    left: -1px;
+    z-index: 501 !important;
+  }
+
+  #allProductsPage .ltn__product-tab-content-inner .ltn__product-item.ltn__product-item-3 {
+    overflow: visible;
+    border-radius: 0 !important;
+  }
