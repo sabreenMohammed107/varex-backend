@@ -7838,8 +7838,8 @@ ul.wp-block-latest-posts.is-grid.alignwide {
     min-height: 800px;
   }
   .ltn__slide-item-3-normal {
-    min-height: 546px;
-    max-height: 546px;
+    min-height: 566px;
+    max-height: 566px;
   }
   .ltn__slide-item-6 {
     height: 800px;
@@ -16271,8 +16271,8 @@ footer .section-bg-2 {
 }
 @media (min-width: 1600px) {
   .ltn__slide-item-3-normal {
-    min-height: 546px;
-    max-height: 546px;
+    min-height: 566px;
+    max-height: 566px;
   }
 }
 @media (max-width: 767px) {
