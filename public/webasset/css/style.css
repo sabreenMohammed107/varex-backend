@@ -18542,3 +18542,11 @@ span.video-title {
     overflow: visible;
     border-radius: 0 !important;
   }
+  #liton_product_list .ltn__product-tab-content-inner .ltn__product-item.ltn__product-item-3 .product-img {
+    border-radius: 0 !important;
+    -webkit-border-radius: 0 !important;
+    -moz-border-radius: 0 !important;
+    -ms-border-radius: 0 !important;
+    -o-border-radius: 0 !important;
+    overflow: visible;
+}

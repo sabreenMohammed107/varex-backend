@@ -48,18 +48,18 @@
                         <div class="product-img col-12 col-md-4">
                             <a href="{{ url('product/'.$product->slug['en']) }}" class="home-img">
                                 <img src="{{ asset("$product->main_image") }}" alt="#">
+                                @if ($product->tag)
+                                    <div class="product-badge">
+                                        <ul>
+                                            <li class="sale-badge" style="background-color:{{ $product->tag->tag_color ?? '#e9184f' }}" >{{ $product->tag->title['en'] ?? ''}}</li>
+                                            <div class="badge-shape" style="border-left: 16px solid {{ $product->tag->tag_color ?? '#e9184f' }};"></div>
+                                        </ul>
+                                    </div>
+                                @endif
                             </a>
 
 
                         </div>
-                            @if ($product->tag)
-                            <div class="product-badge">
-                                <ul>
-                                    <li class="sale-badge" style="background-color:{{ $product->tag->tag_color ?? '#e9184f' }}" >{{ $product->tag->title['en'] ?? ''}}</li>
-                                    <div class="badge-shape" style="border-left: 16px solid {{ $product->tag->tag_color ?? '#e9184f' }};"></div>
-                                </ul>
-                            </div>
-                            @endif
                         <div class="product-list-content row mt-3 col-12 col-md-8">
                             <div class="prod-list-left col-md-9">
                                 <div class="product-info">
