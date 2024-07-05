@@ -7,16 +7,20 @@
                     <div class="ltn__top-bar-menu add-and-phone">
                         <ul class="d-flex justify-content-lg-start justify-content-md-between">
                             <li>
-                                <a href="https://www.google.com/maps/search/?api=1&query={{ urlencode($contactUsFirstRow->location['en'] ?? '') }}" target="_blank">
-                                    <img src="{{asset('webasset/img/icons/location.png')}}" alt="" />
+                                <a href="https://www.google.com/maps/search/?api=1&query={{ urlencode($contactUsFirstRow->location['en'] ?? '') }}"
+                                    target="_blank">
+                                    <img src="{{ asset('webasset/img/icons/location.png') }}" alt="" />
                                     {{ $contactUsFirstRow->location['en'] ?? '' }}
                                 </a>
                             </li>
                             <li style="font-size: 14px;color: #56778f;">
-                                <img src="{{asset('webasset/img/icons/call-phone.png')}}" alt="" />
+                                <img src="{{ asset('webasset/img/icons/call-phone.png') }}" alt="" />
                                 Sales & Service Support:
-                                <a href="tel:{{ $contactUsFirstRow->sales_phone }}">{{ $contactUsFirstRow->sales_phone }}</a> /
-                                <a href="tel:{{ $contactUsFirstRow->service_support_phone }}">{{ $contactUsFirstRow->service_support_phone }}</a>
+                                <a
+                                    href="tel:{{ $contactUsFirstRow->sales_phone }}">{{ $contactUsFirstRow->sales_phone }}</a>
+                                /
+                                <a
+                                    href="tel:{{ $contactUsFirstRow->service_support_phone }}">{{ $contactUsFirstRow->service_support_phone }}</a>
                             </li>
                         </ul>
                     </div>
@@ -66,12 +70,12 @@
                                     <div class="ltn__social-media">
                                         <ul>
                                             <li>
-                                                <a href="{{ $contactUsFirstRow->facebook ?? '#' }}" target="_blank" title="Facebook"><i
-                                                        class="fab fa-facebook-f"></i></a>
+                                                <a href="{{ $contactUsFirstRow->facebook ?? '#' }}" target="_blank"
+                                                    title="Facebook"><i class="fab fa-facebook-f"></i></a>
                                             </li>
                                             <li>
-                                                <a href="{{ $contactUsFirstRow->twitter ?? '#' }}" target="_blank" title="Twitter"><i
-                                                        class="fab fa-twitter"></i></a>
+                                                <a href="{{ $contactUsFirstRow->twitter ?? '#' }}" target="_blank"
+                                                    title="Twitter"><i class="fab fa-twitter"></i></a>
                                             </li>
                                             <li>
                                                 <a href="{{ $contactUsFirstRow->instagram ?? '#' }}" target="_blank"
@@ -94,7 +98,8 @@
             <div class="row justify-content-center justify-content-lg-start align-items-center">
                 <div class="col col-sm-3 col-md-2 px-0">
                     <div class="site-logo">
-                        <a href="{{ url('/') }}"><img src="{{asset('webasset/img/logo.png')}}" alt="Logo" /></a>
+                        <a href="{{ url('/') }}"><img src="{{ asset('webasset/img/logo.png') }}"
+                                alt="Logo" /></a>
                     </div>
                 </div>
                 <div class="col header-contact-serarch-column d-none d-lg-block">
@@ -107,7 +112,8 @@
                                             <a href="{{ LaravelLocalization::localizeUrl('/') }}">Home</a>
                                         </li>
                                         <li class="not-special-link">
-                                            <a href="{{ LaravelLocalization::localizeUrl('/about-us') }}">{{ __('links.about_us') }}</a>
+                                            <a
+                                                href="{{ LaravelLocalization::localizeUrl('/about-us') }}">{{ __('links.about_us') }}</a>
                                         </li>
                                         <li class="not-special-link">
                                             <a href="{{ url('/products') }}">Products</a>
@@ -144,7 +150,8 @@
                     <select class="nice-select w-100" id="search_category" name="search_category" style="display: none">
                         <option> <a href="#" onclick="setSearchCategoryId(null); return false;">All</a></option>
                         @foreach ($categoriesOrderedByRank as $category)
-                            <option value="{{  $category->id }}">{{ $category->name['en'] }} -{{  $category->id  }}</option>
+                            <option value="{{ $category->id }}">{{ $category->name['en'] }} -{{ $category->id }}
+                            </option>
                         @endforeach
 
                     </select>
@@ -155,38 +162,51 @@
                     color: #184363;
                     min-width: 100%;
                   "
-                          class="nice-select w-100 my-3" tabindex="0">
-                          <span class="current" id="current_cat"><img style="margin-right: 15px"
-                            src="{{ asset('webasset/img/icons/cat-menu.png') }}" alt="" />
-                            @if(isset($catObj))
+                        class="nice-select w-100 my-3" tabindex="0">
+                        <span class="current" id="current_cat"><img style="margin-right: 15px"
+                                src="{{ asset('webasset/img/icons/cat-menu.png') }}" alt="" />
+                            @if (isset($catObj))
+                                - {{ $catObj->name['en'] ?? '' }}
+                            @else
+                                @if (!empty($catName))
+                                    - {{ $catName ?? '' }}
+                                @else
+                                    All Categories
+                                @endif
+
+                            @endif
+                            {{-- @if (isset($catObj))
                             {{ $catObj->name['en'] ?? '' }}
                         @else
                             All Categories
-                        @endif</span>
-                            <ul class="list category-select" id="categoryList">
-                                {{-- <li data-value="Default Sorting" class="option selected focus">
+                        @endif --}}
+                        </span>
+                        <ul class="list category-select" id="categoryList">
+                            {{-- <li data-value="Default Sorting" class="option selected focus">
                                     <a href="#" data-categoryid="null">All</a>
                                 </li> --}}
-                                @foreach ($categoriesOrderedByRank as $category)
+                            @foreach ($categoriesOrderedByRank as $category)
                                 <?php
-                                $id=$category->id ;
+                                $id = $category->id;
                                 ?>
-                                <li class="option" data-id="{{ $id }}" onclick="setSearchCategoryId({{ $category->id }}, '{{ $category->name['en'] }}'); return false;">
-                                      {{ $category->name['en'] }} ({{ $category->products_count }})
+                                <li class="option" data-id="{{ $id }}"
+                                    onclick="setSearchCategoryId({{ $category->id }}, '{{ $category->name['en'] }}'); return false;">
+                                    {{ $category->name['en'] }} ({{ $category->products_count }})
                                 </li>
-                                @endforeach
-                            </ul>
-                            {{-- <input type="text" id="selectedSearchCategoryId" name="selectedSearchCategoryId" value=""> --}}
-                  </div>
+                            @endforeach
+                        </ul>
+                        {{-- <input type="text" id="selectedSearchCategoryId" name="selectedSearchCategoryId" value=""> --}}
+                    </div>
 
                 </div>
                 <div class="col header-menu-column p-2">
 
                     <div class="header-search-2 w-100">
                         <form id="searchForm" action="{{ url('/products') }}" method="get">
-                            <input type="hidden" id="selectedSearchCategoryId" name="selectedSearchCategoryId" value="">
-                            <input type="text" name="search_name"
-                            id="global-search-input" value="@isset($searchTerm){{$searchTerm}}@endisset"
+                            <input type="hidden" id="selectedSearchCategoryId" name="selectedSearchCategoryId"
+                                value="">
+                            <input type="text" name="search_name" id="global-search-input"
+                                value="@isset($searchTerm){{ $searchTerm }}@endisset"
                                 placeholder="What are you looking for?" />
                             <button id="searchButton" class="main-search" type="submit">
                                 <span><i class="icon-search"></i></span>
