@@ -76,6 +76,12 @@
         .tag-bg {
             cursor: pointer;
         }
+        @media (min-width: 1600px) {
+            .ltn__slide-item-3-normal {
+                min-height: 566px !important;
+                max-height: 566px !important;
+            }
+        }
     </style>
 @endsection
 
