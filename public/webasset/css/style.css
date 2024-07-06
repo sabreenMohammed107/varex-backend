@@ -11479,7 +11479,7 @@ blockquote::before {
   z-index: 2;
 }
 .ltn__testimonial-item-4 .ltn__testimoni-img {
-  max-width: 190px;
+  max-width: 60%;
   float: left;
   margin-right: 20px;
 }
@@ -16300,8 +16300,10 @@ footer .section-bg-2 {
 
 .scnd-section.ltn__blog-area .ltn__testimonial-item .ltn__testimoni-img {
   position: absolute;
-  top: 25%;
-  right: 0;
+  /* top: 25%; */
+  bottom: 0;
+  margin: 0;
+  right: 20px;
   z-index: 1;
 }
 
@@ -17781,7 +17783,13 @@ span.video-title {
   }
 }
 
-@media (min-width: 1000px) and (max-width: 1200px) {
+@media (min-width: 1200px) and (max-width: 2000px) {
+  .ltn__slide-item.ltn__slide-item-2 .ltn__slide-item-inner .slid-itm-img img {
+    width: auto;
+    height: 65vh;
+  }
+}
+@media (min-width: 1000px) and (max-width:  1200px) {
   #about_us_page .section-our-mission .main-img-group .item-img-star {
     right: 79%;
   }
@@ -18500,7 +18508,7 @@ span.video-title {
     }
 
     #home_page_slider .ltn__slide-item-inner {
-      min-height: 28vh;
+      /* min-height: 28vh; */ 
     }
   }
 @media (min-width: 1400px) {
