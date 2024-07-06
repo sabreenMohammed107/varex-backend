@@ -33,6 +33,12 @@
             width:100%;
             height:100%;
         }
+
+        .related:hover {
+    -webkit-box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.25);
+    -moz-box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.25);
+    box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.25);
+}
 /* Mobile screens: Disable hover effect */
 @media (max-width: 768px), (pointer: coarse) {
         #allProductsPage .product-img .qr-back-face-product {
@@ -50,6 +56,8 @@
         #allProductsPage .product-img:hover .product-badge {
             display: block;
         }
+
+
     }
 
 </style>
@@ -183,20 +191,20 @@
                                     @isset($relatedProducts)
                                     @foreach ($relatedProducts as $product)
                                            <!-- ltn__product-item -->
-                                    <div class="col-lg-12">
-                                        <div class="ltn__product-item ltn__product-item-3 text-center">
-                                            <div class="product-img">
+                                    <div class="col-lg-12 ">
+                                        <div class="ltn__product-item ltn__product-item-3 text-center related">
+                                            <div class="product-img ">
                                                 <a href="{{ url('product/'.$product->slug['en']) }}">
                                                     <img src="{{ asset("$product->main_image") }}" alt="#" >
 
                                                         </a>
-                                                        @if ($product->tag)
+                                                        {{-- @if ($product->tag)
                                                         <div class="product-badge">
                                                             <ul>
                                                                 <li class="sale-badge">{{ $product->tag->title['en'] ?? ''}}</li>
                                                             </ul>
                                                         </div>
-                                                        @endif
+                                                        @endif --}}
                                             </div>
                                             <div class="product-info">
                                                 <div class="product-price">

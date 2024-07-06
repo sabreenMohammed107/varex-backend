@@ -117,7 +117,11 @@
                                         @if (isset($catObj))
                                             - {{ $catObj->name['en'] ?? '' }}
                                         @else
-                                            - {{ $catName ?? '' }}
+                                        {{-- @if (!empty($catName)) --}}
+                                        - {{ $catName ?? '' }}
+
+                                        {{-- @endif --}}
+
                                         @endif
                                     </span>
                                 </div>
@@ -170,7 +174,7 @@
                             <h4 class="ltn__widget-title ltn__widget-title-border">Tags</h4>
                             <div class="price_filter">
                                 <div class="price_slider_amount">
-                                    <span class="tag-bg f-s-13" onclick="setTagId(0); return false;"
+                                    <span class="tag-bg f-s-13 proTag" onclick="setTagId(0); return false;"
                                         style="cursor: pointer;">All Tags</span>
                                     @foreach ($tags as $tag)
                                         <span class="tag-bg f-s-13 proTag"  data-tagid="{{ $tag->id }}" onclick="setTagId({{ $tag->id }}); return false;"
@@ -332,11 +336,10 @@
                     $('#pagination-links').html(data.pagination);
                     if (data.productCat) {
                         $('#product-cat').html('-' + data.productCat);
-
                         $('#current_cat').html(data.productCat);
                     } else {
-                        // $('#product-cat').html('');
-                        // $('#current_cat').html('All Categories');
+                        //  $('#product-cat').html('');
+                        //  $('#current_cat').html('All Categories');
 
                     }
 

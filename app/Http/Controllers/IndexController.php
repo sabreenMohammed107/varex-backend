@@ -84,9 +84,8 @@ class IndexController extends Controller
         \Log::info([$products->count(),"here"]);
         // If the request is AJAX, return JSON response
         // if ($request->ajax()) {
-            $catName = "";
+            $catName = "All Category";
         if ($request->filled('page')||$request->filled('tag_id')  || $request->filled('searchQuery') || $request->filled('category_id') || $request->filled('mobsearchQuery')) {
-             \Log::info(["no ajax"]);
             if ($request->filled('category_id')) {
                 $productCat = Category::where('id', $request->category_id)->first();
                 if ($productCat) {
