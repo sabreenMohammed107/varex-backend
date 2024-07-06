@@ -82,7 +82,7 @@
                 @isset( $features)
                   @foreach ( $features as  $feature)
                   <div class="col-12 col-md-6 col-xl-4">
-                    <div class="ltn__testimonial-item ltn__testimonial-item-4 mx-1  m-md-3">
+                    <div class="ltn__testimonial-item ltn__testimonial-item-4">
                         <div class="ltn__testimoni-info">
                             <h4 class="text-in-dark f-s-16 mb-3">
                                 {!! $feature->home_title['en'] !!}
