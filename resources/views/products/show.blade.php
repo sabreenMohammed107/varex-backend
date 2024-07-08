@@ -133,6 +133,8 @@
                             </div>
                             <div class="col-12 py-3 py-md-0">
                                 <div class="row">
+                                @if ($product->video_link)
+
                                     <div
                                         class="col-12 col-md-6 d-flex align-items-center justify-content-center justify-content-md-start">
                                         <a class="ltn__video-icon-2 ltn__video-icon-2-border---"
@@ -170,6 +172,36 @@
                                             </a>
                                         </span>
                                     </div>
+                                @else
+                                        <div class="col-12 social-data-icons  justify-content-end py-2 py-md-0">
+                                        <span class="social-modern-icons px-2">
+                                            <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(url('product/'.$product->slug['en'])) }}" target="_blank">
+                                                <img src="{{asset('webasset/img/icons/social/facebook.png')}}" alt="" srcset="">
+                                            </a>
+                                        </span>
+                                        <span class="social-modern-icons px-2">
+                                            <a href="fb-messenger://share/?link={{ urlencode(url('product/'.$product->slug['en'])) }}" target="_blank">
+                                                <img src="{{asset('webasset/img/icons/social/messenger.png')}}" alt="" srcset="">
+                                            </a>
+                                        </span>
+                                        <span class="social-modern-icons px-2">
+                                            <a href="https://www.instagram.com" target="_blank">
+                                                <img src="{{ asset('webasset/img/icons/social/social.png') }}" alt="" srcset="">
+                                            </a>
+                                        </span>
+
+                                        <span class="social-modern-icons px-2">
+                                            <a href="https://t.me/share/url?url={{ urlencode(url('product/'.$product->slug['en'])) }}" target="_blank">
+                                                <img src="{{asset('webasset/img/icons/social/telegram.png')}}" alt="" srcset="">
+                                            </a>
+                                        </span>
+                                        <span class="social-modern-icons px-2">
+                                            <a href="https://api.whatsapp.com/send?text={{ urlencode(url('product/'.$product->slug['en'])) }}" target="_blank">
+                                                <img src="{{asset('webasset/img/icons/social/whatsapp.png')}}" alt="" srcset="">
+                                            </a>
+                                        </span>
+                                    </div>
+                                @endif
                                 </div>
                             </div>
                         </div>
