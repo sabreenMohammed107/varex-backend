@@ -17777,7 +17777,7 @@ span.video-title {
 @media (min-width: 1200px) and (max-width: 2000px) {
   .ltn__slide-item.ltn__slide-item-2 .ltn__slide-item-inner .slid-itm-img img {
     width: auto;
-    height: 65vh;
+    height: 60vh;
   }
 }
 @media (min-width: 1000px) and (max-width:  1200px) {
