@@ -194,7 +194,7 @@
                             </div>
                             <ul class="cst-btn p-0">
                                 <li class="special-link shinep-0">
-                                    <a class="p-0" href="{{ $about->company_katalog }}" download="">Download
+                                    <a class="p-0" href="{{ asset($about->company_katalog) }}" download="">Download
                                         Katalog</a>
                                 </li>
                             </ul>

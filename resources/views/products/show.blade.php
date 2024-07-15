@@ -280,15 +280,19 @@
 
                         <!-- Top Rated Product Widget -->
 
-                        <div class="logo-catalog">
+                        {{-- <div class="logo-catalog">
                             <div class="main-logo">
-                                <img src="{{asset('webasset/img/logo.png')}}" alt="">
+                                <img src="{{ asset('webasset/img/logo.png') }}" alt="">
                             </div>
                             <ul class="cst-btn p-0">
                                 <li class="special-link shinep-0">
-                                    <a class="p-0" href="{{ $about->company_katalog }}" download="">Download Katalog</a>
+                                    <a class="p-0" href="{{$about->company_katalog}}" download="true" >Download
+                                        Katalog</a>
                                 </li>
                             </ul>
+                        </div> --}}
+                        <div class="author-sign align-self-center mt-3">
+                            <a href="{{ asset($about->company_katalog) }}" download="" class="special-link-products shine">Download Katalog</a>
                         </div>
                     </aside>
                 </div>

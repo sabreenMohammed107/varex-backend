@@ -101,7 +101,6 @@
             <div class="col-lg-12">
                 <!-- Mobile Menu Button -->
                 <div class="mobile-menu-toggle d-lg-none">
-                    <span>MENU</span>
                     <a href="#ltn__utilize-mobile-menu" class="ltn__utilize-toggle">
                         <svg viewBox="0 0 800 600">
                             <path
