@@ -114,7 +114,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-title-area ltn__section-title-2 text-center">
-                        <h1 class="section-title">Best Selling Products</h1>
+                        <h1 class="section-title">{{ __('links.best_products') }}</h1>
                     </div>
                 </div>
             </div>
@@ -172,7 +172,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-title-area ltn__section-title-2 text-center">
-                        <h2 class="section-title">Browsed By Catagory<span>.</span></h2>
+                        <h2 class="section-title">{{ __('links.browsed_category') }}<span>.</span></h2>
                     </div>
                 </div>
             </div>
@@ -192,7 +192,13 @@
                             <h5>
                                 <a href="{{ LaravelLocalization::localizeUrl('/products') }}" onclick="setSearchCategoryId({{ $category->id }}, '{{ $category->name[$locale] }}'); return false;" class="f-s-15 text-in-dark">{{ $category->name[$locale] }}</a>
                             </h5>
+                            @if ($locale=="en")
                             <h6 class="f-s-13 text-in-dark">[ {{ $category->products_count }} item{{ $category->products_count > 1 ? 's' : '' }} ]</h6>
+                            @else
+                            <h6 class="f-s-13 text-in-dark">[ {{ $category->products_count }} صنف ]</h6>
+
+                            @endif
+
                         </div>
                     </div>
                 </div>

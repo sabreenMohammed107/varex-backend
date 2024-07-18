@@ -145,8 +145,8 @@ Please contact us for any complaints and inquiries.',
 
 'feedback'=>'Feedback',
 'customer_feedback'=>'CUSTOMER FEEDBACK',
-'materials'=>'Materials',
-'best_materials'=>'Best Materials',
+'browsed_category'=>'Browsed By Catagory',
+'best_products'=>'Best Selling Products',
 'show_more'=>'Show More',
 'color_collection'=>'Lamination Profiles',
 'color_text'=>'PREMIER UPVC Profile’s material has great toughness and rigidity, good chemical resistance and thermal stability, outstanding resistance to weather, and ultraviolet resistance
