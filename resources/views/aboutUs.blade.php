@@ -14,8 +14,8 @@
           <div class="ltn__breadcrumb-inner ltn__breadcrumb-inner-2">
             <div class="ltn__breadcrumb-list ">
               <ul>
-                <li><a href="{{ url('/') }}">Home</a></li>
-                <li>About Us</li>
+                <li><a href="{{ LaravelLocalization::localizeUrl('/') }}">{{ __('links.home') }}</a></li>
+                <li> - {{ __('links.about_us') }}</li>
               </ul>
             </div>
           </div>
@@ -29,7 +29,7 @@
         <div class="main-bg-img-container">
           <img src="{{asset('webasset/img/bg/postive-caring-relationships-teachers 1.png')}}" alt="" class="image-bg-cover w-100">
           <div class="main-img-content">
-            <h3 class="f-s-96">About Varex</h3>
+            <h3 class="f-s-96">{{ __('links.about') }} Varex</h3>
             <p class="f-s-24">{!! $about->about_banner_text[$locale] ?? ' ' !!}</p>
           </div>
         </div>
@@ -108,7 +108,7 @@
               </div>
             </div>
             <div class="section-our-mission pt-100">
-              <h3 class="main-title text-in-dark f-s-45 text-center pb-70">Co-founder Word
+              <h3 class="main-title text-in-dark f-s-45 text-center pb-70">{{ __('links.co_founder') }}
                 <img class="mission-title-img" src="{{asset('webasset/img/icons/header-under-title.png')}}" alt="" srcset="">
               </h3>
               <div class="about-us-ceo-word-section">
@@ -127,7 +127,7 @@
               </div>
             </div>
             <div class="section-our-mission pt-100">
-              <h3 class="main-title text-in-dark f-s-45 text-center pb-70">Why Varex ?
+              <h3 class="main-title text-in-dark f-s-45 text-center pb-70">{{ __('links.why_varex') }}
                 <img class="mission-title-img" src="{{asset('webasset/img/icons/header-under-title.png')}}" alt="" srcset="">
               </h3>
               <div class="why-us-info row">
@@ -151,7 +151,7 @@
               </div>
             </div>
             <div class="section-our-mission pt-100 pb-100">
-              <h3 class="main-title text-in-dark f-s-45 text-center pb-70">Important Questions
+              <h3 class="main-title text-in-dark f-s-45 text-center pb-70">{{ __('links.important_question') }}
                 <img class="mission-title-img" src="{{asset('webasset/img/icons/header-under-title.png')}}" alt="" srcset="">
               </h3>
               <div class="faq-sextion-about-us">
