@@ -1,6 +1,6 @@
 
 @include('webLayout.style')
-<body>
+<body style="direction: {{ app()->getLocale() == 'en' ? 'ltr' : 'rtl' }}">
   <!-- Add your site or application content here -->
 
   <!-- Body main wrapper start -->

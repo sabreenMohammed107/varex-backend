@@ -1,6 +1,9 @@
 @extends('webLayout.main')
 
 @section('content')
+@php
+    $locale = app()->getLocale();
+@endphp
 <!-- BREADCRUMB AREA START -->
 <div class="py-3">
     <div class="container-lg">
@@ -40,7 +43,7 @@
                 <div class="hover-layout"></div>
 
                 <div class="hover-content">
-                    <h3>{{ $certificate->name['en'] ?? ''}}</h3>
+                    <h3>{{ $certificate->name[$locale] ?? ''}}</h3>
                 </div>
               </a>
             </div>

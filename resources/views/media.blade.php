@@ -2,6 +2,9 @@
 
 @section('content')
 <!-- BREADCRUMB AREA START -->
+@php
+    $locale = app()->getLocale();
+@endphp
 <div class="py-3">
     <div class="container-lg">
       <div class="row">
@@ -49,8 +52,8 @@
                     </a>
                   </div>
                   <div class="ltn__blog-brief">
-                    <h3 class="ltn__blog-title "><a href="#" class="text-in-dark">{!! $media->title['en'] ?? ''!!}</a></h3>
-                    <p>{!! $media->description['en'] ?? '' !!}</p>
+                    <h3 class="ltn__blog-title "><a href="#" class="text-in-dark">{!! $media->title[$locale] ?? ''!!}</a></h3>
+                    <p>{!! $media->description[$locale] ?? '' !!}</p>
                   </div>
                 </div>
               </div>

@@ -86,6 +86,9 @@
 @endsection
 
 @section('content')
+@php
+    $locale = app()->getLocale();
+@endphp
     <!-- BREADCRUMB AREA START -->
     <div class="py-3">
         <div class="container-lg">
@@ -115,7 +118,7 @@
                                 <div class="showing-product-number text-right text-end">
                                     <span>Varex Products </span><span id="product-cat">
                                         @if (isset($catObj))
-                                            - {{ $catObj->name['en'] ?? '' }}
+                                            - {{ $catObj->name[$locale] ?? '' }}
                                         @else
                                         {{-- @if (!empty($catName)) --}}
                                         - {{ $catName ?? '' }}
@@ -161,7 +164,7 @@
                                 @foreach ($categoriesOrderedByRank as $category)
                                     <li><a href="#" class="proCategory" data-categoryid="{{ $category->id }}"
                                             onclick="setCategoryId({{ $category->id }}); return false;">
-                                            {{ $category->name['en'] }} ({{ $category->products_count }})
+                                            {{ $category->name[$locale] }} ({{ $category->products_count }})
                                         </a></li>
                                 @endforeach
 
@@ -179,7 +182,7 @@
                                     @foreach ($tags as $tag)
                                         <span class="tag-bg f-s-13 proTag"  data-tagid="{{ $tag->id }}" onclick="setTagId({{ $tag->id }}); return false;"
                                             style="cursor: pointer;">
-                                            {{ $tag->title['en'] ?? '' }}
+                                            {{ $tag->title[$locale] ?? '' }}
                                         </span>
                                     @endforeach
                                 </div>

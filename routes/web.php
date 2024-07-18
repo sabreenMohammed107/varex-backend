@@ -29,9 +29,10 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
  */
 
 //website
-Route::group([
-    'prefix' => LaravelLocalization::setLocale(),
-    'middleware'=>['localizationRedirect', 'localeSessionRedirect']
+Route::group(
+    [
+        'prefix' => LaravelLocalization::setLocale(),
+        'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
 ],function() {
     Route::get('/', [IndexController::class, 'index']);
         Route::get('/products', [IndexController::class, 'productList']);

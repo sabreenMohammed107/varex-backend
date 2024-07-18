@@ -1,4 +1,7 @@
 <!-- Utilize Mobile Menu Start -->
+@php
+    $locale = app()->getLocale();
+@endphp
 <div id="ltn__utilize-mobile-menu" class="ltn__utilize ltn__utilize-mobile-menu">
     <div class="ltn__utilize-menu-inner ltn__scrollbar">
         <div class="ltn__utilize-menu-head">
@@ -11,7 +14,7 @@
             <select class="nice-select w-100" style="display: none">
                 <option>All</option>
                 @foreach ($categoriesOrderedByRank as $category)
-                <option value="{{ $category->id }}">{{ $category->name['en'] }}</option>
+                <option value="{{ $category->id }}">{{ $category->name[$locale] }}</option>
             @endforeach
 
 
@@ -21,7 +24,7 @@
                     <span class="current"><img style="margin-right: 5px"
                         src="{{ asset('webasset/img/icons/cat-menu.png') }}" alt="" />
                         @if(isset($catObj))
-                        {{ $catObj->name['en'] ?? '' }}
+                        {{ $catObj->name[$locale] ?? '' }}
                     @else
                         All Categories
                     @endif</span>
@@ -33,8 +36,8 @@
                             <?php
                             $id=$category->id ;
                             ?>
-                            <li class="option" data-id="{{ $id }}" onclick="mobsetSearchCategoryId({{ $category->id }}, '{{ $category->name['en'] }}'); return false;">
-                                  {{ $category->name['en'] }} ({{ $category->products_count }})
+                            <li class="option" data-id="{{ $id }}" onclick="mobsetSearchCategoryId({{ $category->id }}, '{{ $category->name[$locale] }}'); return false;">
+                                  {{ $category->name[$locale] }} ({{ $category->products_count }})
                             </li>
                             @endforeach
                         </ul>

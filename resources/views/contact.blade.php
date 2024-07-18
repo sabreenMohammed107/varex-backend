@@ -28,6 +28,9 @@
     </style>
 @endsection
 @section('content')
+@php
+    $locale = app()->getLocale();
+@endphp
     @if (session('success'))
         <div class="alert alert-success">
             {{ session('success') }}
@@ -125,8 +128,8 @@
                                         <div class="contact-data">
                                             <h5>Location</h5>
                                             <p>
-                                                <a href="https://www.google.com/maps/search/?api=1&query={{ urlencode($contactUsFirstRow->location['en'] ?? '') }}" target="_blank">
-                                                    {{ $contactUsFirstRow->location['en'] ?? '' }}
+                                                <a href="https://www.google.com/maps/search/?api=1&query={{ urlencode($contactUsFirstRow->location[$locale] ?? '') }}" target="_blank">
+                                                    {{ $contactUsFirstRow->location[$locale] ?? '' }}
                                                 </a>
                                             </p>
                                         </div>

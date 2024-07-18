@@ -64,6 +64,9 @@
 @endsection
 
 @section('content')
+@php
+    $locale = app()->getLocale();
+@endphp
   <!-- BREADCRUMB AREA START -->
   <div class="py-3">
     <div class="container-lg">
@@ -74,7 +77,7 @@
                         <ul>
                             <li><a href="{{ url('/') }}">Home</a></li>
                             <li><a href="{{ url('/products') }}" class="text-in-gray-light">Products</a></li>
-                            <li class="text-in-black">{{ $product->title['en'] ?? '' }}</li>
+                            <li class="text-in-black">{{ $product->title[$locale] ?? '' }}</li>
                         </ul>
                     </div>
                 </div>
@@ -119,10 +122,10 @@
                             </div>
                             <div class="col-md-8">
                                 <div class="modal-product-info shop-details-info pl-0">
-                                    <h3 class="text-in-dark">{{ $product->title['en'] ?? '' }}</h3>
-                                    <h5 class="text-in-dark">{{ $product->category->name['en'] ?? '' }} </h5>
+                                    <h3 class="text-in-dark">{{ $product->title[$locale] ?? '' }}</h3>
+                                    <h5 class="text-in-dark">{{ $product->category->name[$locale] ?? '' }} </h5>
                                     <div class="ltn__product-details-menu-2">
-                                        <p class="sngl-product-details f-s-15 txt-black-gray"> {!! $product->description['en'] ?? '' !!}</p>
+                                        <p class="sngl-product-details f-s-15 txt-black-gray"> {!! $product->description[$locale] ?? '' !!}</p>
                                     </div>
                                     <hr>
                                     <div class="ltn__product-qr_and_code ">
@@ -146,12 +149,12 @@
                                     </div>
                                     <div class="col-12 col-md-6 social-data-icons justify-content-center justify-content-md-end py-2 py-md-0">
                                         <span class="social-modern-icons px-2">
-                                            <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(url('product/'.$product->slug['en'])) }}" target="_blank">
+                                            <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(url('product/'.$product->slug[$locale])) }}" target="_blank">
                                                 <img src="{{asset('webasset/img/icons/social/facebook.png')}}" alt="" srcset="">
                                             </a>
                                         </span>
                                         <span class="social-modern-icons px-2">
-                                            <a href="fb-messenger://share/?link={{ urlencode(url('product/'.$product->slug['en'])) }}" target="_blank">
+                                            <a href="fb-messenger://share/?link={{ urlencode(url('product/'.$product->slug[$locale])) }}" target="_blank">
                                                 <img src="{{asset('webasset/img/icons/social/messenger.png')}}" alt="" srcset="">
                                             </a>
                                         </span>
@@ -162,12 +165,12 @@
                                         </span>
 
                                         <span class="social-modern-icons px-2">
-                                            <a href="https://t.me/share/url?url={{ urlencode(url('product/'.$product->slug['en'])) }}" target="_blank">
+                                            <a href="https://t.me/share/url?url={{ urlencode(url('product/'.$product->slug[$locale])) }}" target="_blank">
                                                 <img src="{{asset('webasset/img/icons/social/telegram.png')}}" alt="" srcset="">
                                             </a>
                                         </span>
                                         <span class="social-modern-icons px-2">
-                                            <a href="https://api.whatsapp.com/send?text={{ urlencode(url('product/'.$product->slug['en'])) }}" target="_blank">
+                                            <a href="https://api.whatsapp.com/send?text={{ urlencode(url('product/'.$product->slug[$locale])) }}" target="_blank">
                                                 <img src="{{asset('webasset/img/icons/social/whatsapp.png')}}" alt="" srcset="">
                                             </a>
                                         </span>
@@ -175,12 +178,12 @@
                                 @else
                                         <div class="col-12 social-data-icons  justify-content-end py-2 py-md-0">
                                         <span class="social-modern-icons px-2">
-                                            <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(url('product/'.$product->slug['en'])) }}" target="_blank">
+                                            <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(url('product/'.$product->slug[$locale])) }}" target="_blank">
                                                 <img src="{{asset('webasset/img/icons/social/facebook.png')}}" alt="" srcset="">
                                             </a>
                                         </span>
                                         <span class="social-modern-icons px-2">
-                                            <a href="fb-messenger://share/?link={{ urlencode(url('product/'.$product->slug['en'])) }}" target="_blank">
+                                            <a href="fb-messenger://share/?link={{ urlencode(url('product/'.$product->slug[$locale])) }}" target="_blank">
                                                 <img src="{{asset('webasset/img/icons/social/messenger.png')}}" alt="" srcset="">
                                             </a>
                                         </span>
@@ -191,12 +194,12 @@
                                         </span>
 
                                         <span class="social-modern-icons px-2">
-                                            <a href="https://t.me/share/url?url={{ urlencode(url('product/'.$product->slug['en'])) }}" target="_blank">
+                                            <a href="https://t.me/share/url?url={{ urlencode(url('product/'.$product->slug[$locale])) }}" target="_blank">
                                                 <img src="{{asset('webasset/img/icons/social/telegram.png')}}" alt="" srcset="">
                                             </a>
                                         </span>
                                         <span class="social-modern-icons px-2">
-                                            <a href="https://api.whatsapp.com/send?text={{ urlencode(url('product/'.$product->slug['en'])) }}" target="_blank">
+                                            <a href="https://api.whatsapp.com/send?text={{ urlencode(url('product/'.$product->slug[$locale])) }}" target="_blank">
                                                 <img src="{{asset('webasset/img/icons/social/whatsapp.png')}}" alt="" srcset="">
                                             </a>
                                         </span>
@@ -226,23 +229,23 @@
                                     <div class="col-lg-12 ">
                                         <div class="ltn__product-item ltn__product-item-3 text-center related">
                                             <div class="product-img ">
-                                                <a href="{{ url('product/'.$product->slug['en']) }}">
+                                                <a href="{{ url('product/'.$product->slug[$locale]) }}">
                                                     <img src="{{ asset("$product->main_image") }}" alt="#" >
 
                                                         </a>
                                                         {{-- @if ($product->tag)
                                                         <div class="product-badge">
                                                             <ul>
-                                                                <li class="sale-badge">{{ $product->tag->title['en'] ?? ''}}</li>
+                                                                <li class="sale-badge">{{ $product->tag->title[$locale] ?? ''}}</li>
                                                             </ul>
                                                         </div>
                                                         @endif --}}
                                             </div>
                                             <div class="product-info">
                                                 <div class="product-price">
-                                                    <span>{!! $product->home_title['en'] !!}</span>
+                                                    <span>{!! $product->home_title[$locale] !!}</span>
                                                 </div>
-                                                <h2 class="product-title"><a href="{{ url('product/'.$product->slug['en']) }}">{{ $product->category->name['en'] ?? ''}}</a>
+                                                <h2 class="product-title"><a href="{{ url('product/'.$product->slug[$locale]) }}">{{ $product->category->name[$locale] ?? ''}}</a>
                                                 </h2>
                                             </div>
                                         </div>
@@ -268,7 +271,7 @@
                                         ({{ $countAll }})</a></li>
                                 @foreach ($categoriesOrderedByRank as $category)
                                     <li><a href="{{ url('/products') }}"
-                                        onclick="setSearchCategoryId({{ $category->id }}, '{{ $category->name['en'] }}'); return false;" >{{ $category->name['en'] }}
+                                        onclick="setSearchCategoryId({{ $category->id }}, '{{ $category->name[$locale] }}'); return false;" >{{ $category->name[$locale] }}
                                             ({{ $category->products_count }})
                                         </a></li>
                                 @endforeach
@@ -292,7 +295,7 @@
                             </ul>
                         </div> --}}
                         <div class="author-sign align-self-center mt-3">
-                            <a href="{{ asset($about->company_katalog) }}" download="" class="special-link-products shine">Download Katalog</a>
+                            <a href="{{ asset($about->company_katalog) }}" download="" class="special-link-products shine">{{ __('links.katalog') }}</a>
                         </div>
                     </aside>
                 </div>

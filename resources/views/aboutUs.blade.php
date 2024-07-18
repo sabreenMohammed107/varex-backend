@@ -4,6 +4,9 @@
 
 @section('content')
 <!-- BREADCRUMB AREA START -->
+@php
+    $locale = app()->getLocale();
+@endphp
 <div class="py-3">
     <div class="container-lg">
       <div class="row">
@@ -27,27 +30,27 @@
           <img src="{{asset('webasset/img/bg/postive-caring-relationships-teachers 1.png')}}" alt="" class="image-bg-cover w-100">
           <div class="main-img-content">
             <h3 class="f-s-96">About Varex</h3>
-            <p class="f-s-24">{!! $about->about_banner_text['en'] ?? ' ' !!}</p>
+            <p class="f-s-24">{!! $about->about_banner_text[$locale] ?? ' ' !!}</p>
           </div>
         </div>
         <div class="container-lg pt-100">
           <div class="row">
             <div class="section-our-mission">
-              <h3 class="main-title text-in-dark f-s-45 text-center pb-70">{!! $about->mission_title['en'] ?? ' ' !!}
+              <h3 class="main-title text-in-dark f-s-45 text-center pb-70">{!! $about->mission_title[$locale] ?? ' ' !!}
                 <img class="mission-title-img" src="{{asset('webasset/img/icons/header-under-title.png')}}" alt="" srcset="">
               </h3>
               <div class="our-mission-p1 row">
                 <div class="mission-content-left py-5 order-2 order-md-1 px-5 col-12 col-md-6">
                   <div class="title-head-content">
-                    <h3 class="text-in-dark f-s-36">{!! $about->mission_sub_title['en'] ?? ' ' !!}</h3>
+                    <h3 class="text-in-dark f-s-36">{!! $about->mission_sub_title[$locale] ?? ' ' !!}</h3>
                   </div>
                   <div class="paragraph-content ">
-                    <p class="clr-gry py-3">{!! $about->mission_description['en'] ?? ' ' !!}</p>
+                    <p class="clr-gry py-3">{!! $about->mission_description[$locale] ?? ' ' !!}</p>
                   </div>
                   <div class="btn-content">
                     <ul class="cst-btn p-0">
                       <li class="special-link shine w-fit-content p-0 m-0">
-                        <a class="p-0 m-0" href="{{ url('/products') }}">All Products</a>
+                        <a class="p-0 m-0" href="{{ LaravelLocalization::localizeUrl('/products') }}">{{ __('links.all_products') }}</a>
                       </li>
                     </ul>
                   </div>
@@ -76,15 +79,15 @@
 
                 <div class="mission-content-left py-5 px-5 col-12 col-md-6">
                   <div class="title-head-content">
-                    <h3 class="text-in-dark f-s-36">{!! $about->quality_title['en'] ?? ' ' !!}</h3>
+                    <h3 class="text-in-dark f-s-36">{!! $about->quality_title[$locale] ?? ' ' !!}</h3>
                   </div>
                   <div class="paragraph-content ">
-                    <p class="clr-gry py-3">{!! $about->quality_description['en'] ?? ' ' !!}</p>
+                    <p class="clr-gry py-3">{!! $about->quality_description[$locale] ?? ' ' !!}</p>
                   </div>
                   <div class="btn-content">
                     <ul class="cst-btn p-0">
                       <li class="special-link shine w-fit-content p-0 m-0">
-                        <a class="p-0 m-0" href="{{ $about->company_katalog }}" download="" >Download Katalog</a>
+                        <a class="p-0 m-0" href="{{ $about->company_katalog }}" download="" >{{ __('links.katalog') }}</a>
                       </li>
                     </ul>
                   </div>
@@ -92,12 +95,12 @@
               </div>
             </div>
             <div class="section-our-mission pt-100">
-              <h3 class="main-title text-in-dark f-s-45 text-center pb-70">{!! $about->vision_title['en'] ?? ' ' !!}
+              <h3 class="main-title text-in-dark f-s-45 text-center pb-70">{!! $about->vision_title[$locale] ?? ' ' !!}
                 <img class="mission-title-img" src="{{asset('webasset/img/icons/header-under-title.png')}}" alt="" srcset="">
               </h3>
               <div class="our-vision-section-content">
                 <div class="vision-content border-r-30 p-5">
-                  <p>{!! $about->vision_description['en'] ?? ' ' !!}</p>
+                  <p>{!! $about->vision_description[$locale] ?? ' ' !!}</p>
                 </div>
                 <div class="vision-img">
                   <img src="{{ $about->vision_image }}" class="w-100 object-fit-cover border-r-30 h-100" alt="">
@@ -111,10 +114,10 @@
               <div class="about-us-ceo-word-section">
                 <div class="row">
                   <div class="col-12 col-md-8 ceo-content">
-                    {!! $about->seo_description['en'] ?? ' ' !!}
+                    {!! $about->seo_description[$locale] ?? ' ' !!}
                     <div class="ceo-sign">
-                      <h3 class="text-in-dark">{!! $about->manager_name['en'] ?? ' ' !!}</h3>
-                      <p class="clr-gry">{!! $about->manager_position['en'] ?? ' ' !!}</p>
+                      <h3 class="text-in-dark">{!! $about->manager_name[$locale] ?? ' ' !!}</h3>
+                      <p class="clr-gry">{!! $about->manager_position[$locale] ?? ' ' !!}</p>
                     </div>
                   </div>
                   <div class="col-12 col-md-4 ceo-img">
@@ -135,10 +138,10 @@
                           <img src="{{  $obj->icon }}" alt="">
                         </div>
                         <div class="why-us-head pt-3">
-                          <h4>{!! $obj->title['en'] ?? ' ' !!}</h4>
+                          <h4>{!! $obj->title[$locale] ?? ' ' !!}</h4>
                         </div>
                         <div class="why-us-info">
-                          <p class="clr-gry p-3">I{!! $obj->description['en'] ?? ' ' !!}</p>
+                          <p class="clr-gry p-3">I{!! $obj->description[$locale] ?? ' ' !!}</p>
                         </div>
                       </div>
                     @endforeach
@@ -162,11 +165,11 @@
                         <div class="card">
                             <h6 class="ltn__card-title collapsed" data-bs-toggle="collapse" data-bs-target="#faq-item-2-{{ $index+1 }}"
                               aria-expanded="false">
-                             {!! $faq->question['en'] ?? ''!!}
+                             {!! $faq->question[$locale] ?? ''!!}
                             </h6>
                             <div id="faq-item-2-{{ $index+1 }}" class="collapse" data-parent="#accordion_2" style="">
                               <div class="card-body">
-                                <p>{!! $faq->answer['en'] ?? ''!!}</p>
+                                <p>{!! $faq->answer[$locale] ?? ''!!}</p>
                               </div>
                             </div>
                           </div>
@@ -183,7 +186,7 @@
                       <div class="btn-content">
                         <ul class="cst-btn p-0">
                           <li class="special-link shine w-fit-content p-0 m-0">
-                            <a class="p-0 m-0" href="{{ $about->company_katalog }}" download="" >Download Katalog</a>
+                            <a class="p-0 m-0" href="{{ $about->company_katalog }}" download="" >{{ __('links.katalog') }}</a>
                           </li>
                         </ul>
                       </div>

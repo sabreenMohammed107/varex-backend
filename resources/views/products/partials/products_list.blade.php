@@ -1,5 +1,7 @@
 <!-- resources/views/products/partials/products_list.blade.php -->
-
+@php
+    $locale = app()->getLocale();
+@endphp
 <div class="tab-content">
     <div class="tab-pane fade active show" id="liton_product_grid">
         <div class="ltn__product-tab-content-inner ltn__product-grid-view">
@@ -9,26 +11,26 @@
                     <div class="ltn__product-item ltn__product-item-3 text-center">
                         <div class="product-img">
 
-                            <a href="{{ url('product/'.$product->slug['en']) }}" class="home-img">
+                            <a href="{{ url('product/'.$product->slug[$locale]) }}" class="home-img">
                                 <img src="{{ asset("$product->main_image") }}" alt="#" >
                             </a>
                         </div>
                         @if ($product->tag)
                             <div class="product-badge">
                                 <ul>
-                                    <li class="sale-badge" style="background-color:{{ $product->tag->tag_color ?? '#e9184f' }}" >{{ $product->tag->title['en'] ?? ''}}</li>
+                                    <li class="sale-badge" style="background-color:{{ $product->tag->tag_color ?? '#e9184f' }}" >{{ $product->tag->title[$locale] ?? ''}}</li>
                                     <div class="badge-shape" style="border-left: 16px solid {{ $product->tag->tag_color ?? '#e9184f' }};"></div>
                                 </ul>
                             </div>
                         @endif
                         <div class="product-info">
                             <h2 class="product-title mx-2">
-                                <a href="{{ url('product/'.$product->slug['en']) }}" class="f-s-18 text-in-dark">
-                                    {!! $product->home_title['en'] !!}
+                                <a href="{{ url('product/'.$product->slug[$locale]) }}" class="f-s-18 text-in-dark">
+                                    {!! $product->home_title[$locale] !!}
                                 </a>
                             </h2>
                             <div class="product-price">
-                                <span class="f-s-15 text-in-dark-light f-w-400"> {{ $product->category->name['en'] ??
+                                <span class="f-s-15 text-in-dark-light f-w-400"> {{ $product->category->name[$locale] ??
                                     ''}}</span>
                             </div>
                         </div>
@@ -46,12 +48,12 @@
 
                     <div class="ltn__product-item ltn__product-item-3 row">
                         <div class="product-img col-12 col-md-4">
-                            <a href="{{ url('product/'.$product->slug['en']) }}" class="home-img">
+                            <a href="{{ url('product/'.$product->slug[$locale]) }}" class="home-img">
                                 <img src="{{ asset("$product->main_image") }}" alt="#">
                                 @if ($product->tag)
                                     <div class="product-badge">
                                         <ul>
-                                            <li class="sale-badge" style="background-color:{{ $product->tag->tag_color ?? '#e9184f' }}" >{{ $product->tag->title['en'] ?? ''}}</li>
+                                            <li class="sale-badge" style="background-color:{{ $product->tag->tag_color ?? '#e9184f' }}" >{{ $product->tag->title[$locale] ?? ''}}</li>
                                             <div class="badge-shape" style="border-left: 16px solid {{ $product->tag->tag_color ?? '#e9184f' }};"></div>
                                         </ul>
                                     </div>
@@ -64,17 +66,17 @@
                             <div class="prod-list-left col-md-9">
                                 <div class="product-info">
                                     <h2 class="product-title">
-                                        <a href="{{ url('product/'.$product->slug['en']) }}" class="f-s-25 text-in-dark">
-                                            {!! $product->home_title['en'] !!}
+                                        <a href="{{ url('product/'.$product->slug[$locale]) }}" class="f-s-25 text-in-dark">
+                                            {!! $product->home_title[$locale] !!}
                                         </a>
                                     </h2>
                                     <div class="product-price">
                                         <span class="f-s-15 text-in-dark-light f-w-400">{{
-                                            $product->category->name['en'] ?? ''}}</span>
+                                            $product->category->name[$locale] ?? ''}}</span>
                                     </div>
                                 </div>
                                 <div class="product-brief">
-                                    <p class="f-clr-gry">{{ $product->description['en'] }}</p>
+                                    <p class="f-clr-gry">{{ $product->description[$locale] }}</p>
                                 </div>
                             </div>
                             <div

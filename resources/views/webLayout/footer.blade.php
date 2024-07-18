@@ -1,4 +1,7 @@
   <!-- FOOTER AREA START -->
+  @php
+    $locale = app()->getLocale();
+@endphp
   <footer class="ltn__footer-area">
       <div class="footer-top-area section-bg-2 plr--5">
           <div class="container-lg">
@@ -12,7 +15,7 @@
                           </div>
                           <div class="footer-widget footer-newsletter-widget w-100">
                               <p class="px-2 f-s-16">
-                                  Stay tuned for latest updates and new features
+                                {{ __('links.footer_text') }}
                               </p>
                               <div class="footer-newsletter">
                                   <div id="mc_embed_signup">
@@ -21,9 +24,9 @@
                                                 <form id="newsletterForm" action="{{ route('newsLetter.store') }}" method="post">
                                                     @csrf
                                                   <input type="text" name="email" value="" id="email"
-                                                      autocomplete="email" placeholder="Email Address" />
+                                                      autocomplete="email" placeholder="{{ __('links.enter_email') }}" />
                                                   <button class="main-search" type="submit">
-                                                      <span><i class="far fa-paper-plane px-2"></i>Subscribe</span>
+                                                      <span><i class="far fa-paper-plane px-2"></i>{{ __('links.Subscribe') }}</span>
                                                   </button>
                                               </form>
                                           </div>
@@ -32,13 +35,12 @@
                               </div>
                               <p class="p-2 mb-3">
                                   <label class="input-info-save mb-0">
-                                      <input type="checkbox" id="agree" name="agree" /> I accept terms and
-                                      conditions & privacy policy
+                                      <input type="checkbox" id="agree" name="agree" />   {{ __('links.terms_text') }}
                                   </label>
                               </p>
                               <div id="error-message"
                                   style="background: #ff000085;color:#fff; display: none; padding: 10px; margin-top: 10px;">
-                                  You must accept the terms and conditions & privacy policy before subscribing.
+                                  {{ __('links.term_condation') }}
                               </div>
 
                           </div>
@@ -51,11 +53,11 @@
                           <h4 class="footer-title">Varex</h4>
                           <div class="footer-menu">
                               <ul>
-                                  <li><a href="{{ url('/about-us') }}">About Us</a></li>
-                                  <li><a href="{{ url('/products') }}">Products</a></li>
-                                  <li><a href="{{ url('/media') }}">Media</a></li>
-                                  <li><a href="{{ url('/blogs') }}">Blogs</a></li>
-                                  <li><a href="{{ url('/varex-certificates') }}">Certificate</a></li>
+                                  <li><a  href="{{ LaravelLocalization::localizeUrl('/about-us') }}">{{ __('links.about_us') }}</a></li>
+                                  <li><a href="{{ LaravelLocalization::localizeUrl('/products') }}">{{ __('links.products') }}</a></li>
+                                  <li><a href="{{ LaravelLocalization::localizeUrl('/media') }}">{{ __('links.media') }}</a></li>
+                                  <li><a href="{{ LaravelLocalization::localizeUrl('/blogs') }}">{{ __('links.blogs') }}</a></li>
+                                  <li><a href="{{ LaravelLocalization::localizeUrl('/varex-certificates') }}">{{ __('links.certificate') }}</a></li>
                               </ul>
                           </div>
                       </div>
@@ -65,16 +67,16 @@
 
                           <div class="footer-menu mt-5">
                               <ul>
-                                  <li><a href="{{ url('/distribute') }}">Distribute With Us</a></li>
-                                  <li><a href="{{ url('/contact') }}">Contact Us</a></li>
-                                  <li><a href="{{ url('/terms-condations') }}">Terms & Conditions</a></li>
+                                  <li><a href="{{ LaravelLocalization::localizeUrl('/distribute') }} ">{{ __('links.distribute') }}</a></li>
+                                  <li><a href="{{ LaravelLocalization::localizeUrl('/contact') }}">{{ __('links.contact_us') }}</a></li>
+                                  <li><a href="{{ LaravelLocalization::localizeUrl('/terms-condations') }}">{{ __('links.terms') }}</a></li>
                               </ul>
                           </div>
                       </div>
                   </div>
                   <div class="col-12 col-xl-3 col-md-6 col-sm-6">
                       <div class="footer-address">
-                          <h4 class="footer-title">Varex / Contacts</h4>
+                          <h4 class="footer-title">Varex / {{  __('links.contacts') }}</h4>
                           <ul>
                               <li>
                                   <div class="footer-address-icon">
@@ -82,8 +84,8 @@
                                   </div>
                                   <div class="footer-address-info">
                                     <p>
-                                        <a href="https://www.google.com/maps/search/?api=1&query={{ urlencode($contactUsFirstRow->location['en'] ?? '') }}" target="_blank">
-                                            {{ $contactUsFirstRow->location['en'] ?? '' }}
+                                        <a href="https://www.google.com/maps/search/?api=1&query={{ urlencode($contactUsFirstRow->location[$locale] ?? '') }}" target="_blank">
+                                            {{ $contactUsFirstRow->location[$locale] ?? '' }}
                                         </a>
                                     </p>
                                   </div>
@@ -111,7 +113,7 @@
                   <div class="col-md-6 col-12">
                       <div class="ltn__copyright-design clearfix">
                           <p>
-                              Copyright 2024 @ Varex
+                              {{   __('links.tade_mark') }} 2024 @ Varex
 
                           </p>
                       </div>
