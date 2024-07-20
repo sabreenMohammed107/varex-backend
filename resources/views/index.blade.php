@@ -16,19 +16,20 @@
 @endif
     <!-- SLIDER AREA START (slider-3) -->
     <div class="ltn__slider-area ltn__slider-3 section-bg-1" id='home_page_slider'>
-        <div class="ltn__slide-one-active slick-slide-arrow-1 slick-slide-dots-1">
+        <div class="ltn__slide-one-active slick-slide-arrow-1 slick-slide-dots-1"  style='direction:ltr !important'>
             <!-- ltn__slide-item -->
             @isset($sliders)
              @foreach ($sliders as $slider)
              <div class="ltn__slide-item ltn__slide-item-2 ltn__slide-item-3 ltn__slide-item-3-normal bg-image"
-             data-bg="{{asset('webasset/img/slider/1/Rectangle-26.png')}}">
+             data-bg="{{asset('webasset/img/slider/1/Rectangle-26.png')}}" >
              <div class="ltn__slide-item-inner  text-end">
                  <div class="container-lg">
                      <div class="row">
                          <div class="col-lg-12 align-self-center">
                              <div class="slide-item-info d-none d-sm-block">
                                  <div class="slide-item-info-inner ltn__slide-animation row">
-                                     <div
+                                 @if ($locale == 'en')
+                                      <div
                                          class="slid-data-info animated col-5 col-lg-3 d-flex flex-column justify-content-center">
                                          <h6 class="slide-sub-title animated whit-clr">
                                              {{ $slider->category->name[$locale] ?? ''}}
@@ -48,6 +49,31 @@
                                      <div class="slid-itm-img animated col-7 col-lg-6 ">
                                          <img src="{{ asset("$slider->main_image") }}" alt="" srcset="" />
                                      </div>
+                                @elseif($locale == 'ar')
+                                    <div class="slid-itm-img animated col-7 col-lg-6 ">
+                                         <img src="{{ asset("$slider->main_image") }}" alt="" srcset="" />
+                                     </div>
+
+                                     <div class="slid-logo-img animated col-3 d-none d-lg-block">
+                                         {{-- <img src="{{asset('webasset/img/slider/logo-dark-2.png')}}" alt="" srcset="" /> --}}
+                                     </div>
+ <div
+                                         class="slid-data-info animated col-5 col-lg-3 d-flex flex-column justify-content-center">
+                                         <h6 class="slide-sub-title animated whit-clr">
+                                             {{ $slider->category->name[$locale] ?? ''}}
+                                         </h6>
+                                         <h1 class="slide-title animated whit-clr">
+                                            {!! $slider->home_title[$locale] !!}<br />
+
+                                         </h1>
+                                         <div class="btn-wrapper animated">
+                                             <a href="{{ LaravelLocalization::localizeUrl('product/'.$slider->slug[$locale]) }}" class="theme-btn-1 btn text-uppercase">
+                                                {{ __('links.more_details') }}</a>
+                                         </div>
+                                     </div>
+
+                                 @endif
+
                                  </div>
                              </div>
                              <div class="slide-item-info-mob d-block d-sm-none">
