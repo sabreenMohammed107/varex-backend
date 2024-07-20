@@ -118,7 +118,12 @@
     <div class="container-lg">
 @endif
         <div class="row">
-            <div class="col-lg-12">
+@if ($locale == 'ar')
+    <div class="col-lg-12 px-5">
+@else
+    <div class="col-lg-12">
+@endif
+
                 <!-- Mobile Menu Button -->
                 <div class="mobile-menu-toggle d-lg-none">
                     <a href="#ltn__utilize-mobile-menu" class="ltn__utilize-toggle">
