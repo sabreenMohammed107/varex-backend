@@ -364,14 +364,7 @@
         --------------------------------------------------------- */
    // Check if the document direction is RTL
 var isRtl = document.documentElement.getAttribute('dir') === 'rtl';
- // Apply RTL or LTR specific styles or configurations
- if (isRtl) {
-    // RTL specific code
-    document.body.classList.add('rtl');
-  } else {
-    // LTR specific code
-    document.body.classList.add('ltr');
-  }
+
 $(".ltn__slide-one-active")
     .slick({
         autoplay: true,
