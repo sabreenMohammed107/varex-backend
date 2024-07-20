@@ -362,8 +362,18 @@
     /* --------------------------------------------------------
             15. Slider One Active
         --------------------------------------------------------- */
-    $(".ltn__slide-one-active")
-      .slick({
+   // Check if the document direction is RTL
+var isRtl = document.documentElement.getAttribute('dir') === 'rtl';
+ // Apply RTL or LTR specific styles or configurations
+ if (isRtl) {
+    // RTL specific code
+    document.body.classList.add('rtl');
+  } else {
+    // LTR specific code
+    document.body.classList.add('ltr');
+  }
+$(".ltn__slide-one-active")
+    .slick({
         autoplay: true,
         autoplaySpeed: 4000,
         arrows: true,
@@ -375,24 +385,28 @@
         speed: 2000,
         slidesToShow: 1,
         slidesToScroll: 1,
+        rtl: isRtl, // Ensure RTL is set correctly
         prevArrow:
-          '<a class="slick-prev"><i class="fas fa-arrow-left" alt="Arrow Icon"></i></a>',
+            '<a class="slick-prev"><i class="fas fa-arrow-left" alt="Arrow Icon"></i></a>',
         nextArrow:
-          '<a class="slick-next"><i class="fas fa-arrow-right" alt="Arrow Icon"></i></a>',
+            '<a class="slick-next"><i class="fas fa-arrow-right" alt="Arrow Icon"></i></a>',
         responsive: [
-          {
-            breakpoint: 1200,
-            settings: {
-              arrows: true,
-              dots: false,
+            {
+                breakpoint: 1200,
+                settings: {
+                    arrows: true,
+                    dots: false,
+                },
             },
-          },
         ],
-      })
-      .on("afterChange", function (event, slick) {
-        new WOW().init();
-        // slick.$slides.css("height", 400 + "px !important");
-      });
+    })
+    .on("afterChange", function (event, slick) {
+        // Reinitialize WOW.js to ensure it works correctly with slider changes
+        if (typeof WOW === 'function') {
+            new WOW().init();
+        }
+    });
+
 
     /* --------------------------------------------------------
             15-2. Slider Active 2

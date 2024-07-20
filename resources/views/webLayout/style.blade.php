@@ -15,8 +15,43 @@
   <link rel="stylesheet" href="{{asset('webasset/css/font-icons.css')}}" />
   <!-- plugins css -->
   <link rel="stylesheet" href="{{asset('webasset/css/plugins.css')}}" />
-  <!-- Main Stylesheet -->
+  @if (app()->getLocale() == 'en')
   <link rel="stylesheet" href="{{asset('webasset/css/style.css')}}" />
+
+  @else
+  <link rel="stylesheet" href="{{asset('webasset/css/style-rtl.css')}}" />
+  <style>
+/* General styles */
+
+body.rtl .slick-prev {
+  /* RTL specific styles for previous arrow */
+  left: auto;
+  right: 0;
+}
+
+body.rtl .slick-next {
+  /* RTL specific styles for next arrow */
+  left: 0;
+  right: auto;
+}
+
+/* Similar styles for other elements as needed */
+
+body.ltr .slick-prev {
+  /* LTR specific styles for previous arrow */
+  left: 0;
+  right: auto;
+}
+
+body.ltr .slick-next {
+  /* LTR specific styles for next arrow */
+  left: auto;
+  right: 0;
+}
+
+  </style>
+
+  @endif
   <!-- Responsive css -->
   <link rel="stylesheet" href="{{asset('webasset/css/responsive.css')}}" />
   <style>
