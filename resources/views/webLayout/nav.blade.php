@@ -78,8 +78,21 @@
                     <a class="p-0" href="{{ url('/distribute') }}">Distribute With Us</a>
                 </li>
             </ul>
-        </div>
 
+        </div>
+ <div class="ltn__drop-menu ltn__currency-menu pt-3">
+                                        <ul>
+                                            @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                                                @if(app()->getLocale() != $localeCode)
+                                                    <li>
+                                                        <a rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                                                            {{ $properties['native'] }}
+                                                        </a>
+                                                    </li>
+                                                @endif
+                                            @endforeach
+                                        </ul>
+                                    </div>
         <div class="ltn__social-media-2">
             <ul>
                 <li>
