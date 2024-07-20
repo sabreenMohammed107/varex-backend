@@ -99,7 +99,11 @@
 <!-- Utilize Mobile Menu End -->
 <div class="ltn__utilize-overlay"></div>
 <div class="mobile-header-menu-fullwidth">
+@if ($locale == 'ar')
+    <div class="container">
+@else
     <div class="container-lg">
+@endif
         <div class="row">
             <div class="col-lg-12">
                 <!-- Mobile Menu Button -->

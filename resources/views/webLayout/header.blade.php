@@ -203,3 +203,19 @@
     </div>
     <!-- header-bottom-area end -->
 </header>
+@if ($locale == 'ar')
+        <style>
+            .top-bar-right.text-end {
+                text-align: left !important;
+            }
+            .header-menu.header-menu-2 .cst-btn{
+                padding-left:0 !important;
+            }
+            .footer-widget.footer-about-widget {
+                align-items : self-start;
+            }
+            ul#categoryList.category-select li {
+                text-align: right !important;
+            }
+        </style>
+@endif

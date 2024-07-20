@@ -2416,5 +2416,7 @@
     </div>
     <!--end::Content-->
     @include('layout.footer')
+
+
 </div>
 <!--end::Wrapper-->

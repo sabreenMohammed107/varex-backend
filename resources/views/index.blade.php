@@ -278,4 +278,5 @@
         </div>
     </div>
     <!-- BANNER AREA END -->
+
     @endsection
