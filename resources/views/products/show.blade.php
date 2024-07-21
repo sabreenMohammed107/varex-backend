@@ -75,8 +75,8 @@
                 <div class="ltn__breadcrumb-inner ltn__breadcrumb-inner-2">
                     <div class="ltn__breadcrumb-list ">
                         <ul>
-                            <li><a href="{{ url('/') }}">Home</a></li>
-                            <li><a href="{{ url('/products') }}" class="text-in-gray-light">Products</a></li>
+                            <li><a href="{{ LaravelLocalization::localizeUrl('/') }}">{{ __('links.home') }}</a></li>
+                            <li><a href="{{ LaravelLocalization::localizeUrl('/products') }}" class="text-in-gray-light">{{ __('links.products') }}</a></li>
                             <li class="text-in-black">{{ $product->title[$locale] ?? '' }}</li>
                         </ul>
                     </div>
@@ -145,7 +145,7 @@
                                             data-rel="lightcase:myCollection">
                                             <i class="fa fa-play"></i>
                                         </a>
-                                        <span class="px-2 video-title">Introductory Video</span>
+                                        <span class="px-2 video-title">{{ __('links.introductory_video') }}</span>
                                     </div>
                                     <div class="col-12 col-md-6 social-data-icons justify-content-center justify-content-md-end py-2 py-md-0">
                                         <span class="social-modern-icons px-2">
@@ -218,7 +218,8 @@
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="section-title-area ltn__section-title-2">
-                                            <h1 class="section-title text-in-dark f-s-35 l-space-2">Related Products .</h1>
+                                            <h1 class="section-title text-in-dark f-s-35 l-space-2">
+                                                {{ __('links.related_products') }} .</h1>
                                         </div>
                                     </div>
                                 </div>
@@ -265,9 +266,9 @@
                         <!-- Category Widget -->
 
                         <div class="widget ltn__menu-widget">
-                            <h4 class="ltn__widget-title ltn__widget-title-border">Categories</h4>
+                            <h4 class="ltn__widget-title ltn__widget-title-border">{{ __('links.categories') }}</h4>
                             <ul>
-                                <li><a href="{{ url('/products') }}" onclick="setCategoryId(null); return false;">All Category
+                                <li><a href="{{ url('/products') }}" onclick="setCategoryId(null); return false;">{{ __('links.all_categories') }}
                                         ({{ $countAll }})</a></li>
                                 @foreach ($categoriesOrderedByRank as $category)
                                     <li><a href="{{ url('/products') }}"
