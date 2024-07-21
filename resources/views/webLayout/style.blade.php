@@ -17,7 +17,6 @@
   <link rel="stylesheet" href="{{asset('webasset/css/plugins.css')}}" />
   @if (app()->getLocale() == 'en')
   <link rel="stylesheet" href="{{asset('webasset/css/style.css')}}" />
-
   @else
   <link rel="stylesheet" href="{{asset('webasset/css/style-rtl.css')}}" />
   <style>

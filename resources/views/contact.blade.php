@@ -28,9 +28,9 @@
     </style>
 @endsection
 @section('content')
-@php
-    $locale = app()->getLocale();
-@endphp
+    @php
+        $locale = app()->getLocale();
+    @endphp
     @if (session('success'))
         <div class="alert alert-success">
             {{ session('success') }}
@@ -41,18 +41,23 @@
         <div class="container-lg">
             <div class="row">
                 <div class="col-12 col-md-6 contact-form">
-                    <h2 class="text-in-dark"><span class="first-word">Get</span> in touch</h2>
-                    <p class="sub-title-form ">Let's stay connected and continue the conversation! Reach out whenever <br>
-                        you're
-                        ready; We’re here to chat.
+                    <h2 class="text-in-dark">
+                        @if (app()->getLocale() == 'en')
+                        <span class="first-word">Get</span> in touch
+                        @else
+                        <span class="first-word">كن</span> على تواصل
+                        @endif
+
+                    </h2>
+                    <p class="sub-title-form ">{!! __('links.contact_text') !!}
                     </p>
                     <form id="contact-form" action="{{ route('contact.store') }}" method="post">
                         @csrf
                         <div class="row">
                             <div class="col-12">
                                 <div class="input-item input-item-name ltn__custom-icon">
-                                    <input type="text" id="name" name="name" placeholder="Your Name and Surname"
-                                        value="{{ old('name') }}" autocomplete="name" >
+                                    <input type="text" id="name" name="name" placeholder="{{ __('links.full_name') }}"
+                                        value="{{ old('name') }}" autocomplete="name">
                                     @error('name')
                                         <div class="error-message">{{ $message }}</div>
                                     @enderror
@@ -60,7 +65,7 @@
                             </div>
                             <div class="col-12">
                                 <div class="input-item input-item-name ltn__custom-icon">
-                                    <input type="email" id="email" name="email" placeholder="E-mail Address"
+                                    <input type="email" id="email" name="email" placeholder="{{ __('links.enter_email') }}"
                                         value="{{ old('email') }}" autocomplete="email">
                                     @error('email')
                                         <div class="error-message">{{ $message }}</div>
@@ -69,7 +74,7 @@
                             </div>
                             <div class="col-12">
                                 <div class="input-item input-item-name ltn__custom-icon">
-                                    <input type="text" id="phone" name="phone" placeholder="Telephone Number"
+                                    <input type="text" id="phone" name="phone" placeholder="{{ __('links.mobile') }}"
                                         value="{{ old('phone') }}" autocomplete="phone">
                                     @error('phone')
                                         <div class="error-message">{{ $message }}</div>
@@ -78,20 +83,21 @@
                             </div>
                             <div class="col-12">
                                 <div class="input-item input-item-name ltn__custom-icon">
-                                    <input type="text" id="address" name="address" placeholder="Address"autocomplete="Address"  value="{{ old('address') }}">
+                                    <input type="text" id="address" name="address"
+                                        placeholder="{{ __('links.address') }}" autocomplete="Address" value="{{ old('address') }}">
                                     @error('address')
                                         <div class="error-message">{{ $message }}</div>
                                     @enderror
                                 </div>
                             </div>
                             <div class="input-item input-item-textarea ltn__custom-icon">
-                                <textarea name="message" id="message" placeholder="Enter message">{{ old('message') }}</textarea>
+                                <textarea name="message" id="message" placeholder="{{ __('links.message') }}">{{ old('message') }}</textarea>
                                 @error('message')
                                     <div class="error-message">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="btn-wrapper mt-0 col-12">
-                                <button class="btn theme-btn-1 form-contact-btn w-100" type="submit">Submit</button>
+                                <button class="btn theme-btn-1 form-contact-btn w-100" type="submit">{{ __('links.submit') }}</button>
                             </div>
                         </div>
                         <p class="form-messege mb-0 mt-20"></p>
@@ -112,23 +118,28 @@
                                 <div class="row contact-info-details">
                                     <div class="col-12 col-lg-6 d-flex pt-3">
                                         <div class="contact-icon">
-                                            <img src="{{asset('webasset/img/icons/form-contact/whats.png')}}" alt="">
+                                            <img src="{{ asset('webasset/img/icons/form-contact/whats.png') }}"
+                                                alt="">
                                         </div>
                                         <div class="contact-data">
-                                            <h5>WhatsApp</h5>
+                                            <h5>{{ __('links.whatsApp') }}</h5>
                                             <p>
-                                                <a href="https://wa.me/{{ $contactUsFirstRow->whatsapp ?? '' }}" target="_blank">{{ $contactUsFirstRow->whatsapp ?? '' }}</a>
-                                            </p>                                        </div>
+                                                <a href="https://wa.me/{{ $contactUsFirstRow->whatsapp ?? '' }}"
+                                                    target="_blank">{{ $contactUsFirstRow->whatsapp ?? '' }}</a>
+                                            </p>
+                                        </div>
                                     </div>
 
                                     <div class="col-12 col-lg-6 d-flex pt-3">
                                         <div class="contact-icon">
-                                            <img src="{{asset('webasset/img/icons/form-contact/location.png')}}" alt="">
+                                            <img src="{{ asset('webasset/img/icons/form-contact/location.png') }}"
+                                                alt="">
                                         </div>
                                         <div class="contact-data">
-                                            <h5>Location</h5>
+                                            <h5>{{ __('links.location') }}</h5>
                                             <p>
-                                                <a href="https://www.google.com/maps/search/?api=1&query={{ urlencode($contactUsFirstRow->location[$locale] ?? '') }}" target="_blank">
+                                                <a href="https://www.google.com/maps/search/?api=1&query={{ urlencode($contactUsFirstRow->location[$locale] ?? '') }}"
+                                                    target="_blank">
                                                     {{ $contactUsFirstRow->location[$locale] ?? '' }}
                                                 </a>
                                             </p>
@@ -136,24 +147,28 @@
                                     </div>
                                     <div class="col-12 col-lg-6 d-flex pt-3">
                                         <div class="contact-icon">
-                                            <img src="{{asset('webasset/img/icons/form-contact/phone.png')}}" alt="">
+                                            <img src="{{ asset('webasset/img/icons/form-contact/phone.png') }}"
+                                                alt="">
                                         </div>
                                         <div class="contact-data">
-                                            <h5>Phone Number</h5>
+                                            <h5>{{ __('links.mobile') }}</h5>
                                             <p>
-                                                <a href="tel:{{ $contactUsFirstRow->sales_phone }}">{{ $contactUsFirstRow->sales_phone }}</a>
+                                                <a
+                                                    href="tel:{{ $contactUsFirstRow->sales_phone }}">{{ $contactUsFirstRow->sales_phone }}</a>
                                             </p>
                                             <p>
-                                                <a href="tel:{{ $contactUsFirstRow->service_support_phone }}">{{ $contactUsFirstRow->service_support_phone }}</a>
+                                                <a
+                                                    href="tel:{{ $contactUsFirstRow->service_support_phone }}">{{ $contactUsFirstRow->service_support_phone }}</a>
                                             </p>
                                         </div>
                                     </div>
                                     <div class="col-12 col-lg-6 d-flex pt-3">
                                         <div class="contact-icon">
-                                            <img src="{{asset('webasset/img/icons/form-contact/mail.png')}}" alt="">
+                                            <img src="{{ asset('webasset/img/icons/form-contact/mail.png') }}"
+                                                alt="">
                                         </div>
                                         <div class="contact-data">
-                                            <h5>E-MAIL</h5>
+                                            <h5>{{ __('links.email') }}</h5>
                                             <p>
                                                 <a href="mailto:{{ $contactUsFirstRow->email1 ?? '' }}"
                                                     class="scnd-hovr">{{ $contactUsFirstRow->email1 ?? '' }}</a>

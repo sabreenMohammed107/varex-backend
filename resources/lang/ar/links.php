@@ -19,6 +19,7 @@ return [
     'password'=>'كلمة المرور',
     'name_phone'=>'اسم المستخدم-رقم الهاتف المحمول  ',
     'full_name'=>' الاسم بالكامل',
+    'enter_email'=>'إدخل البريد الإلكتروني',
     'gender'=>'النوع',
 'register_message'=>'تم التسجيل بنجاح',
     'male'=>'ذكر',
@@ -28,7 +29,7 @@ return [
     'total_cost'=>'إجمالى المصاريف',
     'confirm_password'=>'تأكيد كلمة المرور',
     'enter_captcha'=>'ادخل كلمة التحقق',
-
+'submit'=>'حفظ',
     /*---end----*/
     /*--Menu--*/
     'menu'=>'القائمة',
@@ -76,7 +77,7 @@ return [
   'keep_touch'=>'إبق على اتصال',
   'follow_us'=>'إتبعنا',
 'call_us'=>'اتصل بنا',
-
+'whatsApp'=>'واتس اب',
 /*---End Menu--*/
 
 

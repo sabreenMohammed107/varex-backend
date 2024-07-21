@@ -21,6 +21,7 @@ return [
  'select_school'=>'Select School',
  'otherSchools'=>'Other Schools ',
  'full_name'=>'Full Name',
+ 'enter_email'=>'E-mail Address',
     'gender'=>'Gender',
     'male'=>'Male',
     'female'=>'Female',
@@ -77,7 +78,8 @@ return [
   'keep_touch'=>'Keep in touch',
   'follow_us'=>'Follow Us',
   'call_us'=>' Call Us',
-
+'submit'=>'Submit',
+'whatsApp'=>'Whatsapp',
 
 /*---End Menu--*/
 /*--footer ---*/

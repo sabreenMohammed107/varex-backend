@@ -12,8 +12,8 @@
           <div class="ltn__breadcrumb-inner ltn__breadcrumb-inner-2">
             <div class="ltn__breadcrumb-list ">
               <ul>
-                <li><a href="{{ url('/') }}">Home</a></li>
-                <li>Media</li>
+                <li><a href="{{ LaravelLocalization::localizeUrl('/') }}">{{ __('links.home') }}</a></li>
+                <li>{{ __('links.media') }}</li>
               </ul>
             </div>
           </div>
@@ -31,7 +31,7 @@
             <ul>
               <li>
                 <div class="showing-product-number text-right text-end">
-                  <span>Media</span>
+                  {{-- <span>{{ __('links.media') }}</span> --}}
                 </div>
               </li>
             </ul>

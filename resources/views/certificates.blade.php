@@ -12,8 +12,8 @@
           <div class="ltn__breadcrumb-inner ltn__breadcrumb-inner-2">
             <div class="ltn__breadcrumb-list ">
               <ul>
-                <li><a href="{{ url('/') }}">Home</a></li>
-                <li>Certificate</li>
+                <li><a href="{{ LaravelLocalization::localizeUrl('/') }}">{{ __('links.home') }}</a></li>
+                <li>{{ __('links.certificate') }}</li>
               </ul>
             </div>
           </div>
