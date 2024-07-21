@@ -2,6 +2,7 @@
 @php
     $locale = app()->getLocale();
 @endphp
+
 <div class="tab-content">
     <div class="tab-pane fade active show" id="liton_product_grid">
         <div class="ltn__product-tab-content-inner ltn__product-grid-view">
@@ -19,7 +20,13 @@
                             <div class="product-badge">
                                 <ul>
                                     <li class="sale-badge" style="background-color:{{ $product->tag->tag_color ?? '#e9184f' }}" >{{ $product->tag->title[$locale] ?? ''}}</li>
+                                    @if ($locale == 'ar')
+                                    <div class="badge-shape" style="border-left: 15px solid {{ $product->tag->tag_color ?? '#e9184f' }};"></div>
+
+                                    @else
                                     <div class="badge-shape" style="border-left: 16px solid {{ $product->tag->tag_color ?? '#e9184f' }};"></div>
+
+                                    @endif
                                 </ul>
                             </div>
                         @endif

@@ -143,5 +143,9 @@
             .footer-widget.footer-about-widget {
                 align-items : self-start;
             }
+            .badge-shape {
+                left: -14px  !important;
+                transform : rotate(180deg) !important;
+            }
         </style>
 @endif
