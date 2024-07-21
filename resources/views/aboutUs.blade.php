@@ -15,7 +15,7 @@
             <div class="ltn__breadcrumb-list ">
               <ul>
                 <li><a href="{{ LaravelLocalization::localizeUrl('/') }}">{{ __('links.home') }}</a></li>
-                <li> - {{ __('links.about_us') }}</li>
+                <li> {{ __('links.about_us') }}</li>
               </ul>
             </div>
           </div>

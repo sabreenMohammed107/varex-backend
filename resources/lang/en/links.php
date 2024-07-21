@@ -97,6 +97,8 @@ return [
 'katalog'=>'Download Katalog',
 'terms_text'=>'I accept terms and conditions & privacy policy',
 'footer_text'=>'Stay tuned for latest updates and new features',
+'tags' => 'Tags',
+'all_tags' => 'All Tags',
 
 /*---End footer ---------*/
 /*-----Home page -----------------*/
