@@ -78,6 +78,7 @@ return [
   'follow_us'=>'إتبعنا',
 'call_us'=>'اتصل بنا',
 'whatsApp'=>'واتس اب',
+'company_name'=>'اسم الشركة',
 /*---End Menu--*/
 
 

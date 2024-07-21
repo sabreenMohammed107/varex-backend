@@ -6,7 +6,7 @@
             <ul>
               <li>
                 <div class="showing-product-number text-right text-end">
-                  <span>Latest Posts</span>
+                  <span>{{ __('links.latest_News') }}</span>
                 </div>
               </li>
             </ul>
@@ -24,11 +24,11 @@
                     <div class="ltn__blog-meta">
                       <ul>
                         <li class="ltn__blog-badge">
-                        {{ $blog->category->name['en'] ?? '' }}
+                        {{ $blog->category->name[$locale] ?? '' }}
                         </li>
                       </ul>
                     </div>
-                    <h3 class="ltn__blog-title"><a href="{{ url('blog/'.$blog->slug['en']) ?? '#'}}" class="text-in-dark"> {{ $blog->title['en'] ?? '' }}</a></h3>
+                    <h3 class="ltn__blog-title"><a href="{{ url('blog/'.$blog->slug[$locale]) ?? '#'}}" class="text-in-dark"> {{ $blog->title[$locale] ?? '' }}</a></h3>
                     <div class="ltn__blog-meta-btn">
                       <div class="ltn__blog-meta">
                         <ul>

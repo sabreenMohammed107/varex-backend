@@ -1,6 +1,9 @@
 @extends('webLayout.main')
 
 @section('content')
+@php
+    $locale = app()->getLocale();
+@endphp
   <!-- BREADCRUMB AREA START -->
   <div class="py-3">
     <div class="container-lg">
@@ -9,8 +12,8 @@
           <div class="ltn__breadcrumb-inner ltn__breadcrumb-inner-2">
             <div class="ltn__breadcrumb-list ">
               <ul>
-                <li><a href="{{ url('/') }}">Home</a></li>
-                <li>Blogs</li>
+                <li><a href="{{ LaravelLocalization::localizeUrl('/') }}">{{ __('links.home') }}</a></li>
+                <li>{{ __('links.blogs') }}</li>
               </ul>
             </div>
           </div>
@@ -31,12 +34,12 @@
                 <div class="ltn__blog-meta">
                   <ul>
                     <li class="ltn__blog-badge-main">
-                        {{ $masterBlog->category->name['en'] ?? '' }}
+                        {{ $masterBlog->category->name[$locale] ?? '' }}
                     </li>
                   </ul>
                 </div>
-                <h3 class="ltn__blog-title animated fadeIn"><a href="{{ url('blog/'.$masterBlog->slug['en']) ?? '#'}}" tabindex="0" class="
-                  l-space-1 f-s-35">{{ $masterBlog->title['en'] ?? '' }}</a></h3>
+                <h3 class="ltn__blog-title animated fadeIn"><a href="{{ url('blog/'.$masterBlog->slug[$locale]) ?? '#'}}" tabindex="0" class="
+                  l-space-1 f-s-35">{{ $masterBlog->title[$locale] ?? '' }}</a></h3>
                 <div class="ltn__blog-meta-btn">
                   <div class="ltn__blog-meta">
                     <ul>
@@ -52,12 +55,12 @@
                 <div class="ltn__blog-meta">
                   <ul>
                     <li class="ltn__blog-badge-main">
-                        {{ $masterBlog->category->name['en'] ?? '' }}
+                        {{ $masterBlog->category->name[$locale] ?? '' }}
                     </li>
                   </ul>
                 </div>
-                <h3 class="ltn__blog-title animated fadeIn"><a href="{{ url('blog/'.$masterBlog->slug['en']) ?? '#'}}" tabindex="0" class="
-                  l-space-1 f-s-35">{{ $masterBlog->title['en'] ?? '' }}</a></h3>
+                <h3 class="ltn__blog-title animated fadeIn"><a href="{{ url('blog/'.$masterBlog->slug[$locale]) ?? '#'}}" tabindex="0" class="
+                  l-space-1 f-s-35">{{ $masterBlog->title[$locale] ?? '' }}</a></h3>
                 <div class="ltn__blog-meta-btn">
                   <div class="ltn__blog-meta">
                     <ul>

@@ -80,6 +80,7 @@ return [
   'call_us'=>' Call Us',
 'submit'=>'Submit',
 'whatsApp'=>'Whatsapp',
+'company_name'=>'Your company name',
 
 /*---End Menu--*/
 /*--footer ---*/

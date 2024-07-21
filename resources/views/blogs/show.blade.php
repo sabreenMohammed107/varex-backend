@@ -1,6 +1,9 @@
 @extends('webLayout.main')
 
 @section('content')
+@php
+    $locale = app()->getLocale();
+@endphp
     <!-- BREADCRUMB AREA START -->
     <div class="py-3">
         <div class="container-lg">
@@ -9,9 +12,9 @@
               <div class="ltn__breadcrumb-inner ltn__breadcrumb-inner-2">
                 <div class="ltn__breadcrumb-list ">
                   <ul>
-                    <li><a href="{{ url('/') }}">Home</a></li>
-                    <li><a href="{{ url('/blogs') }}" class="text-in-gray-light">Blogs</a></li>
-                    <li class="text-in-black">Single Blog</li>
+                    <li><a href="{{ LaravelLocalization::localizeUrl('/') }}">{{ __('links.home') }}</a></li>
+                    <li><a href="{{  LaravelLocalization::localizeUrl('/blogs') }}" class="text-in-gray-light">{{ __('links.home') }}</a></li>
+                    <li class="text-in-black">{{ $blog->title[$locale] ?? '' }} </li>
                   </ul>
                 </div>
               </div>
@@ -36,9 +39,9 @@
                     </div>
 
                   </div>
-                  <h3 class="ltn__blog-title animated fadeIn l-space-1">{{ $blog->title['en'] ?? '' }}</h3>
+                  <h3 class="ltn__blog-title animated fadeIn l-space-1">{{ $blog->title[$locale] ?? '' }}</h3>
                   <div class="sngl-blog-details">
-                    <p class="pt-5">{!! $blog->description['en'] ?? ''  !!}</p>
+                    <p class="pt-5">{!! $blog->description[$locale] ?? ''  !!}</p>
                   </div>
                 </div>
               </div>
