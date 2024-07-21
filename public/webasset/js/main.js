@@ -278,7 +278,7 @@
             12. Product Details Page
         --------------------------------------------------------- */
     $(".ltn__shop-details-large-img").slick({
-        rtl: true,
+
       slidesToShow: 1,
       slidesToScroll: 1,
       arrows: false,
@@ -286,7 +286,7 @@
       asNavFor: ".ltn__shop-details-small-img",
     });
     $(".ltn__shop-details-small-img").slick({
-        rtl: true,
+
       slidesToShow: 3,
       slidesToScroll: 1,
       asNavFor: ".ltn__shop-details-large-img",
