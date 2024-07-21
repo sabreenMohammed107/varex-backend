@@ -138,3 +138,10 @@
       </div>
   </div>
   <!-- preloader area end -->
+@if ($locale == 'ar')
+        <style>
+            .footer-widget.footer-about-widget {
+                align-items : self-start;
+            }
+        </style>
+@endif

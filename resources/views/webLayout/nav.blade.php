@@ -78,8 +78,21 @@
                     <a class="p-0" href="{{ url('/distribute') }}">Distribute With Us</a>
                 </li>
             </ul>
-        </div>
 
+        </div>
+ <div class="ltn__drop-menu ltn__currency-menu pt-3">
+                                        <ul>
+                                            @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                                                @if(app()->getLocale() != $localeCode)
+                                                    <li>
+                                                        <a rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                                                            {{ $properties['native'] }}
+                                                        </a>
+                                                    </li>
+                                                @endif
+                                            @endforeach
+                                        </ul>
+                                    </div>
         <div class="ltn__social-media-2">
             <ul>
                 <li>
@@ -99,9 +112,18 @@
 <!-- Utilize Mobile Menu End -->
 <div class="ltn__utilize-overlay"></div>
 <div class="mobile-header-menu-fullwidth">
+@if ($locale == 'ar')
+    <div class="container">
+@else
     <div class="container-lg">
+@endif
         <div class="row">
-            <div class="col-lg-12">
+@if ($locale == 'ar')
+    <div class="col-lg-12 px-5">
+@else
+    <div class="col-lg-12">
+@endif
+
                 <!-- Mobile Menu Button -->
                 <div class="mobile-menu-toggle d-lg-none">
                     <a href="#ltn__utilize-mobile-menu" class="ltn__utilize-toggle">
