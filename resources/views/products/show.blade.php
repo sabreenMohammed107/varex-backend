@@ -93,7 +93,7 @@
                 <div class="col-lg-9 order-lg-2 mb-20">
                     <div class="tab-content">
                         <div class="row pt-4 pb-3 px-2  bg-clr-blue-gray">
-                            <div class="col-md-4">
+                            <div class="col-md-4" style='direction:ltr !important'>
                                 <div class="ltn__shop-details-img-gallery w-100">
                                     <div class="ltn__shop-details-large-img">
                                         @isset($product->imageGalleries)
