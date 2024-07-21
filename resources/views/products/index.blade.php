@@ -97,8 +97,8 @@
                     <div class="ltn__breadcrumb-inner ltn__breadcrumb-inner-2">
                         <div class="ltn__breadcrumb-list ">
                             <ul>
-                                <li><a href="{{ url('/') }}">Home</a></li>
-                                <li>Varex Products</li>
+                                <li><a href="{{ LaravelLocalization::localizeUrl('/') }}">{{ __('links.home') }}</a></li>
+                                <li> {{ __('links.products') }}</li>
                             </ul>
                         </div>
                     </div>
@@ -116,7 +116,7 @@
                         <ul>
                             <li>
                                 <div class="showing-product-number text-right text-end">
-                                    <span>Varex Products </span><span id="product-cat">
+                                    <span>{{ __('links.products') }} </span><span id="product-cat">
                                         @if (isset($catObj))
                                             - {{ $catObj->name[$locale] ?? '' }}
                                         @else
@@ -157,9 +157,9 @@
                         <!-- Category Widget -->
 
                         <div class="widget ltn__menu-widget">
-                            <h4 class="ltn__widget-title ltn__widget-title-border">Categories</h4>
+                            <h4 class="ltn__widget-title ltn__widget-title-border">{{ __('links.categories') }}</h4>
                             <ul>
-                                <li><a href="#" onclick="setCategoryId(0); return false;">All Category
+                                <li><a href="#" onclick="setCategoryId(0); return false;">{{ __('links.all_categories') }}
                                         ({{ $countAll }})</a></li>
                                 @foreach ($categoriesOrderedByRank as $category)
                                     <li><a href="#" class="proCategory" data-categoryid="{{ $category->id }}"
@@ -174,11 +174,11 @@
 
                         <!-- Price Filter Widget -->
                         <div class="widget ltn__price-filter-widget">
-                            <h4 class="ltn__widget-title ltn__widget-title-border">Tags</h4>
+                            <h4 class="ltn__widget-title ltn__widget-title-border">{{ __('links.tags') }}</h4>
                             <div class="price_filter">
                                 <div class="price_slider_amount">
                                     <span class="tag-bg f-s-13 proTag" onclick="setTagId(0); return false;"
-                                        style="cursor: pointer;">All Tags</span>
+                                        style="cursor: pointer;">{{ __('links.all_tags') }}</span>
                                     @foreach ($tags as $tag)
                                         <span class="tag-bg f-s-13 proTag"  data-tagid="{{ $tag->id }}" onclick="setTagId({{ $tag->id }}); return false;"
                                             style="cursor: pointer;">
@@ -197,8 +197,7 @@
                             </div>
                             <ul class="cst-btn p-0">
                                 <li class="special-link shinep-0">
-                                    <a class="p-0" href="{{ asset($about->company_katalog) }}" download="">Download
-                                        Katalog</a>
+                                    <a class="p-0" href="{{ asset($about->company_katalog) }}" download="">{{ __('links.katalog') }}</a>
                                 </li>
                             </ul>
                         </div>

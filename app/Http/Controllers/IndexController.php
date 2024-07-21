@@ -84,7 +84,12 @@ class IndexController extends Controller
         \Log::info([$products->count(),"here"]);
         // If the request is AJAX, return JSON response
         // if ($request->ajax()) {
+        if(app()->getLocale() == 'en'){
             $catName = "All Category";
+        }else{
+            $catName = "كل التصنيفات";
+        }
+
         if ($request->filled('page')||$request->filled('tag_id')  || $request->filled('searchQuery') || $request->filled('category_id') || $request->filled('mobsearchQuery')) {
             if ($request->filled('category_id')) {
                 $productCat = Category::where('id', $request->category_id)->first();
