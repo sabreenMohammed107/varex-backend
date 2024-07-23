@@ -20,10 +20,10 @@
                                 <img src="{{ asset('webasset/img/icons/call-phone.png') }}" alt="" />
                                 {{ __('links.sale_service') }}
                                 <a
-                                    href="tel:{{ $contactUsFirstRow->sales_phone }}">{{ $contactUsFirstRow->sales_phone }}</a>
+                                    href="tel:{{ $contactUsFirstRow->sales_phone }}"> <span style='direction:ltr !important'> {!! $contactUsFirstRow->sales_phone !!} </span></a>
                                 /
                                 <a
-                                    href="tel:{{ $contactUsFirstRow->service_support_phone }}">{{ $contactUsFirstRow->service_support_phone }}</a>
+                                    href="tel:{{ $contactUsFirstRow->service_support_phone }}"> <span style='direction:ltr !important'>{{ $contactUsFirstRow->service_support_phone }} </span></a>
                             </li>
                         </ul>
                     </div>
@@ -217,5 +217,16 @@
             ul#categoryList.category-select li {
                 text-align: right !important;
             }
+            .fas.fa-arrow-left,
+            .fas.fa-arrow-right,
+            .ltn__breadcrumb-list ul li::after{
+                transform: translateY(-50%) rotate(180deg);
+            }
+            .ltn__pagination .fa-angle-double-left,
+            .ltn__pagination .fa-angle-double-right {
+                transform: rotate(180deg);
+
+            }
+
         </style>
 @endif
