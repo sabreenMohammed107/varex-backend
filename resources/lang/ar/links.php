@@ -36,7 +36,7 @@ return [
     'home' => 'الصفحة الرئيسية',
     'about_us' => 'من نحن',
     'about' => 'عن',
-    'why_varex' => 'لماذا varex ?' ,
+    'why_varex' => 'لماذا varex ؟' ,
     'co_founder' => 'كلمة المسئول',
     'important_question' => 'أسئلة هامة' ,
     'products'=>'المنتجات',

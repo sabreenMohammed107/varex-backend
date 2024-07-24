@@ -118,10 +118,10 @@
                                 <div class="showing-product-number text-right text-end">
                                     <span>{{ __('links.products') }} </span><span id="product-cat">
                                         @if (isset($catObj))
-                                            - {{ $catObj->name[$locale] ?? '' }}
+                                        &nbsp;  &nbsp;  -  &nbsp;  &nbsp; {{ $catObj->name[$locale] ?? '' }}
                                         @else
                                         {{-- @if (!empty($catName)) --}}
-                                        - {{ $catName ?? '' }}
+                                        &nbsp; -  &nbsp;  {{ $catName ?? '' }}
 
                                         {{-- @endif --}}
 
@@ -337,7 +337,7 @@
                     $('#product-list').html(data.products);
                     $('#pagination-links').html(data.pagination);
                     if (data.productCat) {
-                        $('#product-cat').html('-' + data.productCat);
+                        $('#product-cat').html(' - ' + data.productCat);
                         $('#current_cat').html(data.productCat);
                     } else {
                         //  $('#product-cat').html('');

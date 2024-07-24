@@ -135,7 +135,7 @@
                     @foreach ($whyUs as $obj)
                     <div class="col-12 col-md-4 text-center">
                         <div class="why-us-icon py-2">
-                          <img src="{{  $obj->icon }}" alt="">
+                          <img src=" {{ asset($obj->icon )}}" alt="">
                         </div>
                         <div class="why-us-head pt-3">
                           <h4>{!! $obj->title[$locale] ?? ' ' !!}</h4>

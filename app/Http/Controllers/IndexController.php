@@ -94,7 +94,11 @@ class IndexController extends Controller
             if ($request->filled('category_id')) {
                 $productCat = Category::where('id', $request->category_id)->first();
                 if ($productCat) {
-                    $catName = $productCat->name['en'];
+                    if(app()->getLocale() == 'en'){
+                        $catName = $productCat->name['en'];
+                    }else{
+                        $catName = $productCat->name['ar'];
+                    }
                 }
             }
             return response()->json([
@@ -109,7 +113,12 @@ class IndexController extends Controller
         $about = AboutUs::firstOrFail();
         $catObj = Category::where('id', $request->selectedSearchCategoryId)->first();
         if ($catObj) {
-            $catName = $catObj->name['en'];
+
+            if(app()->getLocale() == 'en'){
+                $catName = $catObj->name['en'];
+            }else{
+                $catName = $catObj->name['ar'];
+            }
         }
         return view('products.index', compact('products', 'countAll', 'tags', 'about', 'catObj','searchTerm','catName'));
     }

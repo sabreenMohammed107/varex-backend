@@ -116,7 +116,12 @@
                             <h4 class="text-in-dark f-s-16 mb-3">
                                 {!! $feature->home_title[$locale] !!}
                             </h4>
+                            @if ($locale == "en")
                             {!! $feature->featured_text_en !!}
+                            @else
+                            {!! $feature->featured_text_ar !!}
+                            @endif
+
 
                         </div>
                         <div class="ltn__testimoni-img">
@@ -198,7 +203,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-title-area ltn__section-title-2 text-center">
-                        <h2 class="section-title">{{ __('links.browsed_category') }}<span>.</span></h2>
+                        <h2 class="section-title">{{ __('links.browsed_category') }}</h2>
                     </div>
                 </div>
             </div>
