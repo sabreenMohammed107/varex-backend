@@ -897,7 +897,7 @@ $(".ltn__slide-one-active")
             22. Category Slider
         --------------------------------------------------------- */
     $(".ltn__category-slider-active").slick({
-        rtl: true,
+      rtl: true,
       autoplay: true,
       arrows: true,
       dots: false,

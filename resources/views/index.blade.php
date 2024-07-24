@@ -159,7 +159,13 @@
                         <div class="product-img" style="height: 240px !important">
                             <a href="{{ LaravelLocalization::localizeUrl('product/'.$best_selling->slug[$locale]) }}"><img  style="height: 100%" src="{{ asset("$best_selling->main_image") }}" alt="#" /></a>
                         </div>
-                        <div class="product-info">
+                        @if ($locale == 'en')
+
+                            <div class="product-info">
+                        @else
+
+                            <div class="product-info text-end" >
+                        @endif
                             <h2 class="product-title">
                                 <a href="{{ LaravelLocalization::localizeUrl('product/'.$best_selling->slug[$locale]) }}" class="f-s-13 text-in-blue f-w-r">{{ $best_selling->category->name[$locale] ?? ''}}
                                 </a>
@@ -186,7 +192,7 @@
         <div class="ltn__call-to-action-area ltn__call-to-action-4 pt-20">
             <div class="call-to-action-inner call-to-action-inner-4 text-center">
                 <div class="section-title-area ltn__section-title-2">
-                    <h1 class="section-title white-color d-flex"> <i class="fab fa-whatsapp px-2 d-block d-sm-none"></i>
+                    <h1 class="section-title white-color d-flex" style='direction:ltr !important'> <i class="fab fa-whatsapp px-2 d-block d-sm-none"></i>
                         {{ $contactUsFirstRow->whatsapp }}</h1>
                 </div>
                 <div class="btn-wrapper d-none d-sm-block">
@@ -210,7 +216,13 @@
         </div>
 
         <div class="container-lg text-center">
+        @if ($locale == 'ar')
+
             <div class="row ltn__category-slider-active slick-arrow-1">
+        @else
+            <div class="row ltn__category-slider-active slick-arrow-1" style='direction:rtl !important'>
+
+        @endif
                 @foreach ($categoriesOrderedByRank as $category)
                 <div class="col-12">
                     <div class="ltn__category-item ltn__category-item-3 text-center">
