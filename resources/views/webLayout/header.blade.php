@@ -220,7 +220,7 @@
             .fas.fa-arrow-left,
             .fas.fa-arrow-right,
             .ltn__breadcrumb-list ul li::after{
-                transform: translateY(-50%) rotate(180deg);
+                transform: rotate(180deg);
             }
             .ltn__pagination .fa-angle-double-left,
             .ltn__pagination .fa-angle-double-right {
