@@ -54,7 +54,8 @@
         --------------------------------------------------------- */
     var $window = $(window),
       $body = $("body");
-
+      var locale = document.getElementsByTagName("html")[0].getAttribute("lang");
+      var rtl = (locale === 'ar');
     /* --------------------------------------------------------
             2. Mobile Menu
         --------------------------------------------------------- */
@@ -895,9 +896,10 @@ $(".ltn__slide-one-active")
 
     /* --------------------------------------------------------
             22. Category Slider
+
         --------------------------------------------------------- */
     $(".ltn__category-slider-active").slick({
-      rtl: true,
+        rtl: rtl,
       autoplay: true,
       arrows: true,
       dots: false,

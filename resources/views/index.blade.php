@@ -216,13 +216,13 @@
         </div>
 
         <div class="container-lg text-center">
-        @if ($locale == 'ar')
+        {{-- @if ($locale == 'ar') --}}
 
-            <div class="row ltn__category-slider-active slick-arrow-1">
-        @else
+            <div class="row ltn__category-slider-active slick-arrow-1" @if ($locale == 'ar') style='direction:rtl !important' @else tyle='direction:ltr !important' @endif >
+        {{-- @else
             <div class="row ltn__category-slider-active slick-arrow-1" style='direction:rtl !important'>
 
-        @endif
+        @endif --}}
                 @foreach ($categoriesOrderedByRank as $category)
                 <div class="col-12">
                     <div class="ltn__category-item ltn__category-item-3 text-center">
