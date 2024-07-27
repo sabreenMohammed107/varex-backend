@@ -10,11 +10,17 @@
                     <div class="ltn__top-bar-menu add-and-phone">
                         <ul class="d-flex justify-content-lg-start justify-content-md-between">
                             <li>
-                                <a href="https://www.google.com/maps/search/?api=1&query={{ urlencode($contactUsFirstRow->location[$locale] ?? '') }}"
-                                    target="_blank">
-                                    <img src="{{ asset('webasset/img/icons/location.png') }}" alt="" />
-                                    {{ $contactUsFirstRow->location[$locale] ?? '' }}
-                                </a>
+                                @php
+                                $location = $contactUsFirstRow->location[$locale] ?? '';
+                                if (Str::startsWith($location, '-')) {
+                                    $location = ltrim($location, '- ');
+                                }
+                            @endphp
+
+                            <a href="https://www.google.com/maps/search/?api=1&query={{ urlencode($location) }}" target="_blank" dir="rtl" style="text-decoration: none;">
+                                <img src="{{ asset('webasset/img/icons/location.png') }}" alt="" style="vertical-align: middle; margin-left: 5px;" />
+                                {{ $location }}
+                            </a>
                             </li>
                             <li style="font-size: 14px; color: #56778f;">
                                 <img src="{{ asset('webasset/img/icons/call-phone.png') }}" alt="" />

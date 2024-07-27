@@ -26,7 +26,7 @@
                         @if(isset($catObj))
                         {{ $catObj->name[$locale] ?? '' }}
                     @else
-                        All Categories
+                    {{ __('links.all_categories') }}
                     @endif</span>
                         <ul class="list category-select2" id="categoryList2">
                             {{-- <li data-value="Default Sorting" class="option selected focus">
@@ -56,26 +56,27 @@
         <div class="ltn__utilize-menu">
             <ul>
                 <li class="not-special-link-sm-menu">
-                    <a href="{{ url('/') }}">Home</a>
+                    <a href="{{ LaravelLocalization::localizeUrl('/') }}">{{ __('links.home') }}</a>
                 </li>
                 <li class="not-special-link-sm-menu">
-                    <a href="{{ url('/about-us') }}">About Us</a>
+                    <a
+                    href="{{ LaravelLocalization::localizeUrl('/about-us') }}">{{ __('links.about_us') }}</a>
                 </li>
                 <li class="not-special-link-sm-menu">
-                    <a href="{{ url('/products') }}">Products</a>
+                    <a href="{{ LaravelLocalization::localizeUrl('/products') }}">{{ __('links.products') }}</a>
                 </li>
                 <li class="not-special-link-sm-menu">
-                    <a href="{{ url('/blogs') }}">Blogs</a>
+                    <a href="{{ LaravelLocalization::localizeUrl('/blogs') }}">{{ __('links.blogs') }}</a>
                 </li>
                 <li class="not-special-link-sm-menu">
-                    <a href="{{ url('/media') }}">Media</a>
+                    <a href="{{ LaravelLocalization::localizeUrl('/media') }}">{{ __('links.media') }}</a>
                 </li>
                 <li class="not-special-link-sm-menu">
-                    <a href="{{ url('/contact') }}">Contact Us</a>
+                    <a href="{{ LaravelLocalization::localizeUrl('/contact') }}">{{ __('links.contact_us') }} </a>
                 </li>
 
                 <li class="special-link shine">
-                    <a class="p-0" href="{{ url('/distribute') }}">Distribute With Us</a>
+                    <a class="p-0" href="{{ LaravelLocalization::localizeUrl('/distribute') }} ">{{ __('links.distribute') }}</a>
                 </li>
             </ul>
 
@@ -96,14 +97,14 @@
         <div class="ltn__social-media-2">
             <ul>
                 <li>
-                    <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="{{ $contactUsFirstRow->facebook ?? '#' }} title="Facebook"><i class="fab fa-facebook-f"></i></a>
                 </li>
                 <li>
-                    <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="{{ $contactUsFirstRow->twitter ?? '#' }}" title="Twitter"><i class="fab fa-twitter"></i></a>
                 </li>
 
                 <li>
-                    <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="{{ $contactUsFirstRow->instagram ?? '#' }}" title="Instagram"><i class="fab fa-instagram"></i></a>
                 </li>
             </ul>
         </div>

@@ -83,11 +83,19 @@
                                       <i class="icon-placeholder"></i>
                                   </div>
                                   <div class="footer-address-info">
-                                    <p>
-                                        <a href="https://www.google.com/maps/search/?api=1&query={{ urlencode($contactUsFirstRow->location[$locale] ?? '') }}" target="_blank">
-                                            {{ $contactUsFirstRow->location[$locale] ?? '' }}
-                                        </a>
-                                    </p>
+
+                                    @php
+                                    $location = $contactUsFirstRow->location[$locale] ?? '';
+                                    if (Str::startsWith($location, '-')) {
+                                        $location = ltrim($location, '- ');
+                                    }
+                                @endphp
+
+                                <p>
+                                    <a href="https://www.google.com/maps/search/?api=1&query={{ urlencode($location) }}" target="_blank" dir="rtl" style="text-decoration: none;">
+                                        {{ $location }}
+                                    </a>
+                                </p>
                                   </div>
                               </li>
                               <li>

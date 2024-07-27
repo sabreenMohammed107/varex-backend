@@ -409,7 +409,7 @@ $(".ltn__slide-one-active")
         --------------------------------------------------------- */
     $(".ltn__slide-active-2")
       .slick({
-        rtl: true,
+        rtl: rtl,
         autoplay: false,
         autoplaySpeed: 2000,
         arrows: false,
@@ -442,7 +442,7 @@ $(".ltn__slide-one-active")
             16. Product Slider One
         --------------------------------------------------------- */
     $(".ltn__product-slider-one-active").slick({
-        rtl: true,
+        rtl: rtl,
       arrows: true,
       dots: false,
       infinite: true,
@@ -486,7 +486,7 @@ $(".ltn__slide-one-active")
             16. Product Slider One
         --------------------------------------------------------- */
     $(".ltn__product-slider-item-four-active").slick({
-        rtl: true,
+        rtl: rtl,
       arrows: true,
       dots: false,
       infinite: true,
@@ -532,7 +532,7 @@ $(".ltn__slide-one-active")
             16. Product Slider One
         --------------------------------------------------------- */
     $(".ltn__related-product-slider-one-active").slick({
-        rtl: true,
+        rtl: rtl,
       arrows: true,
       dots: false,
       infinite: true,
@@ -576,7 +576,7 @@ $(".ltn__slide-one-active")
             17. Tab Product Slider One
         --------------------------------------------------------- */
     $(".ltn__tab-product-slider-one-active").slick({
-        rtl: true,
+        rtl: rtl,
       arrows: true,
       dots: false,
       infinite: true,
@@ -638,7 +638,7 @@ $(".ltn__slide-one-active")
             17. Small Product Slider One
         --------------------------------------------------------- */
     $(".ltn__small-product-slider-active").slick({
-        rtl: true,
+        rtl: rtl,
       arrows: false,
       dots: true,
       infinite: true,
@@ -691,7 +691,7 @@ $(".ltn__slide-one-active")
             18. Blog Slider One
         --------------------------------------------------------- */
     $(".ltn__blog-slider-one-active").slick({
-        rtl: true,
+        rtl: rtl,
       arrows: true,
       dots: false,
       infinite: true,
@@ -746,7 +746,7 @@ $(".ltn__slide-one-active")
             19. Testimonial Slider - 1
         --------------------------------------------------------- */
     $(".ltn__testimonial-slider-active").slick({
-        rtl: true,
+        rtl: rtl,
       arrows: true,
       dots: true,
       infinite: true,
@@ -788,7 +788,7 @@ $(".ltn__slide-one-active")
             20. Testimonial Slider - 2
         --------------------------------------------------------- */
     $(".ltn__testimonial-slider-2-active").slick({
-        rtl: true,
+        rtl: rtl,
       arrows: true,
       dots: false,
       infinite: true,
@@ -837,7 +837,7 @@ $(".ltn__slide-one-active")
             21. Testimonial Slider - 3
         --------------------------------------------------------- */
     $(".ltn__testimonial-slider-3-active").slick({
-        rtl: true,
+        rtl: rtl,
       arrows: true,
       centerMode: true,
       centerPadding: "80px",
@@ -962,7 +962,7 @@ $(".ltn__slide-one-active")
             23. Image Slide  - 1 (Screenshot)
         --------------------------------------------------------- */
     $(".ltn__image-slider-1-active").slick({
-        rtl: true,
+        rtl: rtl,
       arrows: true,
       dots: false,
       infinite: true,
@@ -1008,7 +1008,7 @@ $(".ltn__slide-one-active")
             24. Image Slide - 2
         --------------------------------------------------------- */
     $(".ltn__image-slider-2-active").slick({
-      rtl: true,
+      rtl: rtl,
       arrows: true,
       dots: false,
       infinite: true,
@@ -1061,7 +1061,7 @@ $(".ltn__slide-one-active")
             25. Image Slide - 3
         --------------------------------------------------------- */
     $(".ltn__image-slider-3-active").slick({
-        rtl: true,
+        rtl: rtl,
       arrows: true,
       dots: false,
       infinite: true,
@@ -1109,7 +1109,7 @@ $(".ltn__slide-one-active")
             26. Image Slide - 4
         --------------------------------------------------------- */
     $(".ltn__image-slider-4-active").slick({
-        rtl: true,
+        rtl: rtl,
       arrows: true,
       dots: false,
       infinite: true,
@@ -1165,7 +1165,7 @@ $(".ltn__slide-one-active")
         --------------------------------------------------------- */
     if ($(".ltn__brand-logo-active").length) {
       $(".ltn__brand-logo-active").slick({
-        rtl: true,
+        rtl: rtl,
         arrows: false,
         dots: false,
         infinite: true,
@@ -1208,7 +1208,7 @@ $(".ltn__slide-one-active")
         --------------------------------------------------------- */
     if ($(".ltn__blog-gallery-active").length) {
       $(".ltn__blog-gallery-active").slick({
-        rtl: true,
+        rtl: rtl,
         arrows: true,
         dots: false,
         infinite: true,
@@ -1276,7 +1276,7 @@ $(".ltn__slide-one-active")
       $(".ltn__instafeed").on("DOMNodeInserted", function (e) {
         if (e.target.className == "instagram_gallery") {
           $(".ltn__instafeed-slider-2 ." + e.target.className).slick({
-            rtl: true,
+            rtl: rtl,
             infinite: true,
             slidesToShow: 3,
             slidesToScroll: 1,
@@ -1300,7 +1300,7 @@ $(".ltn__slide-one-active")
             ],
           });
           $(".ltn__instafeed-slider-1 ." + e.target.className).slick({
-            rtl: true,
+            rtl: rtl,
             infinite: true,
             slidesToShow: 5,
             slidesToScroll: 1,
@@ -1404,7 +1404,7 @@ $(".ltn__slide-one-active")
         -------------------------------------------------------- */
     var ltn__testimonial_quote_slider = $(".ltn__testimonial-slider-4-active");
     ltn__testimonial_quote_slider.slick({
-        rtl: true,
+        rtl: rtl,
       autoplay: true,
       autoplaySpeed: 3000,
       dots: false,
