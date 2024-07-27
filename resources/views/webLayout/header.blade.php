@@ -16,14 +16,18 @@
                                     {{ $contactUsFirstRow->location[$locale] ?? '' }}
                                 </a>
                             </li>
-                            <li style="font-size: 14px;color: #56778f;">
+                            <li style="font-size: 14px; color: #56778f;">
                                 <img src="{{ asset('webasset/img/icons/call-phone.png') }}" alt="" />
                                 {{ __('links.sale_service') }}
-                                <a
-                                    href="tel:{{ $contactUsFirstRow->sales_phone }}"> <span style='direction:ltr !important'> {!! $contactUsFirstRow->sales_phone !!} </span></a>
+                                <a href="tel:{{ $contactUsFirstRow->sales_phone }}"
+                                   style="unicode-bidi: plaintext; direction: {{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }};">
+                                   <span>{!! $contactUsFirstRow->sales_phone !!}</span>
+                                </a>
                                 /
-                                <a
-                                    href="tel:{{ $contactUsFirstRow->service_support_phone }}"> <span style='direction:ltr !important'>{{ $contactUsFirstRow->service_support_phone }} </span></a>
+                                <a href="tel:{{ $contactUsFirstRow->service_support_phone }}"
+                                   style="unicode-bidi: plaintext; direction: {{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }};">
+                                   <span>{{ $contactUsFirstRow->service_support_phone }}</span>
+                                </a>
                             </li>
                         </ul>
                     </div>

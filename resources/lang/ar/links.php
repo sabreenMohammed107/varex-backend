@@ -50,7 +50,7 @@ return [
     'certificate'=>'الشهادات',
     'categories'=>'التصنيفات',
     'search'=>'بحث',
-    'search_text'=>'?ما الذى تبحث عنه',
+    'search_text'=>'ما الذي تبحث عنه ؟ ',
     'account'=>'الحساب',
     'signin_up'=>'ليس لديك حساب؟ انشاء حساب جديد ',
     'signin_up2'=>'تسجيل حساب جديد',

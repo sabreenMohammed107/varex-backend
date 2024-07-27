@@ -125,9 +125,13 @@
                                             <h5>{{ __('links.whatsApp') }}</h5>
                                             <p>
                                                 <a href="https://wa.me/{{ $contactUsFirstRow->whatsapp ?? '' }}"
-                                                    target="_blank">{{ $contactUsFirstRow->whatsapp ?? '' }}</a>
+                                                   target="_blank"
+                                                   style="unicode-bidi: plaintext; direction: {{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }};">
+                                                   {{ $contactUsFirstRow->whatsapp ?? '' }}
+                                                </a>
                                             </p>
                                         </div>
+
                                     </div>
 
                                     <div class="col-12 col-lg-6 d-flex pt-3">
@@ -153,14 +157,19 @@
                                         <div class="contact-data">
                                             <h5>{{ __('links.mobile') }}</h5>
                                             <p>
-                                                <a
-                                                    href="tel:{{ $contactUsFirstRow->sales_phone }}">{{ $contactUsFirstRow->sales_phone }}</a>
+                                                <a href="tel:{{ $contactUsFirstRow->sales_phone }}"
+                                                   style="unicode-bidi: plaintext; direction: {{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }};">
+                                                   {{ $contactUsFirstRow->sales_phone }}
+                                                </a>
                                             </p>
                                             <p>
-                                                <a
-                                                    href="tel:{{ $contactUsFirstRow->service_support_phone }}">{{ $contactUsFirstRow->service_support_phone }}</a>
+                                                <a href="tel:{{ $contactUsFirstRow->service_support_phone }}"
+                                                   style="unicode-bidi: plaintext; direction: {{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }};">
+                                                   {{ $contactUsFirstRow->service_support_phone }}
+                                                </a>
                                             </p>
                                         </div>
+
                                     </div>
                                     <div class="col-12 col-lg-6 d-flex pt-3">
                                         <div class="contact-icon">
