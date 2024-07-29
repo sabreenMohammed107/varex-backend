@@ -74,7 +74,7 @@
               Varex is your suitable destination.</p>
             <p>For a faster response, contact us via WhatsApp.</p>
             @else
-            <h2 class="text-in-dark"><span class="first-word">وزع</span> معنا</h2>
+            <h2 class="text-in-dark"><span class="first-word">قم بالتوزيع</span> معنا</h2>
 <p>
   لا شيء يضاهي أن تكون موزعًا لأكثر المنتجات انتشارًا وجودة في السوق المصري، خاصة أننا نضمن لك مجموعة واسعة من المنتجات ذات السمعة الطيبة التي تروق للمستهلكين المصريين والعرب. مرحبًا بك في عائلة فاريكس المصرية.
 </p>

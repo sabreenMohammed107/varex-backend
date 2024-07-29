@@ -109,7 +109,7 @@ return [
 'know_more'=>'Know More',
 'latest_product'=>'Latest Product',
 'more_details'=>'More Details',
-'latest_News'=>'Latest News',
+'latest_News'=>'Varex Blogs',
 'add_favorites'=>'Add to favorites',
 'share_product'=>'Share Product',
 'add_cart'=>'Add to cart',
