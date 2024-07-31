@@ -142,10 +142,18 @@
                                         <div class="contact-data">
                                             <h5>{{ __('links.location') }}</h5>
                                             <p>
-                                                <a href="https://www.google.com/maps/search/?api=1&query={{ urlencode($contactUsFirstRow->location[$locale] ?? '') }}"
-                                                    target="_blank">
-                                                    {{ $contactUsFirstRow->location[$locale] ?? '' }}
-                                                </a>
+                                                @php
+                                                $location = $contactUsFirstRow->location[$locale] ?? '';
+                                                if (Str::startsWith($location, '-')) {
+                                                    $location = ltrim($location, '- ');
+                                                }
+                                            @endphp
+
+                                            <a href="https://www.google.com/maps/search/?api=1&query={{ urlencode($location) }}" target="_blank" >
+                                                {{-- <img src="{{ asset('webasset/img/icons/location.png') }}" alt="" style="vertical-align: middle; margin-left: 5px;" /> --}}
+                                                {{ $location }}
+                                            </a>
+
                                             </p>
                                         </div>
                                     </div>

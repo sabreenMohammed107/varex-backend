@@ -87,7 +87,7 @@ class IndexController extends Controller
         if(app()->getLocale() == 'en'){
             $catName = "All Category";
         }else{
-            $catName = "كل التصنيفات";
+            $catName = "جميع المنتجات";
         }
 
         if ($request->filled('page')||$request->filled('tag_id')  || $request->filled('searchQuery') || $request->filled('category_id') || $request->filled('mobsearchQuery')) {

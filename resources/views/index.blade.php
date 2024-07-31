@@ -267,7 +267,7 @@
                             <h6 class="section-subtitle f-s-16 text-in-dark">
                                 {{ __('links.know_more') }} {{ __('links.about_us') }}
                             </h6>
-                            <h1 class="section-title f-s-50 text-in-d-blue">
+                            <h1 class="section-title f-s-50 text-in-d-blue" style="line-height: 1.3;">
                                 {!! $about->about_title[$locale] !!}
                             </h1>
                             <div class="d-flex align-items-baseline">

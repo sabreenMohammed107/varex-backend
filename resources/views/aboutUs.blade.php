@@ -87,7 +87,7 @@
                   <div class="btn-content">
                     <ul class="cst-btn p-0">
                       <li class="special-link shine w-fit-content p-0 m-0">
-                        <a class="p-0 m-0" href="{{ $about->company_katalog }}" download="" >{{ __('links.katalog') }}</a>
+                        <a class="p-0 m-0" href="{{ asset($about->company_katalog) }}" download="" >{{ __('links.katalog') }}</a>
                       </li>
                     </ul>
                   </div>
@@ -186,7 +186,7 @@
                       <div class="btn-content">
                         <ul class="cst-btn p-0">
                           <li class="special-link shine w-fit-content p-0 m-0">
-                            <a class="p-0 m-0" href="{{ $about->company_katalog }}" download="" >{{ __('links.katalog') }}</a>
+                            <a class="p-0 m-0" href="{{ asset($about->company_katalog) }}" download="" >{{ __('links.katalog') }}</a>
                           </li>
                         </ul>
                       </div>
