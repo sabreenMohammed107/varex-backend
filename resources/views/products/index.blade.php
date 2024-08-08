@@ -344,7 +344,7 @@
                         //  $('#current_cat').html('All Categories');
 
                     }
-
+                    $('html, body').animate({ scrollTop: 0 }, 'fast'); // Using jQuery
 
                 },
                 error: function(xhr, status, error) {
